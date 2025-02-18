@@ -1,14 +1,30 @@
+---
+import TopNavMenu from "./TopNavMenu.astro";
+---
+
 <header id="site-header">
   <nav>
-    <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" />
+    <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" id="logo"/>
+    <TopNavMenu />
   </nav>
 </header>
 
 <style>
 #site-header {
   background-color: #333;
+  background-image: url('/branding/letl-gm-screen-splash-mobile.webp');
+  background-size: cover;
+  background-position: right;
+  height: calc(var(--grid) * 12);
 }
 #site-header nav {
-  padding: calc(var(--grid) / 2);
+  padding: calc(var(--grid));
+  padding-top: calc(var(--grid) * 8);
+  display: flex;
+  justify-content: space-between;
+}
+#logo {
+  height: calc(var(--grid) * 3);
+  filter: drop-shadow(0 0 calc(var(--grid) / 2) #21421E);
 }
 </style>

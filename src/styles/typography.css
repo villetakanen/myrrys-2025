@@ -1,4 +1,7 @@
 body {
+  --font-header: Oswald, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --font-size: calc(1 * var(--grid));
   --line-height: calc(2 * var(--grid));
 
@@ -12,8 +15,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--font-header);
 }
 h1,
 h2 {
