@@ -1,0 +1,47 @@
+button,
+.button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  height: calc(2 * var(--grid));
+  line-height: calc(2 * var(--grid));
+  text-decoration: none;
+  padding: 0 calc(0.75 * var(--grid));
+  transition: filter 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: calc(1.11 * var(--grid));
+  display: block;
+}
+
+button:hover,
+.button:hover {
+  filter: brightness(1.2);
+  text-decoration: none !important;
+}
+
+button:active,
+.button:active,
+button.active,
+.button.active {
+  filter: brightness(1.1);
+}
+
+button.textButton,
+.button.textButton {
+  transition: all 0.2s ease-in-out;
+  background-color: hsla(0, 0%, 0%, 0.22);
+  color: white;
+}
+
+button.textButton:hover,
+.button.textButton:hover {
+  background-color: hsla(0, 0%, 0%, 0.44);
+}
+
+button.textButton:active,
+.button.textButton:active,
+button.textButton.active,
+.button.textButton.active {
+  background-color: hsla(0, 0%, 0%, 0.33);
+}

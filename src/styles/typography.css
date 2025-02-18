@@ -30,11 +30,19 @@ h1 {
   font-size: calc(2.5 * var(--grid));
   line-height: calc(3 * var(--grid));
   text-transform: uppercase;
+  margin-bottom: calc(2 * var(--grid));
 }
-
 h3,
 h4 {
   font-weight: 700;
+  line-height: var(--line-height);
+}
+h3 {
+  font-size: calc(1.25 * var(--grid));
+}
+p {
+  margin: 0;
+  margin-bottom: var(--grid);
 }
 .text-center {
   text-align: center;
@@ -46,4 +54,7 @@ blockquote {
 }
 blockquote p {
   margin: 0;
+}
+p + blockquote {
+  margin-top: var(--grid);
 }

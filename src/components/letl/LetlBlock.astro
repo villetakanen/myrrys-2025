@@ -1,13 +1,53 @@
 ---
 import LetlContent from "./LetlContent.astro";
 import LetlIntro from "./LetlIntro.md";
+import LetlProductList from "./LetlProductList.md";
 ---
 <LetlContent>
   <section>
     <article>
       <h1>Legendoja & lohikäärmeitä</h1>
-      <LetlIntro />
+      <div class="two-col">
+        <div>
+          <LetlIntro />
+        </div>
+        <div>
+          <LetlProductList />
+        </div>
+      </div>
     </article>
-    <article>LETL INDEX</article>
+    <nav class="cta">
+      <img src="/letl/basiliski.webp" class="basilisk">
+      <a href="/letl" class="button">Lue lisää</a>
+    </nav>
   </section>
 </LetlContent>
+
+<style>
+  nav.cta {
+  position: relative;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.basilisk {
+  margin-top: calc(var(--grid) * -4);
+}
+@media  (min-width: 640px) {
+.basilisk {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  position: absolute;
+  bottom: calc(var(--grid) * -7);
+  left: calc(var(--grid) * -11);
+  margin: 0;
+}
+nav.cta {
+  height: calc(var(--grid) * 6);
+}
+nav.cta .button {
+  z-index: 10;
+}
+}
+</style>
