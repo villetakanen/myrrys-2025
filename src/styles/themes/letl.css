@@ -1,0 +1,12 @@
+.theme-letl {
+  --background-container: linear-gradient(
+    140deg,
+    hsl(38deg 63% 80%),
+    hsl(246deg 29% 87%)
+  );
+  --surface-primary: linear-gradient(
+    140deg,
+    color-mix(in hsl, white, var(--color-primary) 10%),
+    color-mix(in hsl, white, var(--surface-secondary) 10%)
+  );
+}
