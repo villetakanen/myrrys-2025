@@ -3,4 +3,5 @@
   --color-primary: #eda01b;
   --surface-primary: color-mix(in hsl, white, var(--color-primary) 5.5%);
   --surface-secondary: #1a373d;
+  --surface-footer: hsla(142deg, 37%, 80%, 0.22);
 }
