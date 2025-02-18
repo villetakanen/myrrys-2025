@@ -13,9 +13,11 @@ interface Props {
 
 const {
   title,
-  description = "Myrrys.com",
+  description = "MYRRYS – Roolipelejä pelaajilta pelaajille vuodesta 2009: Legendoja & Lohikäärmeitä, Suuri Seikkailu, Eevenkoto ja the Quick",
   image = "/favicon.svg",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url).toString();
 ---
 
 <!-- Global Metadata -->
@@ -25,7 +27,7 @@ const {
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
-<!--link rel="canonical" href={canonicalURL} /-->
+<link rel="canonical" href={canonicalURL}>
 
 <!-- Sitemap plugin -->
 <link rel="sitemap" href="/sitemap-index.xml" />
