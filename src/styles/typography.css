@@ -13,16 +13,37 @@ body {
   font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
 h1,
 h2 {
   font-family: var(--font-header);
   font-weight: 200;
 }
+h1 {
+  font-size: calc(2.5 * var(--grid));
+  line-height: calc(3 * var(--grid));
+  text-transform: uppercase;
+}
+
 h3,
 h4 {
   font-weight: 700;
 }
 .text-center {
   text-align: center;
+}
+blockquote {
+  font-style: italic;
+  margin: 0;
+  padding: calc(0.5 * var(--grid)) var(--grid);
+}
+blockquote p {
+  margin: 0;
 }

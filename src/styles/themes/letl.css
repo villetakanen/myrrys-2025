@@ -10,3 +10,7 @@
     color-mix(in hsl, white, var(--surface-secondary) 10%)
   );
 }
+.theme-letl blockquote {
+  border-left: solid calc(0.5 * var(--grid)) var(--color-primary);
+  background: color-mix(in hsl, transparent, var(--color-primary) 22%);
+}

@@ -1,5 +1,3 @@
-# Legendoja ja Lohikäärmeitä
-
 Maailman suosituimman roolipelin avoimeen lisenssiin pohjaava suomenkielinen fantasiaroolipeli.
 
 > Legendoja & Lohikäärmeitä on muodostunut minulle parhaimmaksi mahdolliseksi versioksi Dunkusta, ja Pelinjohtajan kirja tulee olemaan itselläni pelinjohtajana apuna myös silloin, jos suunnittelen jonkun muun pelin sisältöjä.
