@@ -28,7 +28,7 @@
   </li>
   <li>
     <a href="/en">
-      <img src="/twotone-language.svg" class="icon" /> EN
+      <img src="/twotone-language.svg" class="icon" alt="GLOBE icon"/> EN
     </a>
   </li>
 </ul>
@@ -110,7 +110,7 @@ body:has(#menu-btn:checked) #hamburger-menu {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  transition: all 0.22s ease-in-out;
+  transition: background ease-in-out 0.32s, transform ease-in-out 0.17s;
 }
 #top-nav-links li {
   margin: calc(var(--grid) / 2);
@@ -139,5 +139,8 @@ img.icon {
 }
 img.myrrys-logo-nav {
   height: calc(var(--grid) * 2);
+}
+@media screen and (min-width: 641px) {
+
 }
 </style>

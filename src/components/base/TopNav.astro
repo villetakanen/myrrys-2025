@@ -27,4 +27,17 @@ import TopNavMenu from "./TopNavMenu.astro";
   height: calc(var(--grid) * 3);
   filter: drop-shadow(0 0 calc(var(--grid) / 2) #21421E);
 }
+@media screen and (min-width: 641px) {
+  #site-header {
+    background-image: url('/branding/letl-gm-screen-splash.webp');
+    height: calc(var(--grid) * 22);
+  }
+  #logo {
+    height: calc(var(--grid) * 4);
+  }
+  #site-header nav {
+    padding: calc(var(--grid));
+    padding-top: calc(var(--grid) * 17);
+  }
+}
 </style>
