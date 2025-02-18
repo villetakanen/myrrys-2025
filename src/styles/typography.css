@@ -15,9 +15,11 @@ h4 {
   font-family: Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-h1, h2 {
+h1,
+h2 {
   font-weight: 200;
 }
-h3, h4 {
+h3,
+h4 {
   font-weight: 400;
 }

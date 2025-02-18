@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@components/base/BaseHead.astro";
+import TopNav from "@components/base/TopNav.astro";
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ const { title, description, image = "/favicon.svg" } = Astro.props;
     <BaseHead title={title} description={description} image={image} />
   </head>
   <body>
+    <TopNav />
     <slot />
   </body>
 </html>
