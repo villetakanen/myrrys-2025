@@ -1,0 +1,17 @@
+body {
+  --font-size: calc(1 * var(--grid));
+  --line-height: calc(2 * var(--grid));
+
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}

@@ -13,3 +13,7 @@ We prefer
 - Astro
 - pnpm
 
+## Styling
+
+The site is build with "mobile first" approach. We support 2 breakpoints: 640px (tablet) and 1024px (desktop).
+
