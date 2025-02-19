@@ -12,9 +12,11 @@
 
 /* Product theme overrides */
 @import "themes/letl.css";
+@import "themes/quick.css";
 
 /* layout helpers */
 @import "two-col.css";
+@import "golden-col.css";
 
 :root {
   color-scheme: light;

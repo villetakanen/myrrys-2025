@@ -9,6 +9,7 @@ body {
   line-height: var(--line-height);
   font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--color-key, black);
 }
 h1,
 h2,
@@ -35,6 +36,9 @@ h2 {
   margin-bottom: calc(1 * var(--grid));
   font-weight: 200;
   text-transform: uppercase;
+}
+img + h2 {
+  margin-top: calc(2 * var(--grid));
 }
 
 h3,
@@ -72,4 +76,7 @@ blockquote + p {
 }
 a {
   text-decoration-color: var(--color-primary);
+}
+strong {
+  font-weight: 700;
 }

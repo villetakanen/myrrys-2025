@@ -5,10 +5,13 @@
   --breakout-width: calc(8 * var(--grid));
   --breakout-max-width: calc(var(--breakout-width) + var(--content-max-width));
   padding: var(--grid) 0;
+  position: relative;
+  container: grid / inline-size;
 }
 .content-grid > section {
   background: var(--surface-primary);
   padding: var(--grid);
+  color: var(--color-key, black);
 }
 .content-grid > section + section {
   margin-top: var(--grid);
