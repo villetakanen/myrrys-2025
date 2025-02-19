@@ -10,6 +10,9 @@
   background: var(--surface-primary);
   padding: var(--grid);
 }
+.content-grid > section + section {
+  margin-top: var(--grid);
+}
 
 .content-grid {
   --breakout-size: calc(

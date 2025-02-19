@@ -8,6 +8,9 @@ body {
   --font-size-small: calc(0.875 * var(--grid));
   --line-height-small: calc(1 * var(--grid));
 
+  --font-size-small: calc(0.875 * var(--grid));
+  --line-height-small: calc(1 * var(--grid));
+
   font-size: var(--font-size);
   line-height: var(--line-height);
   font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
@@ -52,6 +55,10 @@ p {
   margin: 0;
   margin-bottom: var(--grid);
 }
+.text-small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
 .text-center {
   text-align: center;
 }
@@ -63,6 +70,10 @@ blockquote {
 blockquote p {
   margin: 0;
 }
-p + blockquote {
+p + blockquote,
+blockquote + p {
   margin-top: var(--grid);
+}
+a {
+  text-decoration-color: var(--color-primary);
 }
