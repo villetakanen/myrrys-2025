@@ -1,0 +1,22 @@
+---
+import BaseHead from "@components/base/BaseHead.astro";
+import EnSiteFooter from "@components/en/EnSiteFooter.astro";
+import EnTopNav from "@components/en/EnTopNav.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const { title, description, image = "/favicon.svg" } = Astro.props;
+---
+<html lang="fi">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body>
+    <EnTopNav />
+    <slot />
+    <EnSiteFooter />
+  </body>
+</html>

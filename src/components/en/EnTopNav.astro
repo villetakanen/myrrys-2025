@@ -1,0 +1,32 @@
+<header id="site-header">
+  <nav aria-label="Main navigation">
+    <a href="/en">
+      <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" id="logo"/>
+    </a>
+    <a href="/" class="flex">
+      <img src="/twotone-language.svg" class="icon" alt="GLOBE icon"/>
+      <span style="color:white">FI</span>
+    </a>
+  </nav>
+</header>
+
+<style>
+#site-header {
+  background-color: var(--surface-secondary);
+  background-size: cover;
+  background-position: right;
+  height: calc(var(--grid) * 4);
+  color: white;
+}
+#site-header nav {
+  display: flex;
+  padding: calc(var(--grid) / 2);
+  justify-content: space-between;
+  padding-right: calc(var(--grid) * 1.5);
+}
+#logo {
+  height: calc(var(--grid) * 3);
+  filter: drop-shadow(0 0 calc(var(--grid) / 2) #21421E);
+}
+
+</style>

@@ -20,6 +20,7 @@
   background-image: url("/the-quick/DSC_0215.webp");
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 .theme-quick.content-grid > section {
   z-index: 10;
