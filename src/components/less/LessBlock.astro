@@ -1,0 +1,43 @@
+---
+import LetlContent from "@components/letl/LetlContent.astro";
+import LessIntro from "./LessIntro.md";
+import LessProductList from "./LessProductList.md";
+---
+<LetlContent>
+    <section>
+      <article>
+        <h1>L&L Suuri seikkailu</h1>
+        <div class="two-col">
+          <div>
+            <LessIntro />
+          </div>
+          <div>
+            <LessProductList />
+          </div>
+        </div>
+      </article>
+      <div class="cta">
+        <img src="/letl/llss/ritari-press-kit.webp" class="knight" alt="Ritari">
+        <a href="/less" class="button">Lue lisää</a>
+      </div>
+    </section>
+  </LetlContent>
+
+<style>
+@media  (min-width: 640px) {
+  .cta {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .cta .button {
+    z-index: 10;
+  }
+  .knight {
+    position: absolute;
+    bottom: calc(var(--grid) * -5);
+    right: calc(var(--grid) * -7);
+    height: calc(var(--grid) * 37);
+  }
+}
+</style>

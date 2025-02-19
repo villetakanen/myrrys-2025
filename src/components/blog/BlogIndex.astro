@@ -14,6 +14,8 @@ let blogEntries = await getCollection("blog", ({ data }) => {
   return data.tags?.includes(tag) ?? false;
 });
 
+blogEntries.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
 if (limit) {
   blogEntries = blogEntries.slice(0, limit);
 }
