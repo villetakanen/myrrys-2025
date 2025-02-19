@@ -77,9 +77,18 @@ body:has(#menu-btn:checked) #hamburger-menu {
 }
 .navicon:before {
   top: calc(var(--grid) * 3 / 4 - (var(--bar-width) / 2));
+  /*clip-path: polygon(
+    50% 100%, 
+    60% 0, 
+    92.5% 0, 
+    100% 100%, 
+    0 100%, 
+    7.5% 0, 
+    40% 0);*/
 }
 .navicon:after {
   bottom: calc(var(--grid) * 3 / 4 - (var(--bar-width) / 2));
+  /*clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 100%, 70% 0, 60% 100%, 40% 100%, 30% 0, 20% 100%, 0 100%);*/
 }
 #menu-btn:checked ~ #menu-icon .navicon {
   background: transparent;
