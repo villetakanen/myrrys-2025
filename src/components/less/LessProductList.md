@@ -1,6 +1,6 @@
 ## SAATAVILLA HYVIN VARUSTELLUISTA LIIKKEISTÄ:
 
-- [L&L: Suuri Seikkailu](/less) (säännöt ja seikkailu)
+- [L&L: Suuri Seikkailu](/letl-suuri-seikkailu) (säännöt ja seikkailu)
 
 ## LATAUKSET JA MUU LISÄMATERIAALI:
 
