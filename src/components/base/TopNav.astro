@@ -3,8 +3,10 @@ import TopNavMenu from "./TopNavMenu.astro";
 ---
 
 <header id="site-header">
-  <nav>
-    <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" id="logo"/>
+  <nav aria-label="Main navigation">
+    <a href="/">
+      <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" id="logo"/>
+    </a>
     <TopNavMenu />
   </nav>
 </header>

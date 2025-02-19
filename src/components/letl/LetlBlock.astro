@@ -16,15 +16,15 @@ import LetlProductList from "./LetlProductList.md";
         </div>
       </div>
     </article>
-    <nav class="cta">
-      <img src="/letl/basiliski.webp" class="basilisk">
+    <div class="cta">
+      <img src="/letl/basiliski.webp" class="basilisk" alt="Basiliski"/>
       <a href="/letl" class="button">Lue lisää</a>
-    </nav>
+    </div>
   </section>
 </LetlContent>
 
 <style>
-  nav.cta {
+  div.cta {
   position: relative;
   
   display: flex;
@@ -42,11 +42,12 @@ import LetlProductList from "./LetlProductList.md";
   bottom: calc(var(--grid) * -7);
   left: calc(var(--grid) * -11);
   margin: 0;
+  pointer-events: none;
 }
-nav.cta {
+div.cta {
   height: calc(var(--grid) * 6);
 }
-nav.cta .button {
+div.cta .button {
   z-index: 10;
 }
 }

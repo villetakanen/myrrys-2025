@@ -24,7 +24,7 @@ h6 {
 h1,
 h2 {
   font-family: var(--font-header);
-  font-weight: 200;
+  font-weight: 400;
 }
 h1 {
   font-size: calc(2.5 * var(--grid));
@@ -32,6 +32,14 @@ h1 {
   text-transform: uppercase;
   margin-bottom: calc(2 * var(--grid));
 }
+h2 {
+  font-size: calc(1.75 * var(--grid));
+  line-height: calc(2 * var(--grid));
+  margin-bottom: calc(1 * var(--grid));
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
 h3,
 h4 {
   font-weight: 700;

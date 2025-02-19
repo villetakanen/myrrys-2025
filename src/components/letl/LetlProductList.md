@@ -1,9 +1,9 @@
-### SAATAVILLA HYVIN VARUSTELLUISTA LIIKKEISTÄ:
+## SAATAVILLA HYVIN VARUSTELLUISTA LIIKKEISTÄ:
 * [Pelaajan kirja][1]
 * [Pelinjohtajan kirja][2]
 * [Pelinjohtajan suoja][3]
 
-### LATAUKSET JA MUU LISÄMATERIAALI:
+## LATAUKSET JA MUU LISÄMATERIAALI:
 * [Hahmolomake (L&L)][4]
 * [Hahmolomake (L&L, Suuri seikkailu)][12]
 * [Esimerkkihahmot][5]

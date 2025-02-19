@@ -1,6 +1,6 @@
 button,
 .button {
-  background-color: var(--color-primary);
+  background-color: color-mix(in hsl, var(--color-primary), black 70%);
   color: white;
   border: none;
   height: calc(2 * var(--grid));
@@ -12,12 +12,14 @@ button,
   font-weight: 600;
   font-size: calc(1.11 * var(--grid));
   display: block;
+  transition: all 0.23s ease-in-out;
+  box-shadow: 0 0 8px -2px var(--color-primary);
 }
-
 button:hover,
 .button:hover {
-  filter: brightness(1.2);
+  background-color: var(--color-primary);
   text-decoration: none !important;
+  box-shadow: 0 0 8px 0px color-mix(in hsl, var(--color-primary), black 30%);
 }
 
 button:active,
