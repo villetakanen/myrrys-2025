@@ -1,6 +1,5 @@
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
-// @ts-check
+//import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
 
@@ -23,9 +22,8 @@ export default defineConfig({
     "LnL-SRD/[...id]": "/letl/srd/[...id]",
     "lnl-srd/[...id]": "/letl/srd/[...id]",
   },
-  adapter: vercel({
+  /*adapter: vercel({
     webAnalytics: {
       enabled: true,
-    },
-  }),
+    },*/
 });
