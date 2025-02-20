@@ -4,4 +4,4 @@
 
 ## LATAUKSET JA MUU LISÄMATERIAALI:
 
-- [Hahmolomake (pdf)](/less/hahmolomake.pdf)
+- [Hahmolomake (pdf)](/downloads/L&L-Suuri-Seikkailu-Hahmolomake.pdf)
