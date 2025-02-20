@@ -1,7 +1,7 @@
 {
   "name": "myrrys-2025",
   "type": "module",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vercel": "^8.0.7",
     "astro": "^5.3.0",
     "lightningcss": "^1.29.1",
     "markdown-it": "^14.1.0",

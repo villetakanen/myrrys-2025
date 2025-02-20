@@ -12,11 +12,16 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const heroImage = post.data.heroImage
+  ? post.data.heroImage
+  : "/letl/L&L-yhteensopiva.png";
+const seoDescription = `${post.data.description} ${post.data.author} ${post.data.pubDate} ${post.data.isbn?.join(" ")}`;
 ---
 <Page
   title={post.data.title}
-  description={post.data.description} 
-  image={post.data.heroImage}>
+  description={seoDescription} 
+  image={heroImage}>
   <main class="content-grid theme-letl">
     <section class="golden-col">
       <article>

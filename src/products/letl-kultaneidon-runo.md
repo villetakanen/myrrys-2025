@@ -5,7 +5,6 @@ title: "Kultaneidon runo ja muita seikkailuja (L&L)"
 pubDate: "2023"
 author: "Wille Ruotsalainen"
 description: "Kovakantinen, 48 sivua."
-heroImage: "/letl/kultaneidon-runo.webp"
 distributors: ['Suomalainen.com, https://www.suomalainen.com/products/kultaneidon-runo-ja-muita-seikkailuja']
 ---
 Kultaneidon runo ja muita seikkailuja sisältää kymmenen roolipeliseikkailua. Ne on suunniteltu L&L-roolipelin säännöillä. Kirjassa on seikkailu kullekin tasolle 2-10. Kirjan seikkailut sijoittuvat rautakautiseen maailmaan, jossa sekä kalevalainen mytologia että Lapin legendat ovat väkevästi läsnä.
