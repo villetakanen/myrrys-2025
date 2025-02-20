@@ -21,7 +21,7 @@
 [4]: /letl/lomake-A4-v1.0.1.pdf
 [5]: /letl/LL-1.-tason-hahmot-1.pdf
 [6]: /letl/ll-pelinjohtajan-paketti.pdf
-[7]: /LnL-SRD/
+[7]: /letl/srd/readme
 [8]: /letl/erebuksen-5-holvia.pdf
 [9]: /letl/LL-Majakkakeikka.pdf
 [10]: /letl/LL-Traakinlyoja.pdf

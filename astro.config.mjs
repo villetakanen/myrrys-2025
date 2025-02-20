@@ -17,4 +17,9 @@ export default defineConfig({
       },
     },
   },
+  redirects: {
+    "/letl/srd": "/letl/srd/readme",
+    "LnL-SRD/[...id]": "/letl/srd/[...id]",
+    "lnl-srd/[...id]": "/letl/srd/[...id]",
+  }
 });
