@@ -27,4 +27,9 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { blog, products };
+const lnlsrd = defineCollection({
+  loader: glob({ pattern: ["**/*.md"], base: "LnL-SRD" }),
+  schema: z.object({}),
+});
+
+export const collections = { blog, products, lnlsrd };
