@@ -1,11 +1,11 @@
 import sitemap from "@astrojs/sitemap";
-//import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://myrrys-2025.netlify.app/",
+  site: "https://myrrys.com",
   output: "static",
   integrations: [sitemap()],
   vite: {
@@ -22,8 +22,9 @@ export default defineConfig({
     "LnL-SRD/[...id]": "/letl/srd/[...id]",
     "lnl-srd/[...id]": "/letl/srd/[...id]",
   },
-  /*adapter: vercel({
+  adapter: vercel({
     webAnalytics: {
       enabled: true,
-    },*/
+    },
+  }),
 });
