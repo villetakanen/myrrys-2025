@@ -14,6 +14,6 @@ Mikäli pelitestiin liittyvien materiaalien eri versioissa ilmenee ristiriitoja,
 Ensimmäinen pelitestitiedosto on Loihtijan uusi versio Eevenkotoon ja yksi sen alkuperistä - Jumalverinen loihtija. Se päivittää L&L:n nykyisen loihtijan Eevenkodon voimatasolle ja tyylille sopivaksi. Tiedosto sisältää vain muutokset tämänhetkiseen Pelaajan kirjan materiaaliin.
 
 * [Linkki pelitestimateriaaliin](/letl/L&L-Eevenkoto-Loihtija-0.2.0.pdf)
-* Linkki palautekyselyyn (tulossa)
+* [Linkki palautekyselyyn](https://forms.gle/4k66PNCYsbRoxhov5) (avoinna 1.3.2025 kello 12:00 asti)
 
 &nbsp;
