@@ -2,6 +2,7 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
+import { remarkUrlLowercase } from "./src/remark/remarkUrlLowercase";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,9 @@ export default defineConfig({
         include: Features.Nesting,
       },
     },
+  },
+  markdown: {
+    remarkPlugins: [remarkUrlLowercase],
   },
   redirects: {
     "/letl/srd": "/letl/srd/readme",
