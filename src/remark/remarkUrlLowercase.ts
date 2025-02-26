@@ -13,6 +13,7 @@ export const remarkUrlLowercase: Plugin = () => {
         !node.url.startsWith("http") &&
         !node.url.endsWith(".pdf")
       ) {
+        // if(node.url.indexOf('/') > 0) console.log("Lowercasing URL:", node.url);
         node.url = node.url.toLowerCase();
       }
     });
