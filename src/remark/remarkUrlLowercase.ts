@@ -8,7 +8,11 @@ import { visit } from "unist-util-visit";
 export const remarkUrlLowercase: Plugin = () => {
   return (tree) => {
     visit(tree as Root, "link", (node) => {
-      if (node.url) {
+      if (
+        node.url &&
+        !node.url.startsWith("http") &&
+        !node.url.endsWith(".pdf")
+      ) {
         node.url = node.url.toLowerCase();
       }
     });
