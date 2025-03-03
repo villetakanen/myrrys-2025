@@ -31,6 +31,7 @@ export default defineConfig({
     "/legendoja-ja-lohikaarmeita/": "/letl",*/
     "/legendoja-ja-lohikaarmeita/srd": "/letl/srd",
     "/legendoja-ja-lohikaarmeita/srd/": "/letl/srd",
+    "/legendoja-lohikaarmeita/": "/letl"
   },
   adapter: vercel({
     webAnalytics: {
