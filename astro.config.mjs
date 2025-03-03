@@ -27,8 +27,8 @@ export default defineConfig({
     "/letl/srd/": "/letl/srd/readme",
     "/LnL-SRD/[...id]": "/letl/srd/[...id]",
     "/lnl-srd/[...id]": "/letl/srd/[...id]",
-    "/legendoja-ja-lohikaarmeita": "/letl",
-    "/legendoja-ja-lohikaarmeita/": "/letl",
+    /*"/legendoja-ja-lohikaarmeita": "/letl",
+    "/legendoja-ja-lohikaarmeita/": "/letl",*/
     "/legendoja-ja-lohikaarmeita/srd": "/letl/srd",
     "/legendoja-ja-lohikaarmeita/srd/": "/letl/srd",
   },
