@@ -10,6 +10,9 @@ export async function GET({ site }: APIContext) {
     throw new Error("Missing site metadata");
   }
   const blog = await getCollection("blog");
+  blog.sort((a, b) => {
+    return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+  });
   return rss({
     title: "MYRRYS Blogi",
     description:
