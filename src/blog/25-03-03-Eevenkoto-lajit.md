@@ -14,6 +14,6 @@ Mikäli pelitestiin liittyvien materiaalien eri versioissa ilmenee ristiriitoja,
 Toinen pelitestitiedosto käsittää Eevenkodossa olevat pelattavat lajit ja niiden variantit: Eetteriluomot, haltiat, ihmiset, kissalaiset, kääpiöt ja peikot. Haltioista on myös vasta heränneet, kissalaisista eteläisen ja pohjoisen mantereen sfinksit ja metsäkissat, ja peikoista kaikki viisi eri peikkomuotoa. 
 
 * [Linkki Eevenkodon lajit -pelitestimateriaaliin](/letl/L&L-Eevenkoto-Lajit-0.1.3.pdf)
-* [Linkki Eevenkodon lajit -palautekyselyyn](https://forms.gle/JbuebgqFXJm2mCUq9)
+* [Linkki Eevenkodon lajit -palautekyselyyn](https://forms.gle/JbuebgqFXJm2mCUq9) (Kysely on auki 22.3.2025 klo 12:00 asti)
 
 &nbsp;
