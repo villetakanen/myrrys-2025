@@ -14,4 +14,4 @@ Pelitestimateriaali, jota näiden postausten yhteydessä julkaistaan, esittelee 
 Mikäli pelitestiin liittyvien materiaalien eri versioissa ilmenee ristiriitoja, tuorein pelitestimateriaali toimii aina ensisijaisena ohjeena. Testattavien sääntöjen ja kykyjen voimataso saattaa poiketa totutusta, ja jos sisältö hyväksytään viralliseksi, tasapainotusta tehdään hyväksyttyjen sääntöjen välillä. Pelaajien palaute on ensiarvoisen tärkeää ja sitä kerätään kyselyjen ja pelikokemusten perusteella, ja palautteen avulla sääntöjä muokataan entistä toimivammiksi.
 
 * [Linkki Eevenkodon valtit -pelitestimateriaaliin](/letl/L&L-Eevenkoto-Valtit-0.1.2.pdf)
-* Linkki Eevenkodon valtit -palautekyselyyn (tulossa)
+* [Linkki Eevenkodon valtit -palautekyselyyn](https://forms.gle/ozKtUKWSrTdRTpbd8)
