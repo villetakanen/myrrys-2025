@@ -19,4 +19,4 @@ Näiden postausten yhteydessä jaettava pelitestimateriaali esittelee Eevenkotoa
 Mikäli pelitestimateriaalien eri versioissa ilmenee ristiriitoja, uusin versio toimii aina ensisijaisena ohjeena. Testattavien sääntöjen ja kykyjen voimataso saattaa poiketa totutusta, ja jos sisältö hyväksytään viralliseksi, sääntöjä tasapainotetaan vielä suhteessa muihin hyväksyttyihin sääntöihin. Pelaajien palaute on ensiarvoisen tärkeää ja sitä kerätään kyselyillä ja pelikokemusten kautta. Palautteen perusteella Eevenkotoa muokataan entistä toimivammiksi.
 
 * [Linkki *bardi ja hurjapää* -pelitestimateriaaliin](/letl/L&L-Eevenkoto-Bardi-ja-Hurja-0.2.1.pdf)
-* Linkki *bardi ja hurjapää* -palautekyselyyn (tulossa)
+* [Linkki *bardi ja hurjapää* -palautekyselyyn](https://docs.google.com/forms/d/e/1FAIpQLScG96aEn3txTDYnVxkUjhURzYEkPKPlLOXrk-sw8CG8A1VWgQ/viewform?usp=dialog)
