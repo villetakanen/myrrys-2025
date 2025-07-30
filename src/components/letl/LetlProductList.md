@@ -3,6 +3,7 @@
 * [Pelinjohtajan kirja][2]
 * [Pelinjohtajan suoja][3]
 * [Kultaneidon runo][13]
+* [Velhon torni][14]
 
 ## LATAUKSET JA MUU LISÄMATERIAALI:
 * [Hahmolomake (L&L)][4]
@@ -28,3 +29,4 @@
 [11]: /letl/LL-1.-painos-1.0.0-errata.pdf
 [12]: /downloads/L&L-Suuri-Seikkailu-Hahmolomake.pdf
 [13]: /letl/letl-kultaneidon-runo
+[14]: /letl/letl-velhon-torni
