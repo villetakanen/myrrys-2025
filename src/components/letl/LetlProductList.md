@@ -14,6 +14,7 @@
 * [Seikkailu: Erebuksen 5 holvia][8]
 * [Seikkailu: Majakkakeikka][9]
 * [Seikkailu: Traakinlyöjä][10]
+* [Seikkailu: Sumun saartama saari][15]
 * [SRD (beta)][7]
 
 [1]: /letl/letl-pelaajan-kirja
@@ -30,3 +31,4 @@
 [12]: /downloads/L&L-Suuri-Seikkailu-Hahmolomake.pdf
 [13]: /letl/letl-kultaneidon-runo
 [14]: /letl/letl-velhon-torni
+[15]: /downloads/letl/sumun_saartama_saari.pdf
