@@ -5,12 +5,13 @@
   <article class="surface">
     <h1>Legenda</h1>
     <div class="two-col">
-      <div><p>Legenda on vapaaehtoisvoimin tehty voittoa tavoittelematon lehti, joka ilmestyy 
+      <div class="flex flex-col justify-space-between">
+        <p>Legenda on vapaaehtoisvoimin tehty voittoa tavoittelematon lehti, joka ilmestyy 
         vuosittain Ropeconissa. Lehden sisältö toimii Legendoissa ja Lohikäärmeissä sekä muissa 
         vastaavissa 5E - pohjaisissa fantasiapeleissä.</p>
         
         <div class="cta flex justify-center">
-      <a href="/letl-suuri-seikkailu" class="button">Lue lisää</a>
+      <a href="/legenda" class="button">Lue lisää</a>
     </div>
       </div>
       <div>
@@ -39,4 +40,16 @@
 div:has(.cover-image) {
   min-height: 280px;
 }
+@media screen and (max-width: 639px) {
+.cover-image {
+  position: static;
+  transform: rotate(1deg);
+  margin: 0 auto;
+  max-width: 300px;
+  }
+  .cover-image img {
+    max-width: 100%;
+  }
+}
+  
 </style>
