@@ -13,10 +13,12 @@
 /* Product theme overrides */
 @import "themes/letl.css";
 @import "themes/quick.css";
+@import "themes/legenda.css";
 
 /* layout helpers */
 @import "two-col.css";
 @import "golden-col.css";
+@import "surface.css";
 
 :root {
   color-scheme: light;
