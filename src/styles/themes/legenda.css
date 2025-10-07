@@ -6,8 +6,8 @@
 }
 .theme-legenda.content-grid::before {
   background: linear-gradient(
-    0deg in lab, 
-    hsla(35, 100%, 79%, 0.6), 
+    0deg in lab,
+    hsla(35, 100%, 79%, 0.6),
     hsla(184, 100%, 89%, 0.9)
   );
   position: absolute;

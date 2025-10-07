@@ -1,0 +1,51 @@
+
+<article>
+    <h1>Legenda</h1>
+    <div class="two-col">
+      <div class="flex flex-col justify-space-between">
+        <p>Legenda on vapaaehtoisvoimin tehty voittoa tavoittelematon lehti, joka ilmestyy 
+        vuosittain Ropeconissa. Lehden sisältö toimii Legendoissa ja Lohikäärmeissä sekä muissa 
+        vastaavissa 5E - pohjaisissa fantasiapeleissä.</p>
+        
+        <div class="cta flex justify-center">
+      <a href="/legenda" class="button">Lue lisää</a>
+    </div>
+      </div>
+      <div>
+        <figure class="cover-image">
+            <img src="/branding/legenda/legenda-kansi-1-preview.webp" alt="Legenda 2024 kansi">
+            <figcaption>Legenda 2024</figcaption>
+        </figure>
+      </div>
+    </div>
+    <br>
+    
+  </article>
+
+  <style>
+.cover-image {
+  padding: calc(0.5 * var(--grid));
+  background: var(--surface-secondary);
+  color: var(--surface-primary);
+  text-align: center;
+  box-shadow: 2px 2px 12px -4px rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: -12px;
+  transform: rotate(7deg);
+}
+div:has(.cover-image) {
+  min-height: 280px;
+}
+@media screen and (max-width: 639px) {
+.cover-image {
+  position: static;
+  transform: rotate(1deg);
+  margin: 0 auto;
+  max-width: 300px;
+  }
+  .cover-image img {
+    max-width: 100%;
+  }
+}
+  
+</style>
