@@ -1,3 +1,6 @@
+---
+import { Image } from 'astro:assets';
+---
 
 <article>
     <h1>Legenda</h1>
@@ -13,7 +16,15 @@
       </div>
       <div>
         <figure class="cover-image">
-            <img src="/branding/legenda/legenda-kansi-1-preview.webp" alt="Legenda 2024 kansi">
+            <Image 
+              src="/branding/legenda/legenda-kansi-1-preview.webp" 
+              alt="Legenda 2024 kansi"
+              width={720}
+              height={942}
+              widths={[284, 568, 720]}
+              format="webp"
+              loading="lazy"
+            />
             <figcaption>Legenda 2024</figcaption>
         </figure>
       </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import LetlContent from "@components/letl/LetlContent.astro";
 import LessIntro from "./LessIntro.md";
 import LessProductList from "./LessProductList.md";
@@ -17,7 +18,16 @@ import LessProductList from "./LessProductList.md";
         </div>
       </article>
       <div class="cta">
-        <img src="/letl/llss/ritari-press-kit.webp" class="knight" alt="Ritari">
+        <Image 
+          src="/letl/llss/ritari-press-kit.webp" 
+          class="knight" 
+          alt="Ritari"
+          width={1024}
+          height={1528}
+          widths={[348, 696, 1024]}
+          format="webp"
+          loading="lazy"
+        />
         <a href="/letl-suuri-seikkailu" class="button">Lue lisää</a>
       </div>
     </section>

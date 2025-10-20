@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import LetlContent from "./LetlContent.astro";
 import LetlIntro from "./LetlIntro.md";
 import LetlProductList from "./LetlProductList.md";
@@ -17,7 +18,16 @@ import LetlProductList from "./LetlProductList.md";
       </div>
     </article>
     <div class="cta">
-      <img src="/letl/basiliski.webp" class="basilisk" alt="Basiliski"/>
+      <Image 
+        src="/letl/basiliski.webp" 
+        class="basilisk" 
+        alt="Basiliski"
+        width={1024}
+        height={724}
+        widths={[348, 696, 1024]}
+        format="webp"
+        loading="lazy"
+      />
       <a href="/letl" class="button">Lue lisää</a>
     </div>
   </section>
