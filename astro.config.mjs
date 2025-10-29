@@ -1,5 +1,4 @@
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
 import { remarkUrlLowercase } from "./src/remark/remarkUrlLowercase";
@@ -30,9 +29,4 @@ export default defineConfig({
     "/legendoja-ja-lohikaarmeita": "/letl",
     "/legendoja-ja-lohikaarmeita/srd": "/letl/srd",
   },
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
 });
