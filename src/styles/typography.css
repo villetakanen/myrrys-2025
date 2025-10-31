@@ -76,6 +76,8 @@ blockquote + p {
 }
 a {
   text-decoration-color: var(--color-primary);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px
+    rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.5);
 }
 strong {
   font-weight: 700;
