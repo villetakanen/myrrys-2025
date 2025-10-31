@@ -4,8 +4,19 @@ import LetlContent from "./LetlContent.astro";
 import LetlIntro from "./LetlIntro.md";
 import LetlProductList from "./LetlProductList.md";
 ---
+
 <LetlContent>
-  <section>
+  <section class="letl-section surface">
+    <Image
+      src="/letl/basiliski.webp"
+      class="basilisk"
+      alt="Basiliski"
+      width={1024}
+      height={724}
+      widths={[348, 696, 1024]}
+      format="webp"
+      loading="lazy"
+    />
     <article>
       <h1>Legendoja & lohikäärmeitä</h1>
       <div class="two-col">
@@ -18,48 +29,62 @@ import LetlProductList from "./LetlProductList.md";
       </div>
     </article>
     <div class="cta">
-      <Image 
-        src="/letl/basiliski.webp" 
-        class="basilisk" 
-        alt="Basiliski"
-        width={1024}
-        height={724}
-        widths={[348, 696, 1024]}
-        format="webp"
-        loading="lazy"
-      />
       <a href="/letl" class="button">Lue lisää</a>
     </div>
   </section>
 </LetlContent>
 
 <style>
+  /* Section needs to be positioned for absolute children */
+  .letl-section {
+    position: relative;
+    overflow: hidden; /* Prevent image from breaking out of container */
+  }
+
+  /* Basilisk background image */
+  .basilisk {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+
+    /* Mobile: smaller, at top */
+    width: auto;
+    height: calc(var(--grid) * 20);
+    top: calc(var(--grid) * 2);
+    right: calc(var(--grid) * -2);
+    opacity: 0.8;
+  }
+
+  /* Content should be above the image */
+  .letl-section > article,
+  .letl-section > div.cta {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* CTA container */
   div.cta {
-  position: relative;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.basilisk {
-  margin-top: calc(var(--grid) * -4);
-  pointer-events: none;
-}
-@media  (min-width: 640px) {
-.basilisk {
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-  position: absolute;
-  bottom: calc(var(--grid) * -7);
-  left: calc(var(--grid) * -11);
-  margin: 0;
-  pointer-events: none;
-}
-div.cta {
-  height: calc(var(--grid) * 6);
-}
-div.cta .button {
-  z-index: 10;
-}
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--grid) 0;
+  }
+
+  /* Desktop positioning */
+  @media (min-width: 640px) {
+    .basilisk {
+      transform: scaleX(-1); /* Flip horizontally */
+      height: calc(var(--grid) * 35);
+      bottom: calc(var(--grid) * -5);
+      left: calc(var(--grid) * -8);
+      top: auto;
+      right: auto;
+      opacity: 1;
+    }
+
+    div.cta {
+      min-height: calc(var(--grid) * 6);
+    }
+  }
 </style>

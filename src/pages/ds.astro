@@ -783,53 +783,191 @@ container-name: content | breakout | full-width</code></pre>
 {"</section>"}</code></pre>
       </article>
 
-      <!-- File Locations -->
-      <article style="background: var(--surface-secondary); color: white;">
-        <h2>File Locations</h2>
-        <p class="text-small">
-          For reference when working with the design system:
+      <!-- Decorative Images -->
+      <article>
+        <h2>Decorative Background Images</h2>
+        <p>
+          When adding decorative images that should appear behind content, use
+          proper positioning and z-index management. The container must have the
+          <code>.surface</code> class for proper visual framing and positioning context.
         </p>
-        <ul class="text-small">
+
+        <h3>Pattern: Background Image Layer</h3>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"<section class=\"themed-section\">"}
+{"  <!-- Image layer (behind) -->"}
+{"  <Image"}
+{"    src=\"/decorative-image.webp\""}
+{"    class=\"background-image\""}
+{"    alt=\"Decorative\""}
+{"    width={1024}"}
+{"    height={724}"}
+{"    loading=\"lazy\""}
+{"  />"}
+{"  "}
+{"  <!-- Content layer (above) -->"}
+{"  <article>"}
+{"    <h1>Content</h1>"}
+{"    <p>Text and buttons appear above the image</p>"}
+{"  </article>"}
+{"  "}
+{"  <div class=\"cta\">"}
+{"    <a href=\"#\" class=\"button\">Call to Action</a>"}
+{"  </div>"}
+{"</section>"}</code></pre>
+
+        <h3>CSS Implementation</h3>
+        <pre style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"/* Container needs .surface class and position: relative */"}
+{".themed-section {"}
+{"  position: relative;"}
+{"  overflow: hidden; /* Prevent image overflow */"}
+{"}"}
+{""}
+{"/* Note: Add .surface class to the section in HTML */"}
+{"/* <section class=\"themed-section surface\"> */"}
+{""}
+{"/* Background image behind content */"}
+{".background-image {"}
+{"  position: absolute;"}
+{"  z-index: 0;"}
+{"  pointer-events: none; /* Clicks pass through */"}
+{"  "}
+{"  /* Mobile positioning */"}
+{"  width: auto;"}
+{"  height: calc(var(--grid) * 20);"}
+{"  top: calc(var(--grid) * 2);"}
+{"  right: calc(var(--grid) * -2);"}
+{"  opacity: 0.8;"}
+{"}"}
+{""}
+{"/* Content above the image */"}
+{".themed-section > article,"}
+{".themed-section > .cta {"}
+{"  position: relative;"}
+{"  z-index: 10;"}
+{"}"}
+{""}
+{"/* Desktop adjustments */"}
+{"@media (min-width: 640px) {"}
+{"  .background-image {"}
+{"    height: calc(var(--grid) * 35);"}
+{"    bottom: calc(var(--grid) * -5);"}
+{"    left: calc(var(--grid) * -8);"}
+{"    top: auto;"}
+{"    right: auto;"}
+{"    opacity: 1;"}
+{"  }"}
+{"}"}</code></pre>
+
+        <h3>Key Principles</h3>
+        <ul>
           <li>
-            <code>/src/styles/tokens.css</code> – Design tokens (colors, spacing)
+            <strong>Container:</strong> Use <code>.surface</code> class + <code>position: relative</code> on
+            parent section
           </li>
           <li>
-            <code>/src/styles/content-grid.css</code> – Content grid system (with
-            container queries)
-          </li>
-          <li><code>/src/styles/surface.css</code> – Surface component</li>
-          <li><code>/src/styles/two-col.css</code> – Two-column layout</li>
-          <li>
-            <code>/src/styles/golden-col.css</code> – Golden ratio layout
-          </li>
-          <li><code>/src/styles/flex.css</code> – Flex utilities</li>
-          <li>
-            <code>/src/styles/themes/letl.css</code> – L&L theme
+            <strong>Image:</strong>
+            <code>position: absolute</code> + <code>z-index: 0</code>
           </li>
           <li>
-            <code>/src/styles/themes/legenda.css</code> – Legenda theme
+            <strong>Content:</strong>
+            <code>position: relative</code> + <code>z-index: 10</code>
           </li>
           <li>
-            <code>/src/styles/themes/quick.css</code> – Quick theme
+            <strong>No interaction:</strong>
+            <code>pointer-events: none</code> on image
+          </li>
+          <li>
+            <strong>Containment:</strong>
+            <code>overflow: hidden</code> on container
+          </li>
+          <li>
+            <strong>Responsive:</strong> Adjust size/position with media queries
+          </li>
+          <li>
+            <strong>Spacing:</strong> Use <code>var(--grid)</code> for positioning
           </li>
         </ul>
-        <p class="text-small" style="margin-top: var(--grid); opacity: 0.8;">
-          💡 All styles are imported via <code>/src/styles/styles.css</code>
-        </p>
-      </article>
 
-      <!-- Existing Button Examples -->
-      <article>
-        <h2>Buttons</h2>
-        <p>Button styling examples (full documentation coming in Phase 2)</p>
-        <div class="flex flex-col justify-center">
-          <button>A button</button>
-          <a href="#buttons" class="button">A link Button</a>
-          <button class="textButton">Text Button</button>
-          <a href="#buttons" class="button textButton">Link Text Button</a>
-        </div>
+        <h3>Real Example: Basilisk in LetlBlock</h3>
+        <p>
+          The front page L&L section uses this pattern with a decorative
+          basilisk image that flips horizontally on desktop and positions
+          itself at the bottom-left corner. Note the <code>.surface</code> class
+          on the section for proper visual framing.
+        </p>
+        <pre style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"<!-- HTML structure -->"}
+{"<section class=\"letl-section surface\">"}
+{"  <Image src=\"/letl/basiliski.webp\" class=\"basilisk\" ... />"}
+{"  <article>...</article>"}
+{"  <div class=\"cta\">...</div>"}
+{"</section>"}</code></pre>
+        <pre style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"/* Flip image horizontally on desktop */"}
+{"transform: scaleX(-1);"}
+{""}
+{"/* Position relative to section */"}
+{"bottom: calc(var(--grid) * -5);"}
+{"left: calc(var(--grid) * -8);"}</code></pre>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Always set explicit width/height on Image component</li>
+          <li>Use <code>loading="lazy"</code> for below-fold images</li>
+          <li>Keep aspect ratio with <code>width: auto</code> or <code>height: auto</code></li>
+          <li>Test on mobile - images may need different positioning</li>
+          <li>Use opacity on mobile to reduce visual weight</li>
+          <li>Ensure content remains readable over the image</li>
+        </ul>
+      </pre>
+
+        <!-- File Locations -->
+        <article style="background: var(--surface-secondary); color: white;">
+          <h2>File Locations</h2>
+          <p class="text-small">
+            For reference when working with the design system:
+          </p>
+          <ul class="text-small">
+            <li>
+              <code>/src/styles/tokens.css</code> – Design tokens (colors, spacing)
+            </li>
+            <li>
+              <code>/src/styles/content-grid.css</code> – Content grid system (with
+              container queries)
+            </li>
+            <li><code>/src/styles/surface.css</code> – Surface component</li>
+            <li><code>/src/styles/two-col.css</code> – Two-column layout</li>
+            <li>
+              <code>/src/styles/golden-col.css</code> – Golden ratio layout
+            </li>
+            <li><code>/src/styles/flex.css</code> – Flex utilities</li>
+            <li>
+              <code>/src/styles/themes/letl.css</code> – L&L theme
+            </li>
+            <li>
+              <code>/src/styles/themes/legenda.css</code> – Legenda theme
+            </li>
+            <li>
+              <code>/src/styles/themes/quick.css</code> – Quick theme
+            </li>
+          </ul>
+          <p class="text-small" style="margin-top: var(--grid); opacity: 0.8;">
+            💡 All styles are imported via <code>/src/styles/styles.css</code>
+          </p>
+        </article>
+
+        <!-- Existing Button Examples -->
+        <article>
+          <h2>Buttons</h2>
+          <p>Button styling examples (full documentation coming in Phase 2)</p>
+          <div class="flex flex-col justify-center">
+            <button>A button</button>
+            <a href="#buttons" class="button">A link Button</a>
+            <button class="textButton">Text Button</button>
+            <a href="#buttons" class="button textButton">Link Text Button</a>
+          </div>
+        </article>
       </article>
+      <SiteFooter />
     </section>
-    <SiteFooter />
   </body>
 </html>
