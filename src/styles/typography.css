@@ -1,14 +1,16 @@
 body {
-  --font-header: Oswald, ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-header:
+    Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --font-size: calc(1 * var(--grid));
   --line-height: calc(2 * var(--grid));
 
   font-size: var(--font-size);
   line-height: var(--line-height);
-  font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    "Open Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: var(--color-key, black);
 }
 h1,
@@ -74,10 +76,12 @@ p + blockquote,
 blockquote + p {
   margin-top: var(--grid);
 }
-a {
+.surface a {
   text-decoration-color: var(--color-primary);
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px
-    rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.5);
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 8px rgba(255, 255, 255, 0.7),
+    0 0 12px rgba(255, 255, 255, 0.5);
 }
 a.button {
   text-shadow: none;
