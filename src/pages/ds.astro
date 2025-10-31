@@ -420,6 +420,11 @@ container-name: content | breakout | full-width</code></pre>
 /* Components */
 .surface            Card/section with background and shadow
 
+/* Themes */
+.theme-letl         Legendoja & Lohikäärmeitä theme
+.theme-legenda      Legenda magazine theme
+.theme-quick        The Quick dark theme
+
 /* Utilities (future docs) */
 .two-col            Two-column responsive grid
 .golden-col         Golden ratio columns (1.618:1)
@@ -535,6 +540,249 @@ container-name: content | breakout | full-width</code></pre>
 {"</style>"}</code></pre>
       </article>
 
+      <!-- Theming -->
+      <article>
+        <h2>Theming</h2>
+        <p>
+          The design system supports product-specific theming by applying theme
+          classes to <code>content-grid</code> containers. This allows different
+          sections of the site to have distinct visual identities while maintaining
+          structural consistency.
+        </p>
+
+        <h3>Available Themes</h3>
+        <ul>
+          <li>
+            <code>.theme-letl</code> – Legendoja & Lohikäärmeitä (warm gradient)
+          </li>
+          <li>
+            <code>.theme-legenda</code> – Legenda magazine (background image with
+            overlay)
+          </li>
+          <li>
+            <code>.theme-quick</code> – The Quick (dark theme with background image)
+          </li>
+        </ul>
+
+        <h3>Live Theme Examples</h3>
+        <p class="text-small" style="opacity: 0.8; margin-bottom: var(--grid);">
+          Below are live demonstrations of each theme applied to content-grid
+          containers.
+        </p>
+      </article>
+    </section>
+
+    <!-- LETL Theme Demo -->
+    <section
+      class="theme-letl content-grid"
+      style="min-height: calc(10 * var(--grid));"
+    >
+      <article class="surface">
+        <h3>Theme: Legendoja & Lohikäärmeitä</h3>
+        <p>
+          <code>.theme-letl</code> – Warm gradient background with custom blockquote
+          styling.
+        </p>
+        <blockquote>
+          This is a blockquote styled with the L&L theme. Notice the left border
+          and background color.
+        </blockquote>
+      </article>
+    </section>
+
+    <!-- Legenda Theme Demo -->
+    <section
+      class="theme-legenda content-grid"
+      style="min-height: calc(10 * var(--grid));"
+    >
+      <article class="surface">
+        <h3>Theme: Legenda</h3>
+        <p>
+          <code>.theme-legenda</code> – Background image with gradient overlay for
+          magazine aesthetic.
+        </p>
+      </article>
+    </section>
+
+    <!-- Quick Theme Demo -->
+    <section
+      class="theme-quick content-grid"
+      style="min-height: calc(10 * var(--grid));"
+    >
+      <article class="surface">
+        <h3>Theme: The Quick</h3>
+        <p>
+          <code>.theme-quick</code> – Dark theme with photo background. Notice the
+          custom <a href="#theming">link styling</a>.
+        </p>
+      </article>
+    </section>
+
+    <!-- Back to regular content -->
+    <section class="content-grid">
+      <article>
+        <h3>How Theming Works</h3>
+        <p>
+          Themes are applied by adding a theme class to the <code
+            >content-grid</code
+          > container. Theme CSS overrides design tokens (like <code
+            >--surface-primary</code
+          >, <code>--color-key</code>) and can add backgrounds, overlays, and
+          custom styling.
+        </p>
+
+        <h3>Basic Usage</h3>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"<section class=\"theme-letl content-grid\">"}
+{"  <article class=\"surface\">"}
+{"    <h1>Product Title</h1>"}
+{"    <p>Content with L&L theme styling...</p>"}
+{"  </article>"}
+{"</section>"}</code></pre>
+
+        <h3>Theme Architecture</h3>
+        <p>
+          <strong>Theme files location:</strong>
+          <code>/src/styles/themes/</code>
+        </p>
+        <ul>
+          <li>
+            <code>letl.css</code> – Gradient backgrounds, blockquote styling
+          </li>
+          <li>
+            <code>legenda.css</code> – Background image with gradient overlay
+          </li>
+          <li>
+            <code>quick.css</code> – Dark theme with photo background and custom
+            link styles
+          </li>
+        </ul>
+
+        <h3>Common Pattern: Wrapper Components</h3>
+        <p>
+          Create reusable wrapper components for each theme to ensure
+          consistency:
+        </p>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"<!-- LetlContent.astro -->"}
+{"<div class=\"theme-letl content-grid\">"}
+{"  <slot />"}
+{"</div>"}
+
+{"<!-- Usage -->"}
+{"<LetlContent>"}
+{"  <section>"}
+{"    <article class=\"surface\">"}
+{"      <h1>Content</h1>"}
+{"    </article>"}
+{"  </section>"}
+{"</LetlContent>"}</code></pre>
+
+        <h3>Theme Capabilities</h3>
+        <p>Themes can override or extend:</p>
+        <ul>
+          <li>
+            <strong>Design tokens:</strong>
+            <code>--color-primary</code>, <code>--surface-primary</code>, <code
+              >--color-key</code
+            >
+          </li>
+          <li>
+            <strong>Backgrounds:</strong> Gradients, images, overlays using <code
+              >::before</code
+            > pseudo-elements
+          </li>
+          <li>
+            <strong>Element styling:</strong> Links, blockquotes, headings within
+            theme
+          </li>
+          <li>
+            <strong>Z-index management:</strong> Overlays at z-index 0, content at
+            z-index 10
+          </li>
+        </ul>
+
+        <h3>Example: LETL Theme Structure</h3>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{".theme-letl {"}
+{"  --background-container: linear-gradient("}
+{"    140deg,"}
+{"    hsl(38deg 63% 80%),"}
+{"    hsl(246deg 29% 87%)"}
+{"  );"}
+{"  --surface-primary: linear-gradient("}
+{"    140deg,"}
+{"    color-mix(in hsl, white, var(--color-primary) 10%),"}
+{"    color-mix(in hsl, white, var(--surface-secondary) 10%)"}
+{"  );"}
+{"}"}
+
+{".theme-letl blockquote {"}
+{"  border-left: solid calc(0.5 * var(--grid)) var(--color-primary);"}
+{"  background: color-mix(in hsl, transparent, var(--color-primary) 22%);"}
+{"}"}</code></pre>
+
+        <h3>Creating a New Theme</h3>
+        <p>To create a new product theme:</p>
+        <ol>
+          <li>
+            Create <code>/src/styles/themes/your-theme.css</code>
+          </li>
+          <li>
+            Import it in <code>/src/styles/styles.css</code>
+          </li>
+          <li>Define <code>.theme-your-theme</code> class</li>
+          <li>Override design tokens and add custom styling</li>
+          <li>
+            Create a wrapper component like <code>YourThemeContent.astro</code>
+          </li>
+          <li>
+            Apply to <code>content-grid</code> containers
+          </li>
+        </ol>
+
+        <h3>Best Practices for Theming</h3>
+        <ul>
+          <li>
+            Always apply theme classes to <code>content-grid</code> elements
+          </li>
+          <li>
+            Use <code>.surface</code> class on content within themed sections for
+            visual consistency
+          </li>
+          <li>
+            Use <code>::before</code> pseudo-elements for overlays (z-index: 0)
+          </li>
+          <li>Keep content at z-index: 10 or higher</li>
+          <li>Use design token overrides rather than hardcoded values</li>
+          <li>
+            Test themes with all container types (content, breakout, full-width)
+          </li>
+          <li>Maintain consistent spacing using <code>var(--grid)</code></li>
+          <li>Create wrapper components for team-wide consistency</li>
+        </ul>
+
+        <h3>Theme + Container Example</h3>
+        <p>Themes work seamlessly with the container grid system:</p>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px;"><code>{"<section class=\"theme-legenda content-grid\">"}
+{"  <article class=\"surface\">"}
+{"    <!-- Content column with Legenda theme -->"}
+{"    <h1>Magazine Article</h1>"}
+{"  </article>"}
+{"  "}
+{"  <div class=\"breakout\">"}
+{"    <!-- Breakout column, still themed -->"}
+{"    <img src=\"wide-image.jpg\" alt=\"Wide image\" />"}
+{"  </div>"}
+{"  "}
+{"  <div class=\"full-width\" style=\"background: rgba(0,0,0,0.5);\">"}
+{"    <!-- Full-width with custom background -->"}
+{"    <h2>Full Width Section</h2>"}
+{"  </div>"}
+{"</section>"}</code></pre>
+      </article>
+
       <!-- File Locations -->
       <article style="background: var(--surface-secondary); color: white;">
         <h2>File Locations</h2>
@@ -555,6 +803,15 @@ container-name: content | breakout | full-width</code></pre>
             <code>/src/styles/golden-col.css</code> – Golden ratio layout
           </li>
           <li><code>/src/styles/flex.css</code> – Flex utilities</li>
+          <li>
+            <code>/src/styles/themes/letl.css</code> – L&L theme
+          </li>
+          <li>
+            <code>/src/styles/themes/legenda.css</code> – Legenda theme
+          </li>
+          <li>
+            <code>/src/styles/themes/quick.css</code> – Quick theme
+          </li>
         </ul>
         <p class="text-small" style="margin-top: var(--grid); opacity: 0.8;">
           💡 All styles are imported via <code>/src/styles/styles.css</code>

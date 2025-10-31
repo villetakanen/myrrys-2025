@@ -16,7 +16,7 @@
    - File: `/public/robots.txt`
 
 2. **Created Comprehensive Design System Page**
-   - Single-page MVP documentation at `/src/pages/ds.astro` (550+ lines)
+   - Single-page MVP documentation at `/src/pages/ds.astro` (831 lines)
    - Added `<meta name="robots" content="noindex, nofollow">` for double protection
    - Included TopNav and SiteFooter for consistent site experience
    - Used BaseHead component for proper meta tags and styles
@@ -30,6 +30,7 @@
    - **Quick Reference**: CSS variables and class reference for fast lookup
    - **File Locations**: Links to source CSS files
    - **CSS Container Queries**: Architecture documentation, usage examples, and best practices
+   - **Theming**: Product-specific theming system with live examples
 
 4. **Live Visual Examples**
    - Grid unit visualization (1x, 2x, 3x, 4x colored boxes)
@@ -53,6 +54,17 @@
    - Updated best practices with container query guidance
    - File: `/src/styles/content-grid.css`
 
+7. **Theming System Documentation (2025-01-31)**
+   - Documented existing theme architecture (`.theme-letl`, `.theme-legenda`, `.theme-quick`)
+   - Added live visual demonstrations of all three themes with `.surface` class
+   - Explained theme capabilities: token overrides, backgrounds, overlays, custom styling
+   - Documented wrapper component pattern for consistency
+   - Included step-by-step guide for creating new themes
+   - Added theming best practices (including `.surface` usage in themed sections)
+   - Demonstrated theme + container grid integration
+   - All code examples updated to show `.surface` class usage
+   - Files: `/src/styles/themes/*.css`, `/src/pages/ds.astro`
+
 ### Build Status
 
 ✅ Build completed successfully (395 pages generated)
@@ -63,6 +75,10 @@
 ✅ Page is publicly accessible at `/ds`
 ✅ CSS container queries properly configured in content-grid.css
 ✅ Container query documentation added to design system page
+✅ Theming system fully documented with live examples
+✅ All three product themes (letl, legenda, quick) demonstrated
+✅ Theme demos use `.surface` class for visual consistency
+✅ All code examples include `.surface` in themed sections
 
 ## Overview
 
@@ -225,6 +241,8 @@ Implementation:
 - [x] At least 2-3 common pattern examples (hero+content, card grid, breakout image)
 - [x] CSS container queries implemented in content-grid system
 - [x] Container architecture documented with examples
+- [x] Theming system documented with all three themes
+- [x] Live theme examples showing real styling
 
 ### User Experience
 - [x] Code examples are copy-pasteable
@@ -432,6 +450,7 @@ Cards and contained content sections.
 - Flex utilities
 - Two-col / Golden-col layouts
 - Component library (beyond Surface)
+- Advanced theming techniques (dark mode, custom color schemes)
 
 ## Risks & Mitigation
 
@@ -471,10 +490,11 @@ Phase 3:
 
 ## References
 
-- Current DS page: `/src/pages/ds.astro`
+- Current DS page: `/src/pages/ds.astro` (831 lines)
 - Content Grid CSS: `/src/styles/content-grid.css`
 - Surface CSS: `/src/styles/surface.css`
 - Design Tokens: `/src/styles/tokens.css`
+- Theme files: `/src/styles/themes/{letl,legenda,quick}.css`
 - Kevin Powell's Content Grid: [YouTube](https://www.youtube.com/watch?v=c13gpBrnGEw)
 - Google's robots.txt spec: [developers.google.com](https://developers.google.com/search/crawling-indexing/robots/create-robots-txt)
 
