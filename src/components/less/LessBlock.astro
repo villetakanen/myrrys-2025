@@ -4,50 +4,91 @@ import LetlContent from "@components/letl/LetlContent.astro";
 import LessIntro from "./LessIntro.md";
 import LessProductList from "./LessProductList.md";
 ---
+
 <LetlContent>
-    <section>
-      <article>
-        <h1>L&L Suuri seikkailu</h1>
-        <div class="two-col">
-          <div>
-            <LessIntro />
-          </div>
-          <div>
-            <LessProductList />
-          </div>
+  <section class="less-section surface">
+    <Image
+      src="/letl/llss/ritari-press-kit.webp"
+      class="knight"
+      alt=""
+      width={1024}
+      height={1528}
+      widths={[696, 1024]}
+      format="webp"
+      loading="lazy"
+    />
+    <article>
+      <h1>L&L Suuri seikkailu</h1>
+      <div class="two-col">
+        <div>
+          <LessIntro />
         </div>
-      </article>
-      <div class="cta">
-        <Image 
-          src="/letl/llss/ritari-press-kit.webp" 
-          class="knight" 
-          alt="Ritari"
-          width={1024}
-          height={1528}
-          widths={[348, 696, 1024]}
-          format="webp"
-          loading="lazy"
-        />
-        <a href="/letl-suuri-seikkailu" class="button">Lue lisää</a>
+        <div>
+          <LessProductList />
+        </div>
       </div>
-    </section>
-  </LetlContent>
+    </article>
+    <div class="cta">
+      <a href="/letl-suuri-seikkailu" class="button">Lue lisää</a>
+    </div>
+  </section>
+</LetlContent>
 
 <style>
-@media  (min-width: 640px) {
-  .cta {
+  /* Section needs to be positioned for absolute children */
+  .less-section {
     position: relative;
-    display: flex;
-    justify-content: center;
+    overflow: hidden;
   }
-  .cta .button {
-    z-index: 10;
-  }
+
+  /* Knight background image */
   .knight {
     position: absolute;
-    bottom: calc(var(--grid) * -5);
-    right: calc(var(--grid) * -7);
-    height: calc(var(--grid) * 37);
+    z-index: 0;
+    pointer-events: none;
+
+    /* Mobile: hidden completely */
+    display: none;
+    /*width: calc(35 * var(--grid));
+    height: auto;*/
   }
-}
+
+  /* Content should be above the image */
+  .less-section > article,
+  .less-section > div.cta {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* CTA container */
+  div.cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--grid) 0;
+  }
+
+  /* Tablet and Desktop: show and position at bottom-right */
+  @media (min-width: 640px) {
+    .knight {
+      display: block;
+      width: calc(var(--grid) * 28);
+      height: auto;
+      bottom: calc(var(--grid) * -5);
+      right: calc(var(--grid) * -7);
+      opacity: 1;
+    }
+
+    div.cta {
+      min-height: calc(var(--grid) * 5);
+    }
+  }
+
+  /* Desktop: larger size */
+  @media (min-width: 1024px) {
+    div.cta {
+      min-height: calc(var(--grid) * 6);
+    }
+  }
 </style>
