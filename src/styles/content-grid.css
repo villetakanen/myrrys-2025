@@ -19,8 +19,7 @@
 
 .content-grid {
   --breakout-size: calc(
-    (var(--breakout-max-width) - var(--content-max-width)) /
-    2
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
   );
 
   display: grid;
@@ -28,8 +27,7 @@
     [full-width-start] minmax(var(--padding-inline), 1fr)
     [breakout-start] minmax(0, var(--breakout-size))
     [content-start] min(
-      100% -
-      (var(--padding-inline) * 2),
+      100% - (var(--padding-inline) * 2),
       var(--content-max-width)
     )
     [content-end]
@@ -40,14 +38,20 @@
 .content-grid > :not(.breakout, .full-width),
 .full-width > :not(.breakout, .full-width) {
   grid-column: content;
+  container-type: inline-size;
+  container-name: content;
 }
 
 .content-grid > .breakout {
   grid-column: breakout;
+  container-type: inline-size;
+  container-name: breakout;
 }
 
 .content-grid > .full-width {
   grid-column: full-width;
+  container-type: inline-size;
+  container-name: full-width;
 
   display: grid;
   grid-template-columns: inherit;
