@@ -10,10 +10,10 @@ import LetlProductList from "./LetlProductList.md";
     <Image
       src="/letl/basiliski.webp"
       class="basilisk"
-      alt="Basiliski"
+      alt=""
       width={1024}
       height={724}
-      widths={[348, 696, 1024]}
+      widths={[696, 1024]}
       format="webp"
       loading="lazy"
     />
@@ -42,17 +42,14 @@ import LetlProductList from "./LetlProductList.md";
   }
 
   /* Basilisk background image */
-  .basilisk {
+  .basilisk,
+  .basilisk img {
     position: absolute;
     z-index: 0;
     pointer-events: none;
 
-    /* Mobile: smaller, at top */
-    width: auto;
-    height: calc(var(--grid) * 20);
-    top: calc(var(--grid) * 2);
-    right: calc(var(--grid) * -2);
-    opacity: 0.8;
+    /* Mobile: hidden completely */
+    display: none;
   }
 
   /* Content should be above the image */
@@ -71,15 +68,32 @@ import LetlProductList from "./LetlProductList.md";
     padding: var(--grid) 0;
   }
 
-  /* Desktop positioning */
+  /* Tablet and Desktop: show, flip and position at bottom-left */
   @media (min-width: 640px) {
-    .basilisk {
+    .basilisk,
+    .basilisk img {
+      display: block;
       transform: scaleX(-1); /* Flip horizontally */
+      width: auto;
+      height: calc(var(--grid) * 28);
+      top: auto;
+      bottom: calc(var(--grid) * -3);
+      left: calc(var(--grid) * -6);
+      right: auto;
+      opacity: 0.9;
+    }
+
+    div.cta {
+      min-height: calc(var(--grid) * 5);
+    }
+  }
+
+  /* Desktop: larger size and adjusted position */
+  @media (min-width: 1024px) {
+    .basilisk {
       height: calc(var(--grid) * 35);
       bottom: calc(var(--grid) * -5);
       left: calc(var(--grid) * -8);
-      top: auto;
-      right: auto;
       opacity: 1;
     }
 

@@ -86,6 +86,98 @@ import TopNav from "@components/base/TopNav.astro";
             <span class="text-small" style="opacity: 0.7;">#1a373d</span>
           </div>
         </div>
+
+        <h3>Breakpoints</h3>
+        <p>
+          Standard viewport breakpoints for testing and media queries. These
+          values align with common device sizes and are used throughout the
+          system.
+        </p>
+
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--grid); margin: var(--grid) 0;"
+        >
+          <div class="surface" style="padding: calc(0.75 * var(--grid));">
+            <strong
+              style="display: block; margin-bottom: calc(0.5 * var(--grid)); color: var(--color-primary);"
+            >
+              Mobile
+            </strong>
+            <code style="font-size: 0.875rem;">&lt; 640px</code><br />
+            <span
+              class="text-small"
+              style="opacity: 0.7; display: block; margin-top: calc(0.25 * var(--grid));"
+            >
+              Default / base styles<br />
+              iPhone, Android phones
+            </span>
+          </div>
+
+          <div class="surface" style="padding: calc(0.75 * var(--grid));">
+            <strong
+              style="display: block; margin-bottom: calc(0.5 * var(--grid)); color: var(--color-primary);"
+            >
+              Tablet
+            </strong>
+            <code style="font-size: 0.875rem;">640px – 1024px</code><br />
+            <span
+              class="text-small"
+              style="opacity: 0.7; display: block; margin-top: calc(0.25 * var(--grid));"
+            >
+              @media (min-width: 640px)<br />
+              iPad, tablets, small laptops
+            </span>
+          </div>
+
+          <div class="surface" style="padding: calc(0.75 * var(--grid));">
+            <strong
+              style="display: block; margin-bottom: calc(0.5 * var(--grid)); color: var(--color-primary);"
+            >
+              Desktop
+            </strong>
+            <code style="font-size: 0.875rem;">&gt; 1024px</code><br />
+            <span
+              class="text-small"
+              style="opacity: 0.7; display: block; margin-top: calc(0.25 * var(--grid));"
+            >
+              @media (min-width: 1024px)<br />
+              Desktop, large screens
+            </span>
+          </div>
+        </div>
+
+        <h4>Usage in CSS</h4>
+        <pre
+          style="background: #2d2d2d; color: #f8f8f2; padding: var(--grid); overflow-x: auto; border-radius: 4px; margin: var(--grid) 0;"
+          set:html={`<code>/* Mobile first (default) */
+.component {
+  font-size: 1rem;
+  padding: var(--grid);
+}
+
+/* Tablet and up */
+@media (min-width: 640px) {
+  .component {
+    font-size: 1.125rem;
+    padding: calc(1.5 * var(--grid));
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .component {
+    font-size: 1.25rem;
+    padding: calc(2 * var(--grid));
+  }
+}</code>`}
+        />
+
+        <p class="text-small" style="opacity: 0.7; margin-top: var(--grid);">
+          💡 <strong>Testing tip:</strong> Always test layouts at these specific
+          widths: <strong>375px</strong> (mobile), <strong>768px</strong> (tablet),
+          and <strong>1440px</strong> (desktop). Use browser dev tools to set custom
+          viewport sizes.
+        </p>
       </article>
 
       <!-- Content Grid -->
