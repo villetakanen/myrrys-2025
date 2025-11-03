@@ -13,14 +13,20 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
+
 <Page
   title={post.data.title}
-  description={post.data.description} 
-  image={post.data.heroImage}>
-  <main class="content-grid">
+  description={post.data.description}
+  image={post.data.heroImage}
+>
+  <main class={post.data.theme + " content-grid" || "content-grid"}>
     <section>
       <article>
-        {post.data.heroImage && <img src={post.data.heroImage} alt="" class="poster" />}
+        {
+          post.data.heroImage && (
+            <img src={post.data.heroImage} alt="" class="poster" />
+          )
+        }
         <h1>{post.data.title}</h1>
         <Content />
       </article>
@@ -29,11 +35,11 @@ const { Content } = await render(post);
 </Page>
 
 <style>
-.poster {
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  object-position: center;
-  width: 100%;
-  margin-bottom: calc(var(--grid) * 2);
-}
+  .poster {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    margin-bottom: calc(var(--grid) * 2);
+  }
 </style>
