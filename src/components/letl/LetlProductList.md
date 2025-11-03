@@ -33,4 +33,4 @@
 [13]: /letl/letl-kultaneidon-runo
 [14]: /letl/letl-velhon-torni
 [15]: /downloads/letl/sumun_saartama_saari.pdf
-[16]: /downloads/letl/Legendoja_&_lohikäärmeitä_-_Ametistiviidakko.pdf
+[16]: /downloads/letl/ametistiviidakko.pdf

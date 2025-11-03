@@ -12,4 +12,4 @@ Ametistiviidakko on seikkailu n. neljälle 3. tason hahmolle. Sen on kirjoittanu
 
 _Ametistiviidakko, aiemmin tuntematon, smaragdinvihreä saari, kutsuu seikkailijoita syvyyksiinsä. Sen rehevyys kätkee alleen niin muinaisia raunioita ja kertomattomia rikkauksia kuin kuolettavan myrkyllisiä olentoja ja petollisia vaaroja. Kaikkialla loistavien purppuraisten kukkien varjoissa tuorein tutkimusretkikunta on kadonnut jäljettömiin , ja teidät on palkattu löytämään heidät – tai ainakin heidän tutkimusaineistonsa. Tehtävä on kuitenkin vaarallisempi kuin aavistattekaan. Onnistutteko pelastamaan kadonneet sielut, vai koituuko Ametistiviidakko teidänkin lopulliseksi kohtaloksenne?_
 
-Lataa seikkailu [täältä](/downloads/letl/Legendoja_&_lohikäärmeitä_-_Ametistiviidakko.pdf) ja seuraa Nopparottaa esim. [TikTokissa](https://www.tiktok.com/@nopparotta) tai [Twitchissä](https://www.twitch.tv/nopparotta).
+Lataa seikkailu [täältä](/downloads/letl/ametistiviidakko.pdf) ja seuraa Nopparottaa esim. [TikTokissa](https://www.tiktok.com/@nopparotta) tai [Twitchissä](https://www.twitch.tv/nopparotta).
