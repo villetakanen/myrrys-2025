@@ -15,6 +15,7 @@
 * [Seikkailu: Majakkakeikka][9]
 * [Seikkailu: Traakinlyöjä][10]
 * [Seikkailu: Sumun saartama saari][15]
+* [Seikkailu: Ametistiviidakko][16]
 * [SRD (beta)][7]
 
 [1]: /letl/letl-pelaajan-kirja
@@ -32,3 +33,4 @@
 [13]: /letl/letl-kultaneidon-runo
 [14]: /letl/letl-velhon-torni
 [15]: /downloads/letl/sumun_saartama_saari.pdf
+[16]: /downloads/letl/Legendoja_&_lohikäärmeitä_-_Ametistiviidakko.pdf
