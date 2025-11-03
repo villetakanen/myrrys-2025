@@ -28,6 +28,10 @@ const imageURL = new URL(image, Astro.site);
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Preload LCP image for faster rendering -->
+<link rel="preload" as="image" href="/branding/letl-gm-screen-splash-mobile.webp" media="(max-width: 640px)" />
+<link rel="preload" as="image" href="/branding/letl-gm-screen-splash.webp" media="(min-width: 641px)" />
+
 <!-- Canonical URL -->
 <link rel="canonical" href={url}>
 

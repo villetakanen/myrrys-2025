@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section class="surface">
+  <h2>Aiemmin ilmestyneitä</h2>
+
+  <h3>Legenda 2025</h3>
+  <p>Esimerkkejä sisällöistä.</p>
+  <div class="flex">
+    <a href="/assets/legenda/legenda-2025-preview-1.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2025-preview-1.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2025: sivu 3</figcaption>
+      </figure>
+    </a>
+    <a href="/assets/legenda/legenda-2025-preview-2.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2025-preview-2.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2025: sivut 4-5</figcaption>
+      </figure>
+    </a>
+    <a href="/assets/legenda/legenda-2025-preview-3.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2025-preview-3.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2025: sivut 22-25</figcaption>
+      </figure>
+    </a>
+  </div>
+
+  <br />
+
+  <h3>Legenda 2024</h3>
+  <p>Esimerkkejä sisällöistä.</p>
+  <div class="flex">
+    <a href="/assets/legenda/legenda-2024-preview-1.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2024-preview-1.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2024: sivu 3</figcaption>
+      </figure>
+    </a>
+    <a href="/assets/legenda/legenda-2024-preview-3.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2024-preview-3.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2024: sivut 16-17</figcaption>
+      </figure>
+    </a>
+    <a href="/assets/legenda/legenda-2024-preview-2.webp" download>
+      <figure class="cover-image">
+        <Image
+          src="/assets/legenda/legenda-2024-preview-2.webp"
+          alt="Legenda 2025 kansi"
+          width={720}
+          height={942}
+          widths={[284, 568, 720]}
+          format="webp"
+          loading="lazy"
+        />
+        <figcaption>Legenda 2024: sivut 22-23</figcaption>
+      </figure>
+    </a>
+  </div>
+
+  <br />
+</section>
+
+<style>
+  .cover-image {
+    padding: calc(0.5 * var(--grid));
+    background: var(--surface-secondary);
+    color: var(--surface-primary);
+    text-align: center;
+    box-shadow: 2px 2px 12px -4px rgba(0, 0, 0, 0.7);
+    height: calc(13 * var(--grid));
+    width: auto;
+    margin: 0;
+  }
+  .cover-image img {
+    height: calc(10.5 * var(--grid));
+    width: auto;
+    display: block;
+  }
+  a .cover-image figcaption {
+    font-size: 0.875rem;
+    text-shadow: none;
+  }
+</style>
