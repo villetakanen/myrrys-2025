@@ -14,7 +14,7 @@ interface Props {
 const {
   title,
   description = "MYRRYS – Roolipelejä pelaajilta pelaajille vuodesta 2009: Legendoja & Lohikäärmeitä, Suuri Seikkailu, Eevenkoto ja the Quick",
-  image = "/favicon.svg",
+  image = "/branding/griffon.png",
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -29,11 +29,21 @@ const imageURL = new URL(image, Astro.site);
 <meta name="generator" content={Astro.generator} />
 
 <!-- Preload LCP image for faster rendering -->
-<link rel="preload" as="image" href="/branding/letl-gm-screen-splash-mobile.webp" media="(max-width: 640px)" />
-<link rel="preload" as="image" href="/branding/letl-gm-screen-splash.webp" media="(min-width: 641px)" />
+<link
+  rel="preload"
+  as="image"
+  href="/branding/letl-gm-screen-splash-mobile.webp"
+  media="(max-width: 640px)"
+/>
+<link
+  rel="preload"
+  as="image"
+  href="/branding/letl-gm-screen-splash.webp"
+  media="(min-width: 641px)"
+/>
 
 <!-- Canonical URL -->
-<link rel="canonical" href={url}>
+<link rel="canonical" href={url} />
 
 <!-- Sitemap plugin -->
 <link rel="sitemap" href="/sitemap-index.xml" />
