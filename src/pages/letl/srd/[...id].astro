@@ -9,7 +9,7 @@ const parser = new MarkdownIt();
 export async function getStaticPaths() {
   const posts = await getCollection("lnlsrd");
   return posts.map((post) => ({
-    params: { id: post.id },
+    params: { id: post.id.toLowerCase() },
     props: { post },
   }));
 }
@@ -35,9 +35,11 @@ const contentWithoutTitle = content.split("\n").slice(1).join("\n");
 
 const tocContent = parser.render(contentWithoutTitle);
 ---
+
 <Page
   title="L&L - SRD"
-  description="Legendoja & Lohikäärmeitä (L&L) Systems Reference Document (SRD) -materiaali. Jaeltu Creative Commons BY-SA 4.0 -lisenssillä.">
+  description="Legendoja & Lohikäärmeitä (L&L) Systems Reference Document (SRD) -materiaali. Jaeltu Creative Commons BY-SA 4.0 -lisenssillä."
+>
   <main class="content-grid theme-letl">
     <section class="golden-col">
       <article>
