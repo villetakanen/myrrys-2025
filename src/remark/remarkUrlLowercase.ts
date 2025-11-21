@@ -11,17 +11,25 @@ export const remarkUrlLowercase: Plugin = () => {
     // Normalize path separators to forward slashes for consistency
     const normalizedFilePath = filePath.split("\\").join("/");
 
-    // Check if this is SRD content
-    const isSrd = normalizedFilePath.includes("/LnL-SRD/") || normalizedFilePath.includes("/lnlsrd/");
+    // Get relative path from cwd
+    const cwd = process.cwd().split("\\").join("/");
+    const relativePath = normalizedFilePath.replace(cwd, "");
+
+    // Check if this is SRD content (case insensitive check for robustness)
+    const isSrd = relativePath.toLowerCase().includes("/lnl-srd/");
+
+    // Log for debugging Netlify build
+    // console.log(`[remarkUrlLowercase] Processing: ${relativePath} (isSrd: ${isSrd})`);
 
     let srdRelativeDir = "";
     if (isSrd) {
       // Find the part of the path after LnL-SRD (or lnlsrd)
-      const marker = normalizedFilePath.includes("/LnL-SRD/") ? "/LnL-SRD/" : "/lnlsrd/";
-      const parts = normalizedFilePath.split(marker);
+      // We use a regex to split case-insensitively
+      const parts = relativePath.split(/\/LnL-SRD\//i);
+
       if (parts.length > 1) {
         // Get the directory of the current file relative to SRD root
-        const fileRelativePath = parts[1];
+        const fileRelativePath = parts[1]; // This is the part after /LnL-SRD/
         const lastSlashIndex = fileRelativePath.lastIndexOf("/");
         if (lastSlashIndex !== -1) {
           srdRelativeDir = fileRelativePath.substring(0, lastSlashIndex);
