@@ -1,13 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { getEntry } from "astro:content";
 import Page from "@layouts/Page.astro";
 import MarkdownIt from "markdown-it";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import { visit } from "unist-util-visit";
 
 const parser = new MarkdownIt();
 
@@ -22,65 +17,15 @@ export async function getStaticPaths() {
 
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
+const { Content } = await render(post);
 
-// Extract folder from post.id (e.g., "loitsut/8_piirin_loitsut" -> "loitsut")
-const parts = post.id.split("/");
-const folder = parts.length > 1 ? parts[0].toLowerCase() : "";
-
-// Remark plugin to fix SRD links with folder context
-function remarkFixSrdLinks(folderContext: string) {
-  return function () {
-    return function (tree: any) {
-      visit(tree, "link", (node: any) => {
-        if (!node || !node.url) return;
-
-        const url = node.url;
-
-        // Skip external links, anchors, PDFs, and already absolute paths
-        if (
-          url.startsWith("http://") ||
-          url.startsWith("https://") ||
-          url.startsWith("#") ||
-          url.endsWith(".pdf") ||
-          url.startsWith("/")
-        ) {
-          return;
-        }
-
-        // It's a relative link - rewrite it
-        const lowercaseUrl = url.toLowerCase();
-
-        // If the link doesn't contain a slash and we have a folder,
-        // it's a link to another file in the same folder
-        if (folderContext && !lowercaseUrl.includes("/")) {
-          node.url = `/letl/srd/${folderContext}/${lowercaseUrl}`;
-        } else {
-          // Cross-folder link or root-level link
-          node.url = `/letl/srd/${lowercaseUrl}`;
-        }
-      });
-    };
-  };
-}
-
-// Process the markdown with our remark plugin
-const processor = unified()
-  .use(remarkParse)
-  .use(remarkFixSrdLinks(folder))
-  .use(remarkRehype)
-  .use(rehypeStringify);
-
-const result = await processor.process(post.body);
-const contentHtml = String(result);
-
-// Process TOC
 const TocEntry = await getEntry("lnlsrd", "sisällysluettelo");
 
 if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
 
 const rawContent = TocEntry.body;
 
-// Process TOC links
+// Process TOC links - add prefix and lowercase
 const content =
   rawContent?.replace(/\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
     return `[${p1}](/letl/srd/${p2.toLowerCase()})`;
@@ -98,7 +43,9 @@ const tocContent = parser.render(contentWithoutTitle);
 >
   <main class="content-grid theme-letl">
     <section class="golden-col">
-      <article set:html={contentHtml} />
+      <article>
+        <Content />
+      </article>
       <article>
         <h1>
           <a href="/letl/srd/readme">L&L SRD</a>
