@@ -1,7 +1,6 @@
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
-import { remarkUrlLowercase } from "./src/remark/remarkUrlLowercase";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,9 +17,6 @@ export default defineConfig({
     },
   },
   trailingSlash: "ignore",
-  markdown: {
-    remarkPlugins: [remarkUrlLowercase],
-  },
   redirects: {
     "/letl/srd": "/letl/srd/readme",
     "/letl/srd/": "/letl/srd/readme",
