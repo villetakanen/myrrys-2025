@@ -10,6 +10,7 @@ export const rehypeSrdLinks: Plugin = () => {
   return (tree, file) => {
     // Try to detect if this is SRD content
     const filePath = file?.history?.[0] || file?.path || "";
+    const fileData = file?.data as Record<string, unknown> | undefined;
 
     // Normalize path separators for cross-platform compatibility
     const normalizedPath = filePath.replace(/\\/g, "/");
@@ -24,10 +25,45 @@ export const rehypeSrdLinks: Plugin = () => {
       return; // Not SRD content, skip processing
     }
 
-    // Extract the folder path from the current file
-    // e.g., "LnL-SRD/Loitsut/8_piirin_loitsut.md" -> "loitsut"
-    const srdMatch = normalizedPath.match(/LnL-SRD\/([^/]+)\//i);
-    const folderPath = srdMatch ? srdMatch[1].toLowerCase() : "";
+    // Extract the folder path from the current file with multiple strategies
+    let folderPath = "";
+
+    // Strategy 1: Match "LnL-SRD/FolderName/filename.md"
+    let match = normalizedPath.match(/LnL-SRD\/([^/]+)\/[^/]+\.md/i);
+    if (match) {
+      folderPath = match[1].toLowerCase();
+    }
+
+    // Strategy 2: Match any path after LnL-SRD that has a subfolder
+    if (!folderPath) {
+      match = normalizedPath.match(/LnL-SRD\/([^/]+)\//i);
+      if (match) {
+        folderPath = match[1].toLowerCase();
+      }
+    }
+
+    // Strategy 3: Try to extract from Astro's internal data
+    if (!folderPath && fileData) {
+      const astroData = fileData.astro as Record<string, unknown> | undefined;
+      if (astroData && typeof astroData === "object") {
+        // Try various possible properties where Astro might store the path
+        const possiblePaths = [
+          astroData.filePath,
+          astroData.sourcePath,
+          astroData.id,
+        ];
+
+        for (const path of possiblePaths) {
+          if (typeof path === "string") {
+            const pathMatch = path.match(/LnL-SRD\/([^/]+)\//i);
+            if (pathMatch) {
+              folderPath = pathMatch[1].toLowerCase();
+              break;
+            }
+          }
+        }
+      }
+    }
 
     // Process all anchor tags
     visit(
@@ -49,11 +85,12 @@ export const rehypeSrdLinks: Plugin = () => {
             const lowercaseUrl = href.toLowerCase();
 
             // If the link doesn't contain a slash and we have a folder path,
-            // it's in the same folder
+            // it's a link to another file in the same folder
             if (folderPath && !lowercaseUrl.includes("/")) {
               node.properties.href = `/letl/srd/${folderPath}/${lowercaseUrl}`;
             } else {
-              // Otherwise, just add the prefix
+              // Otherwise, it's either a cross-folder link or root-level
+              // Just add the prefix
               node.properties.href = `/letl/srd/${lowercaseUrl}`;
             }
           } else if (href?.startsWith("/") && !href.startsWith("http")) {
