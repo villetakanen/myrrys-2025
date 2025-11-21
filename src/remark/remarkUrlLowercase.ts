@@ -4,7 +4,7 @@ import { visit } from "unist-util-visit";
 
 /**
  * Lowercase URLs in Markdown links and add /letl/srd/ prefix for SRD content.
- * This plugin detects SRD content reliably in both dev and build environments.
+ * Preserves folder structure for relative links.
  */
 export const remarkUrlLowercase: Plugin = () => {
   return (tree, file) => {
@@ -19,32 +19,31 @@ export const remarkUrlLowercase: Plugin = () => {
         // Lowercase the URL first
         const lowercaseUrl = node.url.toLowerCase();
 
-        // Try to detect if this is SRD content from multiple sources
+        // Try to detect if this is SRD content from file path
         const filePath = file?.history?.[0] || file?.path || "";
-        const fileData = file?.data as Record<string, unknown> | undefined;
-        const collection =
-          fileData &&
-          typeof fileData === "object" &&
-          "astro" in fileData &&
-          typeof fileData.astro === "object" &&
-          fileData.astro &&
-          "collection" in fileData.astro
-            ? fileData.astro.collection
-            : undefined;
 
         // Normalize path separators for cross-platform compatibility
         const normalizedPath = filePath.replace(/\\/g, "/");
 
         // Check if this is SRD content
         const isSrdContent =
-          collection === "lnlsrd" ||
           normalizedPath.includes("LnL-SRD") ||
           normalizedPath.includes("lnlsrd") ||
           normalizedPath.match(/[\/\\]LnL-SRD[\/\\]/i);
 
         if (isSrdContent) {
-          // Add the /letl/srd/ prefix for relative links in SRD content
-          node.url = `/letl/srd/${lowercaseUrl}`;
+          // Extract the folder path from the current file
+          // e.g., "LnL-SRD/Loitsut/8_piirin_loitsut.md" -> "loitsut"
+          const srdMatch = normalizedPath.match(/LnL-SRD\/([^/]+)\//i);
+          const folderPath = srdMatch ? srdMatch[1].toLowerCase() : "";
+
+          // If the link doesn't contain a slash, it's in the same folder
+          if (folderPath && !lowercaseUrl.includes("/")) {
+            node.url = `/letl/srd/${folderPath}/${lowercaseUrl}`;
+          } else {
+            // Otherwise, just add the prefix
+            node.url = `/letl/srd/${lowercaseUrl}`;
+          }
         } else {
           // Just lowercase for other content
           node.url = lowercaseUrl;
