@@ -10,7 +10,7 @@ const parser = new MarkdownIt();
 export async function getStaticPaths() {
   const posts = await getCollection("lnlsrd");
   return posts.map((post) => ({
-    params: { id: post.id },
+    params: { id: post.id.toLowerCase() },
     props: { post },
   }));
 }
