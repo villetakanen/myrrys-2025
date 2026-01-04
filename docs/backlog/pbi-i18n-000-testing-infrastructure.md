@@ -68,6 +68,7 @@ export default defineConfig(
     test: {
       globals: true,
       environment: "node",
+      exclude: ["**/node_modules/**", "**/dist/**", "**/tests/**"],
       coverage: {
         provider: "v8",
         reporter: ["text", "json", "html"],
@@ -76,6 +77,8 @@ export default defineConfig(
   })
 );
 ```
+
+**⚠️ Important:** The `exclude` array prevents Vitest from trying to run Playwright tests (in `/tests` directory), which would cause errors.
 
 ### Task 2: Install Playwright
 
@@ -207,20 +210,20 @@ test.describe("Smoke Tests", () => {
     // Check that page loaded
     await expect(page).toHaveTitle(/MYRRYS/);
     
-    // Check that main navigation exists
-    const nav = page.locator("nav");
+    // Check that main navigation exists (use specific role)
+    const nav = page.getByRole("navigation", { name: "Main navigation" });
     await expect(nav).toBeVisible();
     
-    // Check that logo is present
-    const logo = page.locator('img[alt="MYRRYS"]');
+    // Check that logo is present (use .first() if multiple logos exist)
+    const logo = page.locator('img[alt="MYRRYS"]').first();
     await expect(logo).toBeVisible();
   });
 
   test("blog page loads successfully", async ({ page }) => {
     await page.goto("/blog");
     
-    // Check heading
-    await expect(page.locator("h1")).toBeVisible();
+    // Check heading (use specific role with name)
+    await expect(page.getByRole("heading", { name: "Blogi", level: 1 })).toBeVisible();
     
     // Check that there's content
     const articles = page.locator("article");
@@ -256,207 +259,7 @@ playwright-report/
 test-results/
 ```
 
-### Task 8: Create Design System Documentation
-
-**File:** `src/pages/ds/testing.astro` (new)
-
-```astro
----
-import Page from "@layouts/Page.astro";
----
-
-<Page title="Testing - Design System">
-  <main class="content-grid">
-    <section>
-      <h1>Testing Infrastructure</h1>
-      
-      <p>MYRRYS uses Vitest for unit/component tests and Playwright for E2E tests.</p>
-
-      <h2>Unit Tests (Vitest)</h2>
-      
-      <p>Fast, isolated tests for functions, utilities, and components.</p>
-
-      <h3>Running Unit Tests</h3>
-      <pre><code># Run all tests
-pnpm test
-
-# Watch mode
-pnpm test -- --watch
-
-# UI mode
-pnpm test:ui
-
-# Coverage report
-pnpm test:coverage</code></pre>
-
-      <h3>Writing Unit Tests</h3>
-      <pre><code>// src/__tests__/example.test.ts
-import { describe, it, expect } from "vitest";
-
-describe("My Feature", () => {
-  it("should do something", () => {
-    expect(true).toBe(true);
-  });
-});</code></pre>
-
-      <h3>Testing Astro Components</h3>
-      <pre><code>import { experimental_AstroContainer as AstroContainer } from "astro/container";
-import { describe, it, expect, beforeAll } from "vitest";
-import MyComponent from "../components/MyComponent.astro";
-
-describe("MyComponent", () => {
-  let container: AstroContainer;
-
-  beforeAll(async () => {
-    container = await AstroContainer.create();
-  });
-
-  it("renders correctly", async () => {
-    const result = await container.renderToString(MyComponent, {
-      props: { title: "Test" }
-    });
-    expect(result).toContain("Test");
-  });
-});</code></pre>
-
-      <h2>E2E Tests (Playwright)</h2>
-      
-      <p>Full browser tests for user flows and integration testing.</p>
-
-      <h3>Running E2E Tests</h3>
-      <pre><code># Build first
-pnpm build
-
-# Run all E2E tests
-pnpm test:e2e
-
-# UI mode
-pnpm test:e2e:ui
-
-# Debug mode
-pnpm test:e2e:debug
-
-# Specific browser
-pnpm test:e2e -- --project=chromium</code></pre>
-
-      <h3>Writing E2E Tests</h3>
-      <pre><code>// tests/example.spec.ts
-import { test, expect } from "@playwright/test";
-
-test.describe("Feature Name", () => {
-  test("user can do something", async ({ page }) => {
-    await page.goto("/");
-    
-    await expect(page.locator("h1")).toBeVisible();
-    
-    await page.click('a[href="/blog"]');
-    await expect(page).toHaveURL(/\/blog/);
-  });
-});</code></pre>
-
-      <h2>Test Organization</h2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Location</th>
-            <th>Tool</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Unit tests</td>
-            <td><code>src/__tests__/</code></td>
-            <td>Vitest</td>
-          </tr>
-          <tr>
-            <td>Component tests</td>
-            <td><code>src/components/**/*.test.ts</code></td>
-            <td>Vitest</td>
-          </tr>
-          <tr>
-            <td>E2E tests</td>
-            <td><code>tests/</code></td>
-            <td>Playwright</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>Best Practices</h2>
-
-      <ul>
-        <li>Write tests alongside features (TDD when possible)</li>
-        <li>Keep unit tests fast (no I/O, no network)</li>
-        <li>Use E2E tests for critical user flows</li>
-        <li>Run tests before committing</li>
-        <li>Maintain test coverage >80% for critical code</li>
-      </ul>
-
-      <h2>CI/CD Integration</h2>
-
-      <p>Tests are designed to run in CI environments:</p>
-
-      <pre><code># CI workflow example
-- pnpm install
-- pnpm check        # Biome
-- pnpm test         # Vitest
-- pnpm build        # Astro
-- pnpm test:e2e     # Playwright</code></pre>
-
-      <h2>Debugging</h2>
-
-      <h3>Vitest</h3>
-      <ul>
-        <li>Use <code>--ui</code> flag for visual debugging</li>
-        <li>Add <code>console.log</code> in tests</li>
-        <li>Use VS Code Vitest extension</li>
-      </ul>
-
-      <h3>Playwright</h3>
-      <ul>
-        <li>Use <code>--debug</code> flag to step through tests</li>
-        <li>Use <code>--ui</code> for interactive mode</li>
-        <li>Check <code>playwright-report/</code> for failures</li>
-        <li>Use <code>await page.pause()</code> to pause execution</li>
-      </ul>
-    </section>
-  </main>
-</Page>
-
-<style>
-pre {
-  background: #2d2d2d;
-  color: #f8f8f2;
-  padding: var(--grid);
-  overflow-x: auto;
-  border-radius: 4px;
-  margin-bottom: var(--grid);
-}
-
-code {
-  font-family: 'Courier New', monospace;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: var(--grid) 0;
-}
-
-th, td {
-  text-align: left;
-  padding: calc(0.5 * var(--grid));
-  border-bottom: 1px solid var(--color-primary);
-}
-
-ul {
-  line-height: calc(2 * var(--grid));
-}
-</style>
-```
-
-### Task 9: Verify Installation
+### Task 8: Verify Installation
 
 **Create verification script:** `scripts/verify-tests.sh` (new)
 

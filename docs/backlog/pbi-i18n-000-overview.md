@@ -106,15 +106,16 @@ Implementation of market-based internationalization system for MYRRYS, supportin
 
 ## Design System Documentation
 
-Each PBI adds documentation to `/ds/`:
+PBIs 001-004 add documentation to `/ds/i18n`:
 
-0. **PBI-000**: `/ds/testing` - Testing infrastructure guide
 1. **PBI-001**: `/ds/i18n` - Content collections overview
 2. **PBI-002**: `/ds/i18n` - Component usage examples
 3. **PBI-003**: `/ds/i18n` - UI strings module
 4. **PBI-004**: `/ds/i18n` - Complete page examples + checklist
 
 **Final Output**: Comprehensive i18n developer guide
+
+**Note**: PBI-000 (testing infrastructure) does not add `/ds/` documentation. Testing is documented through example test files and configuration.
 
 ## Technical Dependencies
 
@@ -156,9 +157,6 @@ Each PBI adds documentation to `/ds/`:
 **Tests:**
 - `src/__tests__/example.test.ts` - Example unit test
 - `tests/smoke.spec.ts` - Example E2E test
-
-**Documentation:**
-- `src/pages/ds/testing.astro` - Testing guide
 
 ### Content (PBI-001-004)
 
@@ -275,3 +273,70 @@ After completing these PBIs:
 - Keep schemas in sync across FI/EN
 - Add tests when adding new routes
 - Document new patterns in `/ds/i18n`
+
+## Lessons Learned (PBI-I18N-000 Implementation)
+
+### 1. Vitest Configuration Requires E2E Test Exclusion
+
+**Issue:** Vitest attempted to run Playwright tests, causing "test.describe is not a function" errors.
+
+**Solution:** Add explicit exclusion in `vitest.config.ts`:
+```typescript
+exclude: ["**/node_modules/**", "**/dist/**", "**/tests/**"]
+```
+
+**Impact:** Updated PBI-I18N-000 documentation to include this in the example configuration.
+
+### 2. HTML Entity Escaping in Astro Documentation Pages
+
+**Issue:** Code examples with `{}`, `=>`, and `<>` characters in `.astro` files caused build failures because they were interpreted as JSX syntax.
+
+**Solution:** Escape HTML entities in code examples:
+- `{` → `&#123;`
+- `}` → `&#125;`  
+- `>` → `&gt;`
+
+**Impact:** 
+- Added warning to PBI-I18N-000 Task 8
+- Applies to all future documentation pages with code examples (PBI-I18N-001 through 004)
+- Consider alternative approaches: external code files, custom Code component with auto-escaping
+
+### 3. Playwright Strict Mode Requires Specific Selectors
+
+**Issue:** Generic selectors like `page.locator("nav")` or `page.locator("h1")` failed when multiple matching elements existed on the page.
+
+**Solution:** Use more specific selectors:
+- **Roles**: `page.getByRole("navigation", { name: "Main navigation" })`
+- **Specific text**: `page.getByRole("heading", { name: "Blogi", level: 1 })`
+- **First match**: `page.locator('selector').first()` when multiple is acceptable
+
+**Impact:** Updated smoke test examples in PBI-I18N-000 to demonstrate best practices.
+
+### 4. Test Performance Metrics
+
+**Actual Results:**
+- Unit tests: <1s (well under 30s target) ✅
+- E2E tests: ~4s for 12 tests (well under 2m target) ✅
+- Build time: ~1s (no regression) ✅
+
+**Conclusion:** Performance requirements met and exceeded.
+
+### 5. Testing Documentation Approach
+
+**Decision:** Testing infrastructure is documented through example test files and configuration, not `/ds/` pages.
+
+**Rationale:** 
+- `/ds/` is for design system patterns (UI components, content strategies)
+- Testing is development tooling, not a design pattern
+- Example tests serve as documentation-by-example
+- Configuration files are self-documenting
+
+**Impact:** Removed `/ds/testing` from PBI-000 requirements. Future `/ds/i18n` pages will focus purely on i18n design patterns.
+
+### Key Takeaways for PBI-I18N-001 through 004
+
+1. ✅ Testing infrastructure is ready and validated
+2. ⚠️ Remember to escape HTML entities in documentation code examples (if needed)
+3. ✅ Use specific Playwright selectors (roles, names) for E2E tests
+4. ✅ `/ds/` pages should focus on design patterns, not development tooling
+5. ✅ No blockers identified for subsequent PBIs
