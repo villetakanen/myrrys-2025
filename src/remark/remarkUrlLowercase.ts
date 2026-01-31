@@ -52,13 +52,16 @@ export const remarkUrlLowercase: Plugin = () => {
           // It's a relative link
           // Combine srdRelativeDir with the link url
           // We need to resolve ".." and "."
-          // Since we don't have 'path' module easily available in all environments without setup, 
+          // Since we don't have 'path' module easily available in all environments without setup,
           // and this is a simple path resolution, we can do a basic join.
-          // However, 'path' module IS standard in Node.js where Remark runs. 
+          // However, 'path' module IS standard in Node.js where Remark runs.
           // But let's try to do it with string manipulation to be safe or use a simple resolver if needed.
           // Actually, let's use a simple array reduction for path resolution to be robust.
 
-          const parts = [...(srdRelativeDir ? srdRelativeDir.split("/") : []), ...node.url.split("/")];
+          const parts = [
+            ...(srdRelativeDir ? srdRelativeDir.split("/") : []),
+            ...node.url.split("/"),
+          ];
           const resolvedParts: string[] = [];
 
           for (const part of parts) {

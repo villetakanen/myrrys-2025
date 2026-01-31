@@ -2,14 +2,20 @@
 import { getCollection } from "astro:content";
 
 interface Props {
+  collection?: "blog" | "blog-en";
   tag?: string;
   limit?: number;
+  urlPrefix?: string;
 }
-const { tag, limit }: Props = Astro.props;
 
-// Example: Filter out content entries with `draft: true`
+const {
+  collection = "blog",
+  tag,
+  limit,
+  urlPrefix = "/blog/",
+}: Props = Astro.props;
 
-let blogEntries = await getCollection("blog", ({ data }) => {
+let blogEntries = await getCollection(collection, ({ data }) => {
   if (!tag) return true;
   return data.tags?.includes(tag) ?? false;
 });
@@ -20,32 +26,37 @@ if (limit) {
   blogEntries = blogEntries.slice(0, limit);
 }
 ---
-{blogEntries.map(post => (
-  <article>
-    {post.data.heroImage && <img src={post.data.heroImage} alt="" class="icon"> }
-    <a href={`/blog/${post.id}`}>
-      <h3>{post.data.title}</h3>
-      <p class="text-small">{post.data.description}</p>
-    </a>
-  </article>
-))}
+
+{
+  blogEntries.map((post) => (
+    <article>
+      {post.data.heroImage && (
+        <img src={post.data.heroImage} alt="" class="icon" />
+      )}
+      <a href={`${urlPrefix}${post.id}`}>
+        <h3>{post.data.title}</h3>
+        <p class="text-small">{post.data.description}</p>
+      </a>
+    </article>
+  ))
+}
 
 <style>
-article {
-  display: flex;
-  gap: var(--grid);
-}
-article a {
-  text-decoration: none;
-}
-article a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--color-primary);
-}
-img.icon {
-  height: calc(var(--grid) * 4);
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  object-position: center;
-}
+  article {
+    display: flex;
+    gap: var(--grid);
+  }
+  article a {
+    text-decoration: none;
+  }
+  article a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+  }
+  img.icon {
+    height: calc(var(--grid) * 4);
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    object-position: center;
+  }
 </style>
