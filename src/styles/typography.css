@@ -1,16 +1,14 @@
 body {
-  --font-header:
-    Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-header: Oswald, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --font-size: calc(1 * var(--grid));
   --line-height: calc(2 * var(--grid));
 
   font-size: var(--font-size);
   line-height: var(--line-height);
-  font-family:
-    "Open Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: var(--color-key, black);
 }
 h1,
@@ -78,14 +76,32 @@ blockquote + p {
 }
 .surface a {
   text-decoration-color: var(--color-primary);
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.9),
-    0 0 8px rgba(255, 255, 255, 0.7),
-    0 0 12px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px
+    rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.5);
 }
 a.button {
   text-shadow: none;
 }
 strong {
   font-weight: 700;
+}
+
+/* Accessibility: visually hidden but accessible to screen readers */
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Typography utilities: apply heading visual styles independently of semantic level */
+.text-h1 {
+  font-family: var(--font-header);
+  font-weight: 400;
+  font-size: calc(2.5 * var(--grid));
+  line-height: calc(3 * var(--grid));
+  text-transform: uppercase;
+  margin-bottom: calc(2 * var(--grid));
 }

@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import { getEntry } from "astro:content";
 import Page from "@layouts/Page.astro";
 import MarkdownIt from "markdown-it";
+
 const parser = new MarkdownIt();
 
 // 1. Generate a new path for every collection entry
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
     props: { post },
   }));
 }
+
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
 const { Content } = await render(post);
@@ -23,8 +25,7 @@ if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
 
 const rawContent = TocEntry.body;
 
-// Lets go through each link [text](something/something) in the raw content, and add a prefix '/letl/srd/' to the href
-// also, convert to lowercase
+// Process TOC links - add prefix and lowercase
 const content =
   rawContent?.replace(/\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
     return `[${p1}](/letl/srd/${p2.toLowerCase()})`;

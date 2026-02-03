@@ -1,0 +1,15 @@
+---
+interface Props {
+  schema: Record<string, unknown>;
+}
+
+const { schema: rawSchema } = Astro.props;
+
+// Clone and ensure @context is present if not provided
+const schema = {
+  "@context": "https://schema.org",
+  ...rawSchema,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
