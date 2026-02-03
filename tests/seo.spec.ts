@@ -12,4 +12,10 @@ test.describe("SEO Verification", () => {
     const lang = await page.locator("html").getAttribute("lang");
     expect(lang).toBe("en");
   });
+
+  test("Homepage has exactly one H1", async ({ page }) => {
+    await page.goto("/");
+    const h1Count = await page.locator("h1").count();
+    expect(h1Count).toBe(1);
+  });
 });

@@ -15,7 +15,7 @@ export const remarkSrdLinks: Plugin<[]> = () => {
     // The file.path or file.history will contain the full path to the markdown file
     let folder = "";
 
-    const filePath = file.path || (file.history && file.history[0]) || "";
+    const filePath = file.path || file.history?.[0] || "";
 
     if (filePath) {
       // Normalize path separators
@@ -24,7 +24,7 @@ export const remarkSrdLinks: Plugin<[]> = () => {
       // Extract the folder from the path structure: LnL-SRD/{folder}/{file}.md
       // Example: /path/to/LnL-SRD/loitsut/8_piirin_loitsut.md -> "loitsut"
       const match = normalizedPath.match(/LnL-SRD\/([^\/]+)\//);
-      if (match && match[1]) {
+      if (match?.[1]) {
         folder = match[1].toLowerCase();
       }
     }

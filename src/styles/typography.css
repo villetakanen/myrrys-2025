@@ -85,3 +85,23 @@ a.button {
 strong {
   font-weight: 700;
 }
+
+/* Accessibility: visually hidden but accessible to screen readers */
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Typography utilities: apply heading visual styles independently of semantic level */
+.text-h1 {
+  font-family: var(--font-header);
+  font-weight: 400;
+  font-size: calc(2.5 * var(--grid));
+  line-height: calc(3 * var(--grid));
+  text-transform: uppercase;
+  margin-bottom: calc(2 * var(--grid));
+}
