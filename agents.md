@@ -112,4 +112,16 @@ directory_map:
   <anti_pattern>const name = 'value'</anti_pattern>
   <preferred_pattern>const name = "value"</preferred_pattern>
 </coding_standard>
+
+<coding_standard name="Heading Hierarchy">
+  <instruction>Pages must have exactly one H1. Components should use H2+ with visual utility classes</instruction>
+  <anti_pattern>&lt;h1&gt;Component Title&lt;/h1&gt; (hardcoded in reusable components)</anti_pattern>
+  <preferred_pattern>&lt;h2 class="text-h1"&gt;Component Title&lt;/h2&gt; (semantic H2 with H1 visual styling)</preferred_pattern>
+</coding_standard>
 ```
+
+## E2E Testing Notes
+
+- Always kill dev servers before running e2e tests: `lsof -ti:4321 | xargs kill -9`
+- Playwright config uses `reuseExistingServer: false` to prevent stale server issues
+- Run `pnpm build` before `pnpm test:e2e` for accurate results

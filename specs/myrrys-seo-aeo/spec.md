@@ -8,7 +8,7 @@ Establish a definitive strategy for Search Engine Optimization (SEO) and Answer 
 > This spec mandates a strict "Single H1 per page" rule, which will require refactoring existing components that currently hardcode `<h1>` tags (e.g., `LetlBlock`, `LessBlock`, `LegendaFrontArticle`).
 
 ## Current State Analysis
-- **Homepage**: Contains multiple `<h1>` tags (3 detected).
+- **Homepage**: ✅ Single H1 implemented (visually hidden "MYRRYS"), component headings use `<h2 class="text-h1">`.
 - **Metadata**: Basic standard meta tags exist (`BaseHead.astro`), but lack structured data (JSON-LD).
 - **AEO**: Missing specific Q&A schemas and entity definitions that help answer engines.
 
@@ -37,7 +37,16 @@ Implement `Schema.org` definitions to help search engines understand entities.
 ### Implementation Guidelines
 
 #### Component Heading Levels
-Components must accept a `headingLevel` prop or use context to determine their heading tag, defaulting to specific levels but allowing overrides, OR simply default to `<h2>` if they are primarily used as sections on a page.
+Components should use `<h2 class="text-h1">` for their main headings. This provides:
+- **Semantic correctness**: `<h2>` is appropriate for section headings
+- **Visual consistency**: `.text-h1` applies H1 styling from typography.css
+
+#### Visually Hidden H1 Pattern
+When the page H1 would disrupt the visual design (e.g., homepage with branded hero), use:
+```html
+<h1 class="visually-hidden">Page Title</h1>
+```
+The `.visually-hidden` class hides the element visually but keeps it accessible to screen readers and search engines.
 
 #### Metadata Component
 Extend `BaseHead.astro` or create `SEOHead.astro` to inject JSON-LD scripts based on page props.
