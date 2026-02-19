@@ -4,6 +4,7 @@
 import "src/styles/styles.css";
 // Import the Astro shims for whole page transitions
 import { ClientRouter } from "astro:transitions";
+import JsonLd from "@components/base/JsonLd.astro";
 
 interface Props {
   title: string;
@@ -20,6 +21,8 @@ const {
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const url = canonicalUrl.href;
 const imageURL = new URL(image, Astro.site);
+const siteUrl = Astro.site?.href ?? "https://myrrys.com";
+const logoUrl = new URL("/branding/griffon.png", Astro.site).href;
 ---
 
 <!-- Global Metadata -->
@@ -66,6 +69,23 @@ const imageURL = new URL(image, Astro.site);
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageURL} />
+
+<!-- Structured Data (JSON-LD) -->
+<JsonLd
+  schema={{
+    "@type": "Organization",
+    name: "Myrrys",
+    url: siteUrl,
+    logo: logoUrl,
+  }}
+/>
+<JsonLd
+  schema={{
+    "@type": "WebSite",
+    name: "Myrrys",
+    url: siteUrl,
+  }}
+/>
 
 <!-- 100% privacy-first analytics -->
 <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
