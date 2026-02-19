@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import JsonLd from "@components/base/JsonLd.astro";
 import Page from "@layouts/Page.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -17,11 +18,37 @@ const heroImage = post.data.heroImage
   ? post.data.heroImage
   : "/letl/L&L-yhteensopiva.png";
 const seoDescription = `${post.data.description} ${post.data.author} ${post.data.pubDate} ${post.data.isbn?.join(" ")}`;
+
+// Build Product JSON-LD schema from frontmatter
+const productSchema: Record<string, unknown> = {
+  "@type": "Product",
+  name: post.data.title,
+  description: post.data.description,
+  brand: { "@type": "Brand", name: post.data.brand },
+  author: post.data.author,
+};
+if (post.data.heroImage) {
+  productSchema.image = new URL(post.data.heroImage, Astro.site).href;
+}
+if (post.data.isbn?.length) {
+  productSchema.isbn = post.data.isbn[0];
+}
+if (post.data.distributors?.length) {
+  productSchema.offers = post.data.distributors.map((d) => {
+    const [name, url] = d.split(",");
+    return {
+      "@type": "Offer",
+      url,
+      seller: { "@type": "Organization", name },
+    };
+  });
+}
 ---
 <Page
   title={post.data.title}
-  description={seoDescription} 
+  description={seoDescription}
   image={heroImage}>
+  <JsonLd schema={productSchema} />
   <main class="content-grid theme-letl">
     <section class="golden-col">
       <article>

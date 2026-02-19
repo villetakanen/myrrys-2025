@@ -11,8 +11,8 @@
 ### Current State
 
 - **Homepage**: Single H1 implemented (visually hidden "MYRRYS"), component headings use `<h2 class="text-h1">`.
-- **Metadata**: Standard meta tags exist in `BaseHead.astro` (title, description, OG, Twitter Card), but no structured data.
-- **JsonLd component**: Created and unit-tested at `src/components/base/JsonLd.astro`. Not yet wired into any pages.
+- **Metadata**: Standard meta tags exist in `BaseHead.astro` (title, description, OG, Twitter Card). Organization + WebSite JSON-LD added via MYR-17.
+- **JsonLd component**: Created and unit-tested at `src/components/base/JsonLd.astro`. Wired into `BaseHead.astro` for site-wide schemas.
 - **AEO**: No Q&A schemas or entity definitions.
 
 ### Architecture
@@ -46,7 +46,7 @@ import JsonLd from "@components/base/JsonLd.astro";
 |--------|-------|-------------|
 | Organization | All pages (via BaseHead or layout) | Static site metadata |
 | WebSite | All pages (via BaseHead or layout) | Static site metadata |
-| Product | Product pages (L&L, Legenda, etc.) | Content collection frontmatter |
+| Product | Collection-driven product pages (`/letl/[id]`) | Content collection frontmatter |
 | Article | Blog post pages | Blog content collection frontmatter |
 | BreadcrumbList | All sub-pages | Derived from URL path |
 
@@ -62,6 +62,30 @@ interface Props {
 - Preserves caller-provided `@context` if explicitly set
 - Outputs valid JSON via `JSON.stringify`
 - Renders as `<script type="application/ld+json">`
+
+**Product schema field mapping (MYR-18):**
+
+Scope: Collection-driven product pages only (`src/pages/letl/[id].astro` using `products` collection). Hardcoded product pages (`/the-quick/`, `/hood/`) are out of scope.
+
+| Frontmatter Field | Schema.org Property | Required | Notes |
+|--------------------|---------------------|----------|-------|
+| `title` | `name` | Yes | |
+| `description` | `description` | Yes | |
+| `heroImage` | `image` | No | Resolve to absolute URL; omit if missing |
+| `brand` | `brand.name` | Yes | Nested as `{ "@type": "Brand", "name": value }` |
+| `isbn` | `isbn` | No | Use first value from array |
+| `distributors` | `offers` | No | Parse `"name,url"` format into `Offer` objects |
+| `author` | `author` | Yes | |
+
+```typescript
+// Distributor format in frontmatter: "StoreName,https://store.url/product"
+// Maps to Schema.org Offer:
+{
+  "@type": "Offer",
+  "url": "https://store.url/product",
+  "seller": { "@type": "Organization", "name": "StoreName" }
+}
+```
 
 **Single H1 Policy:**
 
@@ -99,8 +123,8 @@ Structured data must be in the static HTML for search engine crawlers. Astro's s
 
 ### Definition of Done
 
-- [ ] JsonLd.astro component exists with unit tests (MYR-16 — DONE)
-- [ ] Organization + WebSite schemas rendered on all pages (MYR-17)
+- [x] JsonLd.astro component exists with unit tests (MYR-16 — DONE)
+- [x] Organization + WebSite schemas rendered on all pages (MYR-17 — DONE)
 - [ ] Product schema rendered on product pages with frontmatter data (MYR-18)
 - [ ] Article schema rendered on blog posts with frontmatter data (MYR-19)
 - [ ] BreadcrumbList schema rendered on all sub-pages (MYR-20)
@@ -166,12 +190,30 @@ Feature: Organization and WebSite Schema (MYR-17)
 
 Feature: Product Schema (MYR-18)
 
-  Scenario: Product page includes Product schema
-    Given a user visits a product page (e.g., /letl)
+  Scenario: Product page includes Product schema with core fields
+    Given a user visits /letl/letl-pelaajan-kirja
     When the page is rendered
     Then the HTML contains JSON-LD with "@type": "Product"
     And "name" matches the product title from frontmatter
     And "description" matches the product description
+    And "brand" contains "@type": "Brand" with "name" from frontmatter
+    And "image" is the absolute URL of heroImage
+
+  Scenario: Product with ISBN includes isbn field
+    Given a product has isbn data in frontmatter
+    When the page is rendered
+    Then the JSON-LD "isbn" contains the first ISBN value
+
+  Scenario: Product with distributors includes Offers
+    Given a product has distributors in frontmatter
+    When the page is rendered
+    Then the JSON-LD contains "offers" array
+    And each offer has "@type": "Offer" with "url" and "seller"
+
+  Scenario: Product without heroImage omits image field
+    Given a product has no heroImage in frontmatter
+    When the page is rendered
+    Then the Product JSON-LD does not contain "image" field
 
 Feature: Article Schema (MYR-19)
 
@@ -214,6 +256,7 @@ Feature: Single H1 Policy
 | `src/components/base/BaseHead.astro` | Primary meta tags, OG, Twitter Card (JSON-LD added here or in layouts) |
 | `src/layouts/Page.astro` | Finnish layout — Organization/WebSite/Breadcrumb schemas injected here |
 | `src/layouts/EnPage.astro` | English layout — same schemas with lang="en" context |
+| `src/pages/letl/[id].astro` | Product pages — Product JSON-LD from collection frontmatter |
 
 ---
 
