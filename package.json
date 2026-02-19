@@ -33,6 +33,10 @@
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.13.0",
     "@vitest/ui": "^4.0.16",
+    "lefthook": "^2.1.1",
     "vitest": "^4.0.16"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["lefthook"]
   }
 }
