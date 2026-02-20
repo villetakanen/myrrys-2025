@@ -36,7 +36,7 @@ if (post.data.author) {
   image={post.data.heroImage}
 >
   <JsonLd schema={articleSchema} />
-  <main class={post.data.theme + " content-grid" || "content-grid"}>
+  <main class:list={[post.data.theme, "content-grid"]}>
     <section>
       <article>
         {

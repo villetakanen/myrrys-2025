@@ -32,6 +32,8 @@
 
 - [ ] [Observable, testable criterion]
 - [ ] [Constitution-derived constraint from CLAUDE.md]
+- [ ] Logic unit tested completely using `vitest` (no arbitrary DOM checks, pure script evaluation).
+- [ ] Spec scenarios functionally verified through Playwright E2E tests (`tests/`).
 
 ### Regression Guardrails
 

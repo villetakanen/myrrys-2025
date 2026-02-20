@@ -1,7 +1,7 @@
 {
   "name": "myrrys-2025",
   "type": "module",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -37,6 +37,8 @@
     "vitest": "^4.0.16"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["lefthook"]
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
   }
 }
