@@ -87,6 +87,21 @@ Scope: Collection-driven product pages only (`src/pages/letl/[id].astro` using `
 }
 ```
 
+**Article schema field mapping (MYR-19):**
+
+Scope: Blog post detail pages (`src/pages/blog/[id].astro` using `blog` collection).
+
+**Prerequisite:** Add `author: z.string().optional()` to `blogSchema` in `content.config.ts` — the field is used in frontmatter but not yet in the Zod schema.
+
+| Frontmatter Field | Schema.org Property | Required | Notes |
+|--------------------|---------------------|----------|-------|
+| `title` | `headline` | Yes | |
+| `description` | `description` | Yes | |
+| `pubDate` | `datePublished` | Yes | ISO 8601 format |
+| `heroImage` | `image` | No | Resolve to absolute URL; omit if missing |
+| `author` | `author` | No | Nested as `{ "@type": "Person", "name": value }`; omit if missing |
+| (static) | `publisher` | Yes | `{ "@type": "Organization", "name": "Myrrys" }` |
+
 **Single H1 Policy:**
 
 - Every page must have exactly one `<h1>` tag
@@ -125,7 +140,7 @@ Structured data must be in the static HTML for search engine crawlers. Astro's s
 
 - [x] JsonLd.astro component exists with unit tests (MYR-16 — DONE)
 - [x] Organization + WebSite schemas rendered on all pages (MYR-17 — DONE)
-- [ ] Product schema rendered on product pages with frontmatter data (MYR-18)
+- [x] Product schema rendered on product pages with frontmatter data (MYR-18 — DONE)
 - [ ] Article schema rendered on blog posts with frontmatter data (MYR-19)
 - [ ] BreadcrumbList schema rendered on all sub-pages (MYR-20)
 - [ ] Automated SEO verification in tests/CI (MYR-21)
@@ -217,12 +232,40 @@ Feature: Product Schema (MYR-18)
 
 Feature: Article Schema (MYR-19)
 
-  Scenario: Blog post includes Article schema
+  Scenario: Blog post includes Article schema with core fields
     Given a user visits /blog/some-post
     When the page is rendered
     Then the HTML contains JSON-LD with "@type": "Article"
     And "headline" matches the post title
-    And "datePublished" matches the post pubDate
+    And "datePublished" matches the post pubDate in ISO 8601 format
+    And "description" matches the post description
+
+  Scenario: Blog post with heroImage includes image
+    Given a blog post has heroImage in frontmatter
+    When the page is rendered
+    Then the Article JSON-LD "image" is the absolute URL of heroImage
+
+  Scenario: Blog post without heroImage omits image field
+    Given a blog post has no heroImage in frontmatter
+    When the page is rendered
+    Then the Article JSON-LD does not contain "image" field
+
+  Scenario: Blog post with author includes author as Person
+    Given a blog post has author in frontmatter
+    When the page is rendered
+    Then the Article JSON-LD "author" contains "@type": "Person"
+    And "name" matches the frontmatter author value
+
+  Scenario: Blog post without author omits author field
+    Given a blog post has no author in frontmatter
+    When the page is rendered
+    Then the Article JSON-LD does not contain "author" field
+
+  Scenario: Blog post always includes publisher
+    Given any blog post
+    When the page is rendered
+    Then the Article JSON-LD "publisher" contains "@type": "Organization"
+    And "name" is "Myrrys"
 
 Feature: BreadcrumbList Schema (MYR-20)
 
@@ -257,6 +300,9 @@ Feature: Single H1 Policy
 | `src/layouts/Page.astro` | Finnish layout — Organization/WebSite/Breadcrumb schemas injected here |
 | `src/layouts/EnPage.astro` | English layout — same schemas with lang="en" context |
 | `src/pages/letl/[id].astro` | Product pages — Product JSON-LD from collection frontmatter |
+| `src/pages/blog/[id].astro` | Blog post pages — Article JSON-LD from collection frontmatter |
+| `src/content.config.ts` | Content collection schemas — add `author` to `blogSchema` |
+| `tests/seo.spec.ts` | E2E tests for Article JSON-LD on blog pages |
 
 ---
 

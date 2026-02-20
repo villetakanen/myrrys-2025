@@ -82,4 +82,61 @@ test.describe("JSON-LD Structured Data", () => {
     expect(product.offers[0].url).toBeTruthy();
     expect(product.offers[0].seller["@type"]).toBe("Organization");
   });
+
+  test("Blog post includes Article schema with core fields", async ({
+    page,
+  }) => {
+    await page.goto("/blog/25-11-03-ametistiviidakko");
+    const schemas = await getJsonLdSchemas(page);
+
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article).toBeDefined();
+    expect(article["@context"]).toBe("https://schema.org");
+    expect(article.headline).toBeTruthy();
+    expect(article.description).toBeTruthy();
+    expect(article.datePublished).toBeTruthy();
+  });
+
+  test("Blog post with heroImage includes image as absolute URL", async ({
+    page,
+  }) => {
+    await page.goto("/blog/25-11-03-ametistiviidakko");
+    const schemas = await getJsonLdSchemas(page);
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article.image).toContain("https://");
+  });
+
+  test("Blog post without heroImage omits image field", async ({ page }) => {
+    await page.goto("/blog/errata-1-0-0");
+    const schemas = await getJsonLdSchemas(page);
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article).toBeDefined();
+    expect(article.image).toBeUndefined();
+  });
+
+  test("Blog post with author includes author as Person", async ({ page }) => {
+    await page.goto("/blog/25-11-03-ametistiviidakko");
+    const schemas = await getJsonLdSchemas(page);
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article.author).toBeDefined();
+    expect(article.author["@type"]).toBe("Person");
+    expect(article.author.name).toBeTruthy();
+  });
+
+  test("Blog post without author omits author field", async ({ page }) => {
+    await page.goto("/blog/errata-1-0-0");
+    const schemas = await getJsonLdSchemas(page);
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article.author).toBeUndefined();
+  });
+
+  test("Blog post always includes publisher", async ({ page }) => {
+    await page.goto("/blog/errata-1-0-0");
+    const schemas = await getJsonLdSchemas(page);
+    const article = schemas.find((s) => s["@type"] === "Article");
+    expect(article.publisher).toEqual({
+      "@type": "Organization",
+      name: "Myrrys",
+    });
+  });
 });
