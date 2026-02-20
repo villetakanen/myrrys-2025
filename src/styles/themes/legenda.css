@@ -20,6 +20,7 @@
   backdrop-filter: blur(1px);
   z-index: 0;
 }
-.theme-legenda.content-grid > article {
-  z-index: 10;
+.theme-legenda.content-grid > * {
+  position: relative;
+  z-index: 1;
 }
