@@ -5,5 +5,5 @@ pre-commit:
 
 pre-push:
   jobs:
-    - name: build
-      run: pnpm build
+    - name: build and test
+      run: pnpm build && pnpm test:e2e

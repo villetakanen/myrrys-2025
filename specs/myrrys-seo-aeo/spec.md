@@ -102,6 +102,67 @@ Scope: Blog post detail pages (`src/pages/blog/[id].astro` using `blog` collecti
 | `author` | `author` | No | Nested as `{ "@type": "Person", "name": value }`; omit if missing |
 | (static) | `publisher` | Yes | `{ "@type": "Organization", "name": "Myrrys" }` |
 
+**BreadcrumbList schema generation (MYR-20):**
+
+Scope: All sub-pages (any page where `pathname !== "/"`). Injected at the layout level in `Page.astro` and `EnPage.astro`.
+
+**Algorithm:**
+1. Get `Astro.url.pathname`, split into non-empty segments
+2. If no segments (homepage), skip — do not render BreadcrumbList
+3. Build `itemListElement` array starting with Etusivu (`/`) at position 1
+4. For each segment, accumulate the path and resolve a display name from the label map
+5. Render via `JsonLd.astro`
+
+**Segment label map (Finnish):**
+
+| Segment | Label |
+|---------|-------|
+| `letl` | `L&L` |
+| `srd` | `SRD` |
+| `blog` | `Blogi` |
+| `legenda` | `Legenda` |
+| `hood` | `Hood` |
+| `the-quick` | `The Quick` |
+| `en` | `English` |
+| `tag` | `Tagi` |
+| (fallback) | Capitalize first letter, replace hyphens with spaces |
+
+**Schema shape example** for `/letl/srd/loitsut`:
+
+```json
+{
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Etusivu", "item": "https://myrrys.com/" },
+    { "@type": "ListItem", "position": 2, "name": "L&L", "item": "https://myrrys.com/letl/" },
+    { "@type": "ListItem", "position": 3, "name": "SRD", "item": "https://myrrys.com/letl/srd/" },
+    { "@type": "ListItem", "position": 4, "name": "Loitsut", "item": "https://myrrys.com/letl/srd/loitsut/" }
+  ]
+}
+```
+
+**SEO verification strategy (MYR-21):**
+
+Approach: Extend existing Playwright E2E tests with cross-site sweep tests. No Lighthouse CI — Playwright already validates DOM content directly.
+
+**Sweep tests** visit a representative set of pages covering all page types and validate:
+1. Exactly one `<h1>` element per page
+2. All JSON-LD `<script>` tags contain valid JSON with `@context: "https://schema.org"`
+
+**Representative page set:**
+
+| Page Type | URL | Expected schemas |
+|-----------|-----|------------------|
+| Homepage | `/` | Organization, WebSite |
+| Blog index | `/blog` | Organization, WebSite, BreadcrumbList |
+| Blog post | `/blog/errata-1-0-0` | Organization, WebSite, Article, BreadcrumbList |
+| Product page | `/letl/letl-pelaajan-kirja` | Organization, WebSite, Product, BreadcrumbList |
+| SRD page | `/letl/srd/readme` | Organization, WebSite, BreadcrumbList |
+| English page | `/en/blog` | Organization, WebSite, BreadcrumbList |
+| Static page | `/legenda` | Organization, WebSite, BreadcrumbList |
+
+**CI integration:** Add `pnpm test:e2e` to `lefthook.yml` pre-push hook. E2E tests require a prior build; the existing pre-push build satisfies this.
+
 **Single H1 Policy:**
 
 - Every page must have exactly one `<h1>` tag
@@ -141,12 +202,12 @@ Structured data must be in the static HTML for search engine crawlers. Astro's s
 - [x] JsonLd.astro component exists with unit tests (MYR-16 — DONE)
 - [x] Organization + WebSite schemas rendered on all pages (MYR-17 — DONE)
 - [x] Product schema rendered on product pages with frontmatter data (MYR-18 — DONE)
-- [ ] Article schema rendered on blog posts with frontmatter data (MYR-19)
-- [ ] BreadcrumbList schema rendered on all sub-pages (MYR-20)
+- [x] Article schema rendered on blog posts with frontmatter data (MYR-19 — DONE)
+- [x] BreadcrumbList schema rendered on all sub-pages (MYR-20 — DONE)
 - [ ] Automated SEO verification in tests/CI (MYR-21)
-- [ ] Every page has exactly one H1 element
-- [ ] All JSON-LD output validates against Google Rich Results Test
-- [ ] Lighthouse SEO score > 95
+- [ ] Cross-site single H1 sweep passes for all page types (MYR-21)
+- [ ] Cross-site JSON-LD validity sweep passes for all page types (MYR-21)
+- [ ] E2E tests enforced in pre-push hook (MYR-21)
 
 ### Regression Guardrails
 
@@ -269,23 +330,53 @@ Feature: Article Schema (MYR-19)
 
 Feature: BreadcrumbList Schema (MYR-20)
 
-  Scenario: Sub-page includes breadcrumb schema
+  Scenario: Deep sub-page includes full breadcrumb trail
     Given a user visits /letl/srd/loitsut
     When the page is rendered
     Then the HTML contains JSON-LD with "@type": "BreadcrumbList"
-    And the itemListElement contains path segments as ordered items
+    And itemListElement has 4 items (Etusivu, L&L, SRD, Loitsut)
+    And each item has "@type": "ListItem" with position, name, and item
+
+  Scenario: Single-level page includes breadcrumb with 2 items
+    Given a user visits /blog
+    When the page is rendered
+    Then the HTML contains JSON-LD with "@type": "BreadcrumbList"
+    And itemListElement has 2 items (Etusivu, Blogi)
+
+  Scenario: Blog post includes breadcrumb with 3 items
+    Given a user visits /blog/some-post
+    When the page is rendered
+    Then the HTML contains JSON-LD with "@type": "BreadcrumbList"
+    And itemListElement has 3 items (Etusivu, Blogi, post-slug)
 
   Scenario: Homepage has no breadcrumb
     Given a user visits /
     When the page is rendered
     Then no BreadcrumbList JSON-LD is present
 
-Feature: Single H1 Policy
-
-  Scenario: Every page has exactly one H1
-    Given any page on the site
+  Scenario: Known segments use mapped labels
+    Given a user visits /letl/srd/loitsut
     When the page is rendered
-    Then the HTML contains exactly one <h1> element
+    Then the breadcrumb item at position 2 has name "L&L"
+    And the breadcrumb item at position 3 has name "SRD"
+
+  Scenario: Unknown segments use capitalized fallback
+    Given a user visits /letl/srd/some-new-page
+    When the page is rendered
+    Then the breadcrumb item at position 4 has name "Some new page"
+
+Feature: SEO Verification Sweep (MYR-21)
+
+  Scenario: All page types have exactly one H1
+    Given a representative set of pages covering all page types
+    When each page is rendered
+    Then each page contains exactly one <h1> element
+
+  Scenario: All JSON-LD tags are valid with @context
+    Given a representative set of pages covering all page types
+    When each page is rendered
+    Then every <script type="application/ld+json"> tag contains valid JSON
+    And every JSON-LD object has "@context": "https://schema.org"
 ```
 
 ---
@@ -302,7 +393,8 @@ Feature: Single H1 Policy
 | `src/pages/letl/[id].astro` | Product pages — Product JSON-LD from collection frontmatter |
 | `src/pages/blog/[id].astro` | Blog post pages — Article JSON-LD from collection frontmatter |
 | `src/content.config.ts` | Content collection schemas — add `author` to `blogSchema` |
-| `tests/seo.spec.ts` | E2E tests for Article JSON-LD on blog pages |
+| `tests/seo.spec.ts` | E2E tests for all JSON-LD schemas + cross-site SEO sweeps |
+| `lefthook.yml` | Pre-push hook — runs E2E tests before push |
 
 ---
 
