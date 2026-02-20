@@ -7,6 +7,7 @@ const blogSchema = z.object({
   heroImage: z.string().optional(),
   description: z.string(),
   pubDate: z.coerce.date(),
+  author: z.string().optional(),
   tags: z.array(z.string()).optional(),
   theme: z.enum(["theme-letl", "theme-legenda"]).optional(),
 });
