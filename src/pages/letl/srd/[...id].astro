@@ -2,9 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { getEntry } from "astro:content";
 import Page from "@layouts/Page.astro";
-import MarkdownIt from "markdown-it";
-
-const parser = new MarkdownIt();
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -23,18 +21,12 @@ const TocEntry = await getEntry("lnlsrd", "sisällysluettelo");
 
 if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
 
-const rawContent = TocEntry.body;
+const container = await AstroContainer.create();
+const { Content: TocContentComponent } = await render(TocEntry);
+const rawTocHtml = await container.renderToString(TocContentComponent);
 
-// Process TOC links - add prefix and lowercase
-const content =
-  rawContent?.replace(/\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
-    return `[${p1}](/letl/srd/${p2.toLowerCase()})`;
-  }) ?? "";
-
-// Remove the first line, which is the title
-const contentWithoutTitle = content.split("\n").slice(1).join("\n");
-
-const tocContent = parser.render(contentWithoutTitle);
+// Remove the first heading (h1) which is "Sisällys"
+const tocContent = rawTocHtml.replace(/<h1.*?>.*?<\/h1>/, "");
 ---
 
 <Page
