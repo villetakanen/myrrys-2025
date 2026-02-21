@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import LetlContent from "@components/letl/LetlContent.astro";
+import knight from "../../assets/letl/llss/ritari-press-kit.webp";
 import LessIntro from "./LessIntro.md";
 import LessProductList from "./LessProductList.md";
 ---
@@ -8,12 +9,13 @@ import LessProductList from "./LessProductList.md";
 <LetlContent>
   <section class="less-section surface">
     <Image
-      src="/letl/llss/ritari-press-kit.webp"
+      src={knight}
       class="knight"
-      alt=""
+      alt="Ritari"
       width={1024}
       height={1528}
       widths={[696, 1024]}
+      sizes="(max-width: 1024px) 100vw, 1024px"
       format="webp"
       loading="lazy"
     />

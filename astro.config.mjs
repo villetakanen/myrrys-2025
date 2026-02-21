@@ -1,3 +1,4 @@
+import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import { Features } from "lightningcss";
@@ -7,6 +8,10 @@ import { remarkSrdLinks } from "./src/remark/remarkSrdLinks";
 export default defineConfig({
   site: "https://myrrys.com",
   output: "static",
+  adapter: netlify(),
+  image: {
+    service: { entrypoint: "@astrojs/netlify/image-service" },
+  },
   integrations: [sitemap()],
   vite: {
     css: {

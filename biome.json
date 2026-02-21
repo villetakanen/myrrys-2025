@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".astro", "dist"]
+    "ignore": [".astro", ".netlify", "dist"]
   },
   "formatter": {
     "enabled": true,
