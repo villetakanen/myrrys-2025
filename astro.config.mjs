@@ -1,7 +1,8 @@
 import netlify from "@astrojs/netlify";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
-import { Features } from "lightningcss";
+import browserslist from "browserslist";
+import { Features, browserslistToTargets } from "lightningcss";
 import { remarkSrdLinks } from "./src/remark/remarkSrdLinks";
 
 // https://astro.build/config
@@ -17,7 +18,7 @@ export default defineConfig({
     css: {
       transformer: "lightningcss",
       lightningcss: {
-        targets: {},
+        targets: browserslistToTargets(browserslist()),
         include: Features.Nesting,
       },
     },
