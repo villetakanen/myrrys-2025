@@ -28,7 +28,7 @@ test.describe("LCP Resource Priority Optimization", () => {
     const response = await page.goto("/");
     expect(response?.status()).toBe(200);
 
-    const logo = page.locator('#site-header img#logo');
+    const logo = page.locator("#site-header img#logo");
     await expect(logo).toHaveAttribute("fetchpriority", "high");
   });
 
@@ -69,7 +69,7 @@ test.describe("LCP Resource Priority Optimization", () => {
     const response = await page.goto("/en/");
     expect(response?.status()).toBe(200);
 
-    const logo = page.locator('#site-header img#logo');
+    const logo = page.locator("#site-header img#logo");
     const fetchpriority = await logo.getAttribute("fetchpriority");
     expect(
       fetchpriority,
