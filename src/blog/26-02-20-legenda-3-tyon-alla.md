@@ -1,6 +1,6 @@
 ---
 title: 'Legenda 3 työn alla'
-heroImage: '/blog-images/legenda-1-cover.webp'
+heroImage: "../assets/blog/legenda-1-cover.webp"
 description: 'Kolmas Legenda-lehti on jo hyvässä vauhdissa, ja se ilmestyy jälleen Ropeconissa 2026. Mukana yli 20 juttua!'
 pubDate: '2026-02-20 08:30'
 tags: ['Legenda']

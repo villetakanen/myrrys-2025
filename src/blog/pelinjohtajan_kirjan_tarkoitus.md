@@ -1,6 +1,6 @@
 ---
 title: 'Pelinjohtajan kirjan tarkoitus'
-heroImage: '/letl/Seikkailuun-lahto-kuva-Hans-Zenjuga-RGB-150dpi.webp'
+heroImage: "../assets/blog/Seikkailuun-lahto-kuva-Hans-Zenjuga-RGB-150dpi.webp"
 author: 'Jonas Mustonen'
 pubDate: '2023-07-14 11:50'
 description: 'Pelinjohtajan kirjan tarkoitus on olla niin selkeä opas pelinjohtamiseen että kuka tahansa oppii sen lukemalla pelinjohtajaksi.'

@@ -1,6 +1,6 @@
 ---
 title: "Eevenkoto-pelitesti 4: Bardi ja Hurjapää"
-heroImage: "/branding/letl_ampersand.webp"
+heroImage: "../assets/blog/letl_ampersand.webp"
 description: "Pelitestimatiaalia L&L -roolipeliin: Eevenkodon bardi ja hurjapää. Materiaali esittelee uusia sääntöjä, hahmoluokkia ja pelimekaniikkoja Eevenkodon maailmassa."
 tags: ['L&L', 'Eevenkoto', 'pelitesti']
 pubDate: "2025-04-14 11:30"

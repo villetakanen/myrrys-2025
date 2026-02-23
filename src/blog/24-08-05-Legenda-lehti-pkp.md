@@ -1,6 +1,6 @@
 ---
 title: "Legenda-lehti nyt saatavilla Puolenkuun peleistä!"
-heroImage: "/blog-images/legenda-1-cover.webp"
+heroImage: "../assets/blog/legenda-1-cover.webp"
 description: "Legenda-lehden uusin numero on nyt saatavilla Puolenkuun peleistä. Lehteä on painettu vain rajoitettu erä, joten nappaa omasi ennen kuin se loppuu!"
 pubDate: "2024-08-05 10:50"
 tags: ["Legenda", "L&L"]

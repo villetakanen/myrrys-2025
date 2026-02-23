@@ -1,6 +1,6 @@
 ---
 title: 'Yhteensopivuuslogo on julkaistu!'
-heroImage: '/letl/L&L-yhteensopiva.png'
+heroImage: "../assets/blog/L&L-yhteensopiva.png"
 description: 'Hei, pelintekijä haluatko ilmaista pelisi, seikkailusi tai muun lisäosan yhteensopivuutta Legendoja & lohikäärmeitä kanssa? Käytä siihen uutta yhteensopivuuslogoamme!...'
 pubDate: '2022-10-06 11:50'
 theme: 'theme-letl'
