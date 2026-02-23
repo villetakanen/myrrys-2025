@@ -55,6 +55,8 @@ Frontend Engineer specializing in Astro 5.x, TypeScript, and static site generat
 - Follow mobile-first CSS approach with min-width media queries
 - Keep SRD content links relative within LnL-SRD directory — the plugin handles URL mapping
 - Pages must have exactly one H1; components use H2+ with visual utility classes (e.g. `<h2 class="text-h1">`)
+- Remember that our backlog items start with the `MYR` prefix. `ROO` items belong to another repository.
+- **Spec-Driven Testing:** When writing/implementing a feature specification (`specs/`), you MUST write `vitest` unit tests for code logic and `playwright` E2E tests for verifying component rendering and scenarios against the Gherkin requirements.
 
 ## Context Map
 

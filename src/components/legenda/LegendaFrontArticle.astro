@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import legendaCover from "../../assets/legenda/legenda-kansi-1-preview.webp";
 ---
 
 <article>
@@ -20,12 +21,10 @@ import { Image } from "astro:assets";
     <div>
       <figure class="cover-image">
         <Image
-          src="/branding/legenda/legenda-kansi-1-preview.webp"
+          src={legendaCover}
           alt="Legenda 2024 kansi"
-          width={720}
-          height={942}
-          widths={[284, 568, 720]}
-          format="webp"
+          widths={[284, 568]}
+          sizes="300px"
           loading="lazy"
         />
         <figcaption>Legenda 2024</figcaption>

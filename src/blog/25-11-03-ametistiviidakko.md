@@ -4,7 +4,7 @@ author: 'Petri Leinonen'
 pubDate: '2025-11-03 08:30'
 description: 'Ametistiviidakko on seikkailu n. neljälle 3. tason hahmolle, jonka on kirjoittanut Nopparottana tunnettu Elijas Kokko.'
 tags: ['L&L', 'Seikkailut']
-heroImage: '/assets/letl/ametistiviidakko-cover.webp'
+heroImage: "../assets/blog/ametistiviidakko-cover.webp"
 theme: 'theme-letl'
 ---
 

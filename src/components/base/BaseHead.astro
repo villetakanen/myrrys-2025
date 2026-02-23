@@ -75,12 +75,23 @@ if (segments.length > 0) {
   as="image"
   href="/branding/letl-gm-screen-splash-mobile.webp"
   media="(max-width: 640px)"
+  fetchpriority="high"
 />
 <link
   rel="preload"
   as="image"
   href="/branding/letl-gm-screen-splash.webp"
   media="(min-width: 641px)"
+  fetchpriority="high"
+/>
+
+<!-- Preload critical header font to shorten font discovery chain -->
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/oswald-v53-latin-regular.woff2"
+  type="font/woff2"
+  crossorigin
 />
 
 <!-- Canonical URL -->

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import JsonLd from "@components/base/JsonLd.astro";
 import Page from "@layouts/Page.astro";
@@ -23,7 +24,7 @@ const articleSchema: Record<string, unknown> = {
   publisher: { "@type": "Organization", name: "Myrrys" },
 };
 if (post.data.heroImage) {
-  articleSchema.image = new URL(post.data.heroImage, Astro.site).href;
+  articleSchema.image = new URL(post.data.heroImage.src, Astro.site).href;
 }
 if (post.data.author) {
   articleSchema.author = { "@type": "Person", name: post.data.author };
@@ -33,15 +34,21 @@ if (post.data.author) {
 <Page
   title={post.data.title}
   description={post.data.description}
-  image={post.data.heroImage}
+  image={post.data.heroImage?.src}
 >
   <JsonLd schema={articleSchema} />
-  <main class={post.data.theme + " content-grid" || "content-grid"}>
+  <main class:list={[post.data.theme, "content-grid"]}>
     <section>
       <article>
         {
           post.data.heroImage && (
-            <img src={post.data.heroImage} alt="" class="poster" />
+            <Image
+              src={post.data.heroImage}
+              alt=""
+              class="poster"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 640px) 100vw, 800px"
+            />
           )
         }
         <h1>{post.data.title}</h1>

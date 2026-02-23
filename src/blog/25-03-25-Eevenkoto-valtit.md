@@ -1,6 +1,6 @@
 ---
 title: "Eevenkoto-pelitesti 3: Valtit"
-heroImage: "/branding/letl_ampersand.webp"
+heroImage: "../assets/blog/letl_ampersand.webp"
 description: "Pelitestimatiaalia L&L -roolipeliin: Eevenkodon valtit. Materiaali esittelee uusia sääntöjä, hahmoluokkia ja pelimekaniikkoja Eevenkodon maailmassa."
 tags: ['L&L', 'Eevenkoto', 'pelitesti']
 pubDate: "2025-03-25 11:30"

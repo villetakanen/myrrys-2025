@@ -1,6 +1,6 @@
 ---
 title: "Eevenkoto-pelitesti 2: Lajit"
-heroImage: "/branding/letl_ampersand.webp"
+heroImage: "../assets/blog/letl_ampersand.webp"
 description: "Pelitestimatiaalia L&L -roolipeliin: Eevenkodon lajit. Materiaali esittelee uusia sääntöjä, hahmoluokkia ja pelimekaniikkoja Eevenkodon maailmassa."
 pubDate: "2025-03-03 07:30"
 tags: ['L&L', 'Eevenkoto', 'pelitesti']

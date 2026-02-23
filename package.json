@@ -1,7 +1,7 @@
 {
   "name": "myrrys-2025",
   "type": "module",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -22,17 +22,17 @@
     "@types/unist": "^3.0.3",
     "astro": "^5.16.0",
     "lightningcss": "^1.29.1",
-    "markdown-it": "^14.1.0",
     "sanitize-html": "^2.14.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@astrojs/netlify": "^6.6.4",
     "@biomejs/biome": "1.9.4",
     "@playwright/test": "^1.57.0",
-    "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.13.0",
     "@vitest/ui": "^4.0.16",
+    "browserslist": "^4.28.1",
     "lefthook": "^2.1.1",
     "vitest": "^4.0.16"
   },

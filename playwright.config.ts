@@ -14,7 +14,7 @@ export default defineConfig({
   },
 
   webServer: {
-    command: "pnpm preview",
+    command: "npx serve dist -l 4321",
     url: "http://localhost:4321",
     reuseExistingServer: false,
   },

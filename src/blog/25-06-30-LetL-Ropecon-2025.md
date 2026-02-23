@@ -1,6 +1,6 @@
 ---
 title: "Legendoja ja Lohikäärmeitä Ropeconissa 2025"
-heroImage: "/blog-images/ropecon-2025-ohjelma.webp"
+heroImage: "../assets/blog/ropecon-2025-ohjelma.webp"
 description: "Legendoja ja Lohikäärmeitä -aihenen ohjelma Ropeconissa 2025. Tule mukaan seikkailuihin, pelautuksiin ja esitelmiin!"
 pubDate: "2025-06-30 20:00"
 tags: ['L&L', 'Eevenkoto', "L&L: Suuri Seikkailu", "L&L: Pelaajan kirja", "Ropecon 2025"]

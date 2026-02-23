@@ -4,7 +4,7 @@ author: 'Petri Leinonen'
 pubDate: '2025-09-05 08:30'
 description: 'Sumun saartama saari on seikkailu n. neljälle 3. tason hahmolle, jonka on kirjoittanut Köyhät ritarit -podcastin Pyry Qvick'
 tags: ['L&L']
-heroImage: '/letl/sumun_saari.webp'
+heroImage: "../assets/blog/sumun_saari.webp"
 ---
 Sumun saartama saari on seikkailu n. neljälle 3. tason hahmolle, jonka on kirjoittanut Köyhät ritarit -podcastin Pyry Qvick
 

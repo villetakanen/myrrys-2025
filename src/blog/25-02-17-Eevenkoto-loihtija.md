@@ -1,6 +1,6 @@
 ---
 title: "Eevenkoto-pelitesti 1: Loihtija"
-heroImage: "/branding/letl_ampersand.webp"
+heroImage: "../assets/blog/letl_ampersand.webp"
 description: "Pelitestimatiaalia L&L -roolipeliin. Materiaali esittelee uusia sääntöjä, hahmoluokkia ja pelimekaniikkoja Eevenkodon maailmassa."
 pubDate: "2025-02-17 10:50"
 tags: ['L&L', 'Eevenkoto']

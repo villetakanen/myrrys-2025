@@ -1,6 +1,6 @@
 ---
 title: "Kun flame tongue onkin loimukieli – taikaesineiden käännöskukkasia"
-heroImage: "/letl/Djinni-kuva-Juno-Viinikka-RGB-150dpi.webp"
+heroImage: "../assets/blog/Djinni-kuva-Juno-Viinikka-RGB-150dpi.webp"
 description: "Kääntämisen suuri ongelma, mutta myös mahdollisuus, on se, että kielet eivät ole keskenään samankaltaisia. Etenkin, kun puhutaan kahdesta sellaisesta kielestä, kuten englanti ja suomi, jotka eivät kuulu keskenään edes samaan kielikuntaan..."
 pubDate: "2023-07-17 11:50"
 tags: ['L&L']

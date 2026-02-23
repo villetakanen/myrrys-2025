@@ -1,6 +1,6 @@
 ---
 title: "Kultainen lohikäärme Jukka Sorsalle"
-heroImage: "/blog-images/kultainen-lohikaarme-sorsa.webp"
+heroImage: "../assets/blog/kultainen-lohikaarme-sorsa.webp"
 description: "Kultainen lohikäärme palkinnon voitti yksi L&L:n pääsuunnittelijoista, Jukka Sorsa. Hän otti palkinnon vastaan todeten “ei ole kovin pahasti kihahatanut hattuun, että kaikillahan meillä on kaksi henkivartijaa mukana,” kahden peikon turvatessa patsaan vastaanottoa Ropeconin Gaalassa."
 pubDate: "2024-08-02 11:50"
 ---

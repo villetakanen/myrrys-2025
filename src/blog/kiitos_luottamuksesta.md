@@ -3,7 +3,7 @@ title: 'Kiitos luottamuksesta'
 description: 'Legendoja & lohikäärmeitä on ollut kehityksessä jo vuodesta 2016 saakka ja olen yksi tekijätiimin etuoikeutetuimpia jäseniä, sillä olen saanut...'
 pubDate: '2023-09-24 11:50'
 theme: 'theme-letl'
-heroImage: '/letl/Kansi-kuva-Hans-Zenjuga-RGB-150dpi.webp'
+heroImage: "../assets/blog/Kansi-kuva-Hans-Zenjuga-RGB-150dpi.webp"
 tags: ['L&L']
 ---
 

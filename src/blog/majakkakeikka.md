@@ -2,7 +2,7 @@
 title: "L&L – Majakkakeikka"
 pubDate: "2023-04-06 11:50"
 description: "Majakkakeikka on lyhyt seikkailu, jossa pääset suunnittelemaan ja toteuttamaan huikean ryöstön. Majakkakeikassa pääset kokemaan millaista on toimia murtovarkaana fantasiamaailmassa, jossa..."
-heroImage: "/letl/Majakkakeikka-kansikuva.webp"
+heroImage: "../assets/blog/Majakkakeikka-kansikuva.webp"
 tags: ['L&L']
 ---
 Majakkakeikka on lyhyt seikkailu, jossa pääset suunnittelemaan ja toteuttamaan huikean ryöstön. Majakkakeikassa pääset kokemaan millaista on toimia murtovarkaana fantasiamaailmassa, jossa kalleuksia ja aarteita suojellaan mitä ihmeellisimmin varokeinoin. Joudut kohtaamaan niin taikuutta, arvoituksia kuin tarkkaavaisia vartijoitakin.

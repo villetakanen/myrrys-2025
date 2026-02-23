@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import basiliski from "../../assets/letl/basiliski.webp";
 import LetlContent from "./LetlContent.astro";
 import LetlIntro from "./LetlIntro.md";
 import LetlProductList from "./LetlProductList.md";
@@ -8,12 +9,13 @@ import LetlProductList from "./LetlProductList.md";
 <LetlContent>
   <section class="letl-section surface">
     <Image
-      src="/letl/basiliski.webp"
+      src={basiliski}
       class="basilisk"
-      alt=""
+      alt="Lohikäärme basiliski"
       width={1024}
       height={724}
       widths={[696, 1024]}
+      sizes="(max-width: 1024px) 100vw, 1024px"
       format="webp"
       loading="lazy"
     />

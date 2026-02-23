@@ -2,7 +2,7 @@
 title: "L&L Seikkailu: Traakinlyöjä"
 pubDate: "2023-01-30 11:50"
 description: "Traakinlyöjä on Legendoja & lohikäärmeitä -seikkailu 4-6 pelaajalle ja pelinjohtajalle."
-heroImage: "/letl/IMG-20230125-WA0001.webp"
+heroImage: "../assets/blog/IMG-20230125-WA0001.webp"
 tags: ['L&L']
 ---
 Traakinlyöjä on lyhyt seikkailu, joka esittelee millaista seikkaileminen on kuudennen tason hahmojen, eli kokeneempien seikkailijoiden, saappaissa.
