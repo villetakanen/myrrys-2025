@@ -44,6 +44,19 @@ const productsEn = defineCollection({
   schema: productSchema,
 });
 
+const pageSchema = ({ image }: SchemaContext) =>
+  z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    image: image().optional(),
+    theme: z.enum(["theme-letl", "theme-quick", "theme-legenda"]).optional(),
+  });
+
+const sitePages = defineCollection({
+  loader: glob({ pattern: ["*.md"], base: "src/site-pages" }),
+  schema: pageSchema,
+});
+
 const lnlsrd = defineCollection({
   loader: glob({ pattern: ["**/*.md"], base: "LnL-SRD" }),
   schema: z.object({}),
@@ -55,4 +68,5 @@ export const collections = {
   lnlsrd,
   "blog-en": blogEn,
   "products-en": productsEn,
+  "site-pages": sitePages,
 };

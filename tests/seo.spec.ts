@@ -225,6 +225,7 @@ const seoSweepPages = [
   "/letl/srd/readme",
   "/en/blog",
   "/legenda",
+  "/myrrys",
 ];
 
 test.describe("SEO Verification Sweep", () => {
