@@ -1,0 +1,186 @@
+---
+import Page from "@layouts/Page.astro";
+---
+
+<Page title="i18n System - Design System">
+    <main class="content-grid">
+        <section>
+            <h1>Internationalization (i18n) System</h1>
+
+            <p>
+                MYRRYS uses market-based content separation, not
+                translation-based i18n.
+            </p>
+
+            <h2>Content Collections</h2>
+
+            <h3>Finnish Market</h3>
+            <ul>
+                <li><code>blog</code> - Finnish blog posts</li>
+                <li><code>products</code> - Finnish market products</li>
+            </ul>
+
+            <h3>International Market</h3>
+            <ul>
+                <li><code>blog-en</code> - English blog posts</li>
+                <li><code>products-en</code> - International products</li>
+            </ul>
+
+            <h3>Shared Content</h3>
+            <ul>
+                <li><code>lnlsrd</code> - Bilingual SRD content</li>
+            </ul>
+
+            <h2>Usage Examples</h2>
+
+            <h3>Querying Finnish Blog</h3>
+            <pre><code>import &#123; getCollection &#125; from "astro:content";
+
+const posts = await getCollection("blog");
+// Returns Finnish blog posts</code></pre>
+
+            <h3>Querying English Blog</h3>
+            <pre><code>import &#123; getCollection &#125; from "astro:content";
+
+const posts = await getCollection("blog-en");
+// Returns English blog posts</code></pre>
+
+            <h2>Schema</h2>
+
+            <p>
+                Both Finnish and English collections use identical schemas for
+                consistency:
+            </p>
+
+            <pre><code>// Blog schema (shared)
+&#123;
+  title: string;
+  description: string;
+  pubDate: Date;
+  heroImage?: string;
+  tags?: string[];
+  theme?: "theme-letl" | "theme-legenda";
+&#125;
+
+// Product schema (shared)
+&#123;
+  title: string;
+  brand: string;
+  pubDate: string;
+  author: string;
+  description: string;
+  heroImage?: string;
+  isbn?: string[];
+  distributors?: string[];
+&#125;</code></pre>
+
+            <h2>Best Practices</h2>
+
+            <ul>
+                <li>
+                    Use separate collections, not a <code>locale</code> field
+                </li>
+                <li>Share schema objects to keep schemas DRY</li>
+                <li>
+                    English content is NOT translations - it's market-specific
+                </li>
+                <li>
+                    Finnish users can access English content (bilingual
+                    audience)
+                </li>
+            </ul>
+
+            <h2>Related Documentation</h2>
+            <ul>
+                <li><a href="/ds">Design System Home</a></li>
+                <li>
+                    <a
+                        href="https://github.com/villetakanen/myrrys-2025/blob/main/specs/i18n/spec.md"
+                        >i18n Spec (source)</a
+                    >
+                </li>
+            </ul>
+
+            <h2>BlogIndex Component</h2>
+
+            <p>
+                Reusable component for displaying blog posts from any
+                collection.
+            </p>
+
+            <h3>Props</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prop</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>collection</code></td>
+                        <td><code>"blog" | "blog-en"</code></td>
+                        <td><code>"blog"</code></td>
+                        <td>Which blog collection to query</td>
+                    </tr>
+                    <tr>
+                        <td><code>urlPrefix</code></td>
+                        <td><code>string</code></td>
+                        <td><code>"/blog/"</code></td>
+                        <td>URL prefix for post links</td>
+                    </tr>
+                    <tr>
+                        <td><code>tag</code></td>
+                        <td><code>string?</code></td>
+                        <td><code>undefined</code></td>
+                        <td>Filter posts by tag</td>
+                    </tr>
+                    <tr>
+                        <td><code>limit</code></td>
+                        <td><code>number?</code></td>
+                        <td><code>undefined</code></td>
+                        <td>Maximum posts to show</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Usage Examples</h3>
+
+            <h4>Finnish Blog (Default)</h4>
+            <pre><code>&lt;BlogIndex /&gt;</code></pre>
+
+            <h4>English Blog</h4>
+            <pre><code>&lt;BlogIndex 
+  collection="blog-en" 
+  urlPrefix="/en/blog/" 
+/&gt;</code></pre>
+
+            <h4>Filtered by Tag</h4>
+            <pre><code>&lt;BlogIndex tag="L&amp;L" limit=&#123;4&#125; /&gt;</code></pre>
+
+            <h4>Homepage Preview</h4>
+            <pre><code>&lt;BlogIndex limit=&#123;3&#125; /&gt;</code></pre>
+        </section>
+    </main>
+</Page>
+
+<style>
+    pre {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: var(--grid);
+        overflow-x: auto;
+        border-radius: 4px;
+    }
+
+    code {
+        font-family: "Courier New", monospace;
+    }
+
+    ul {
+        line-height: calc(2 * var(--grid));
+    }
+</style>

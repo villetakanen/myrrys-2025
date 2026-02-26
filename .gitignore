@@ -1,5 +1,8 @@
 # build output
 dist/
+test-results/
+.netlify
+
 # generated types
 .astro/
 
@@ -22,3 +25,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.vercel
+
+# Testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/

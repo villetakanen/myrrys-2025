@@ -1,0 +1,26 @@
+.theme-legenda.content-grid {
+  background-image: url("/branding/legenda/sammatti-wide-1920.webp");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.theme-legenda.content-grid::before {
+  background: linear-gradient(
+    0deg in lab,
+    hsla(35, 100%, 79%, 0.6),
+    hsla(184, 100%, 89%, 0.9)
+  );
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: saturate(70%);
+  backdrop-filter: blur(1px);
+  z-index: 0;
+}
+.theme-legenda.content-grid > * {
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from "astro:content";
+import { getEntry } from "astro:content";
+import Page from "@layouts/Page.astro";
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const posts = await getCollection("lnlsrd");
+  return posts.map((post) => ({
+    params: { id: post.id.toLowerCase() },
+    props: { post },
+  }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const TocEntry = await getEntry("lnlsrd", "sisällysluettelo");
+
+if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
+
+const container = await AstroContainer.create();
+const { Content: TocContentComponent } = await render(TocEntry);
+const rawTocHtml = await container.renderToString(TocContentComponent);
+
+// Remove the first heading (h1) which is "Sisällys"
+const tocContent = rawTocHtml.replace(/<h1.*?>.*?<\/h1>/, "");
+---
+
+<Page
+  title="L&L - SRD"
+  description="Legendoja & Lohikäärmeitä (L&L) Systems Reference Document (SRD) -materiaali. Jaeltu Creative Commons BY-SA 4.0 -lisenssillä."
+>
+  <main class="content-grid theme-letl">
+    <section class="golden-col">
+      <article>
+        <Content />
+      </article>
+      <article>
+        <h2 class="text-h1">
+          <a href="/letl/srd/readme">L&L SRD</a>
+        </h2>
+        <div class="toc" set:html={tocContent} />
+      </article>
+    </section>
+  </main>
+</Page>

@@ -4,6 +4,7 @@
 import "src/styles/styles.css";
 // Import the Astro shims for whole page transitions
 import { ClientRouter } from "astro:transitions";
+import JsonLd from "@components/base/JsonLd.astro";
 
 interface Props {
   title: string;
@@ -13,9 +14,54 @@ interface Props {
 
 const {
   title,
-  description = "Myrrys.com",
-  image = "/favicon.svg",
+  description = "MYRRYS – Roolipelejä pelaajilta pelaajille vuodesta 2009: Legendoja & Lohikäärmeitä, Suuri Seikkailu, Eevenkoto ja the Quick",
+  image = "/branding/griffon.png",
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const url = canonicalUrl.href;
+const imageURL = new URL(image, Astro.site);
+const siteUrl = Astro.site?.href ?? "https://myrrys.com";
+const logoUrl = new URL("/branding/griffon.png", Astro.site).href;
+
+// BreadcrumbList JSON-LD — derived from URL path segments
+const segmentLabels: Record<string, string> = {
+  letl: "L&L",
+  srd: "SRD",
+  blog: "Blogi",
+  legenda: "Legenda",
+  hood: "Hood",
+  "the-quick": "The Quick",
+  en: "English",
+  tag: "Tagi",
+  myrrys: "Myrrysmiehet Oy",
+};
+
+function formatSegment(segment: string): string {
+  return (
+    segmentLabels[segment] ??
+    segment.charAt(0).toUpperCase() + segment.slice(1).replaceAll("-", " ")
+  );
+}
+
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+let breadcrumbSchema: Record<string, unknown> | null = null;
+if (segments.length > 0) {
+  let path = "";
+  const items = [
+    { "@type": "ListItem", position: 1, name: "Etusivu", item: siteUrl },
+  ];
+  for (let i = 0; i < segments.length; i++) {
+    path += `/${segments[i]}`;
+    items.push({
+      "@type": "ListItem",
+      position: i + 2,
+      name: formatSegment(segments[i]),
+      item: new URL(`${path}/`, Astro.site).href,
+    });
+  }
+  breadcrumbSchema = { "@type": "BreadcrumbList", itemListElement: items };
+}
 ---
 
 <!-- Global Metadata -->
@@ -24,8 +70,33 @@ const {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Preload LCP image for faster rendering -->
+<link
+  rel="preload"
+  as="image"
+  href="/branding/letl-gm-screen-splash-mobile.webp"
+  media="(max-width: 640px)"
+  fetchpriority="high"
+/>
+<link
+  rel="preload"
+  as="image"
+  href="/branding/letl-gm-screen-splash.webp"
+  media="(min-width: 641px)"
+  fetchpriority="high"
+/>
+
+<!-- Preload critical header font to shorten font discovery chain -->
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/oswald-v53-latin-regular.woff2"
+  type="font/woff2"
+  crossorigin
+/>
+
 <!-- Canonical URL -->
-<!--link rel="canonical" href={canonicalURL} /-->
+<link rel="canonical" href={url} />
 
 <!-- Sitemap plugin -->
 <link rel="sitemap" href="/sitemap-index.xml" />
@@ -37,21 +108,37 @@ const {
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={imageURL} />
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@300&display=swap" rel="stylesheet">
+<!-- Structured Data (JSON-LD) -->
+<JsonLd
+  schema={{
+    "@type": "Organization",
+    name: "Myrrys",
+    url: siteUrl,
+    logo: logoUrl,
+  }}
+/>
+<JsonLd
+  schema={{
+    "@type": "WebSite",
+    name: "Myrrys",
+    url: siteUrl,
+  }}
+/>
+{breadcrumbSchema && <JsonLd schema={breadcrumbSchema} />}
+
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
 <ClientRouter />

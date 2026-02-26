@@ -1,0 +1,19 @@
+---
+import LetlCompatibleSection from "@components/letl/LetlCompatibleSection.astro";
+import LetlContent from "@components/letl/LetlContent.astro";
+import LetlIndex from "@components/letl/LetlIndex.astro";
+import LetlIntroArticle from "@components/letl/LetlIntroArticle.astro";
+import Page from "src/layouts/Page.astro";
+---
+<Page
+  title="Legendoja & Lohikäärmeitä"
+  image="/letl/basiliski.webp"
+  description="Legendoja & Lohikäärmeitä on suomenkielinen roolipeli, jonka säännöt perustuvat maailman suosituimman fantasiapelin 5. laitoksen avoimeen lähteeseen.">
+  <main>
+    <LetlContent>
+      <LetlIntroArticle />
+      <LetlIndex />
+      <LetlCompatibleSection />
+    </LetlContent>
+  </main>
+</Page>

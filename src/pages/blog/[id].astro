@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import JsonLd from "@components/base/JsonLd.astro";
+import Page from "@layouts/Page.astro";
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Build Article JSON-LD schema from frontmatter
+const articleSchema: Record<string, unknown> = {
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  publisher: { "@type": "Organization", name: "Myrrys" },
+};
+if (post.data.heroImage) {
+  articleSchema.image = new URL(post.data.heroImage.src, Astro.site).href;
+}
+if (post.data.author) {
+  articleSchema.author = { "@type": "Person", name: post.data.author };
+}
+---
+
+<Page
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.heroImage?.src}
+>
+  <JsonLd schema={articleSchema} />
+  <main class:list={[post.data.theme, "content-grid"]}>
+    <section>
+      <article>
+        {
+          post.data.heroImage && (
+            <Image
+              src={post.data.heroImage}
+              alt=""
+              class="poster"
+              widths={[400, 800, 1200]}
+              sizes="(max-width: 640px) 100vw, 800px"
+            />
+          )
+        }
+        <h1>{post.data.title}</h1>
+        <Content />
+      </article>
+    </section>
+  </main>
+</Page>
+
+<style>
+  .poster {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: calc(var(--grid) * 2);
+  }
+</style>

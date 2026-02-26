@@ -1,0 +1,20 @@
+---
+import BlogIndex from "@components/blog/BlogIndex.astro";
+import ProductListing from "./ProductListing.astro";
+---
+
+<div class="content-grid">
+  <section class="two-col text-small">
+    <section>
+      <h2>Blogissa</h2>
+      <BlogIndex limit={3}/>
+      <br>
+      <p class="flex justify-center">
+        <a href="/blog" class="button">Näytä lisää</a>
+      </p>
+    </section>
+    <section>
+      <ProductListing />
+    </section>
+  </section>
+</div>
