@@ -7,6 +7,7 @@
 
 ## LATAUKSET JA MUU LISÄMATERIAALI:
 * [Hahmolomake (L&L)][4]
+* [Hahmolomake (L&L, täytettävä)][17]
 * [Hahmolomake (L&L, Suuri seikkailu)][12]
 * [Esimerkkihahmot][5]
 * [Errata versio 1.0.0][11]
@@ -34,3 +35,4 @@
 [14]: /letl/letl-velhon-torni
 [15]: /downloads/letl/sumun_saartama_saari.pdf
 [16]: /downloads/letl/ametistiviidakko.pdf
+[17]: /downloads/letl/LL-hahmolomake_-_taytettava.pdf
