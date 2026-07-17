@@ -33,3 +33,6 @@ coverage/
 .nyc_output/
 playwright-report/
 test-results/
+
+# working dir for agents
+tmp
