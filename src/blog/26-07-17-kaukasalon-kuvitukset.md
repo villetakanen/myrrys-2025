@@ -70,13 +70,13 @@ Photobashingilla viitataan usein tekniikkaan, jossa valokuvia tuodaan digitaalis
 Joskus tehokkain työkalu luonnosteluun on yksinkertaisesti viivapiirros. Se on tarkka, yksityiskohtia jo sisältävä ja suurimmat ongelmat ratkaiseva luonnos, jota on helppo seurata vaihe vaiheelta viimeisteltyyn maalaukseen. Piirtäessä useimmat perspektiivin, arkkitehtuurin, sommitelman ja yksityiskohtien ongelmat on ratkaistava jo kättelyssä. Jos piirros ei toimi, ei sen viimeistelykään tule toimimaan. Usein teen viivapiirroksen lisäksi toisen luonnoksen mustavalkoisena pelkistä valööreistä ja kolmannen väreistä. Vaikka joudun toistamaan saman kuvituksen osia uudelleen, tämä antaa minulle eniten informaatiota siitä, miltä lopputulos tulee näyttämään.
 
 <figure>
-  <a href="/blog-images/kaukasalo-tyrsky-luonnokset.webp"><img src="/blog-images/kaukasalo-tyrsky-luonnokset.webp" alt="Tyrskyn luonnoksia" loading="lazy" /></a>
-  <figcaption>Tyrskyn luonnoksia</figcaption>
+  <a href="/blog-images/kaukasalo-tyrsky-luonnokset.webp"><img src="/blog-images/kaukasalo-tyrsky-luonnokset.webp" alt="Tyrskyrannikon luonnoksia" loading="lazy" /></a>
+  <figcaption>Tyrskyrannikon luonnoksia</figcaption>
 </figure>
 
 <figure>
   <a href="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp"><img src="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp" alt="Tuuliniittyjen viivapiirros" loading="lazy" /></a>
-  <figcaption>Tuuliniittujen viivapiirros</figcaption>
+  <figcaption>Tuuliniittyjen viivapiirros</figcaption>
 </figure>
 
 ## Viimeistely
@@ -93,8 +93,8 @@ Hyvä sääntö on valita kuvasta yksi kiintopiste ja aloittaa viimeistely siit�
 </figure>
 
 <figure>
-  <a href="/blog-images/kaukasalo-tyrsky-vaiheet.webp"><img src="/blog-images/kaukasalo-tyrsky-vaiheet.webp" alt="Tyrskyn kuvituksen vaiheet" loading="lazy" /></a>
-  <figcaption>Tyrskyn kuvituksen vaiheet</figcaption>
+  <a href="/blog-images/kaukasalo-tyrsky-vaiheet.webp"><img src="/blog-images/kaukasalo-tyrsky-vaiheet.webp" alt="Tyrskyrannikon kuvituksen vaiheet" loading="lazy" /></a>
+  <figcaption>Tyrskyrannikon kuvituksen vaiheet</figcaption>
 </figure>
 
 ## Muita luonnoksia
