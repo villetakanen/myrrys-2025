@@ -69,6 +69,19 @@ if (post.data.author) {
 </Page>
 
 <style>
+  article :global(figure) {
+    margin: calc(var(--grid) * 2) 0;
+  }
+  article :global(figure img) {
+    width: 100%;
+    height: auto;
+  }
+  article :global(figcaption) {
+    font-size: calc(0.875 * var(--grid));
+    line-height: calc(1.5 * var(--grid));
+    opacity: 0.75;
+    margin-top: calc(0.5 * var(--grid));
+  }
   .poster {
     aspect-ratio: 16 / 9;
     object-fit: contain;
