@@ -1,0 +1,46 @@
+---
+import TopNavMenu from "./TopNavMenu.astro";
+---
+
+<header id="site-header">
+  <nav aria-label="Main navigation">
+    <a href="/">
+      <img src="/branding/myrrys-logo-letl-inverted.svg" alt="MYRRYS" id="logo" fetchpriority="high" width="1024" height="187"/>
+    </a>
+    <TopNavMenu />
+  </nav>
+</header>
+
+<style>
+#site-header {
+  background-color: #333;
+  background-image: url('/branding/letl-gm-screen-splash-mobile.webp');
+  background-size: cover;
+  background-position: right;
+  height: calc(var(--grid) * 12);
+}
+#site-header nav {
+  padding: calc(var(--grid));
+  padding-top: calc(var(--grid) * 8);
+  display: flex;
+  justify-content: space-between;
+}
+#logo {
+  height: calc(var(--grid) * 3);
+  width: auto;
+  filter: drop-shadow(0 0 calc(var(--grid) / 2) #21421E);
+}
+@media screen and (min-width: 641px) {
+  #site-header {
+    background-image: url('/branding/letl-gm-screen-splash.webp');
+    height: calc(var(--grid) * 22);
+  }
+  #logo {
+    height: calc(var(--grid) * 4);
+  }
+  #site-header nav {
+    padding: calc(var(--grid));
+    padding-top: calc(var(--grid) * 17);
+  }
+}
+</style>

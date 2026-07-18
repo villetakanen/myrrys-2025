@@ -1,0 +1,34 @@
+.theme-quick {
+  --color-key: hsla(0, 0%, 100%, 0.88);
+  --color-primary: hsla(337, 73%, 47%, 0.77);
+  --surface-primary: hsla(197, 11%, 11%, 0.88);
+}
+.theme-quick.content-grid::before {
+  background: linear-gradient(140deg, #eda01b, darkblue);
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.33;
+  filter: saturate(70%);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+.theme-quick.content-grid {
+  background-image: url("/the-quick/DSC_0215.webp");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.theme-quick.content-grid > section {
+  z-index: 10;
+}
+.theme-quick a {
+  background: color-mix(in hsl, var(--color-primary), transparent 50%);
+  font-weight: 700;
+}
+.theme-quick a:hover {
+  background: color-mix(in hsl, var(--color-primary), transparent 30%);
+}

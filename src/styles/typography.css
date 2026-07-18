@@ -1,4 +1,7 @@
 body {
+  --font-header: Oswald, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --font-size: calc(1 * var(--grid));
   --line-height: calc(2 * var(--grid));
 
@@ -6,12 +9,99 @@ body {
   line-height: var(--line-height);
   font-family: "Open Sans", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--color-key, black);
 }
-
 h1,
 h2,
 h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+h1,
+h2 {
+  font-family: var(--font-header);
+  font-weight: 400;
+}
+h1 {
+  font-size: calc(2.5 * var(--grid));
+  line-height: calc(3 * var(--grid));
+  text-transform: uppercase;
+  margin-bottom: calc(2 * var(--grid));
+}
+h2 {
+  font-size: calc(1.75 * var(--grid));
+  line-height: calc(2 * var(--grid));
+  margin-bottom: calc(1 * var(--grid));
+  font-weight: 200;
+  text-transform: uppercase;
+}
+img + h2 {
+  margin-top: calc(2 * var(--grid));
+}
+
+h3,
 h4 {
-  font-family: Oswald, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  line-height: calc(2 * var(--grid));
+}
+h3 {
+  font-size: calc(1.25 * var(--grid));
+}
+p {
+  margin: 0;
+  margin-bottom: var(--grid);
+}
+.text-small {
+  --font-size: calc(0.875 * var(--grid));
+  --line-height: calc(1.5 * var(--grid));
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+.text-center {
+  text-align: center;
+}
+blockquote {
+  font-style: italic;
+  margin: 0;
+  padding: calc(0.5 * var(--grid)) var(--grid);
+}
+blockquote p {
+  margin: 0;
+}
+p + blockquote,
+blockquote + p {
+  margin-top: var(--grid);
+}
+.surface a {
+  text-decoration-color: var(--color-primary);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px
+    rgba(255, 255, 255, 0.7), 0 0 12px rgba(255, 255, 255, 0.5);
+}
+a.button {
+  text-shadow: none;
+}
+strong {
+  font-weight: 700;
+}
+
+/* Accessibility: visually hidden but accessible to screen readers */
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Typography utilities: apply heading visual styles independently of semantic level */
+.text-h1 {
+  font-family: var(--font-header);
+  font-weight: 400;
+  font-size: calc(2.5 * var(--grid));
+  line-height: calc(3 * var(--grid));
+  text-transform: uppercase;
+  margin-bottom: calc(2 * var(--grid));
 }

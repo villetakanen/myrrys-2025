@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BlogIndex from "@components/blog/BlogIndex.astro";
+import Page from "@layouts/Page.astro";
+
+interface Props {
+  tag: string;
+}
+
+// 1. Generate static paths for all unique tags
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  const allTags = new Set<string>();
+
+  for (const entry of blogEntries) {
+    if (entry.data.tags) {
+      for (const tag of entry.data.tags) {
+        allTags.add(tag);
+      }
+    }
+  }
+
+  return Array.from(allTags).map((tag) => ({
+    params: { id: encodeURIComponent(tag.toLowerCase()) },
+    props: { tag },
+  }));
+}
+
+// 2. Get the tag from props
+const { tag }: Props = Astro.props;
+---
+
+<Page
+  title={`MYRRYS - ${tag} -aiheinen sisältö`}
+  description={`Kaikki ${tag} -aiheinen sisältö blogissa`}>
+  <main class="content-grid">
+    <section>
+      <article>
+        <h1>{tag} -aiheinen sisältö</h1>
+        <BlogIndex tag={tag} />
+      </article>
+    </section>
+  </main>
+</Page>

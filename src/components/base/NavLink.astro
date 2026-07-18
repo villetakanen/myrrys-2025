@@ -1,0 +1,33 @@
+---
+const { icon, href, title } = Astro.props;
+---
+
+<li>
+  { icon ? <img class="navIcon" src={icon} alt="" /> : ''}
+  <a style="flex-shrink: 1" href={href} target="_blank">{title}</a>
+</li>
+
+<style>
+li {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--grid);
+}
+.navIcon {
+  height: calc(var(--grid) * 3);
+  width: calc(var(--grid) * 3);
+  display: block;
+  filter: invert(75%) sepia(36%) saturate(3520%) hue-rotate(352deg) brightness(99%) contrast(87%);
+}
+a {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-key);
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+</style>

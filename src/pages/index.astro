@@ -1,7 +1,17 @@
 ---
+import MiscBlock from "@components/home/MiscBlock.astro";
+import LegendaFrontSection from "@components/legenda/LegendaFrontSection.astro";
+import LessBlock from "@components/less/LessBlock.astro";
+import LetlBlock from "@components/letl/LetlBlock.astro";
 import Page from "src/layouts/Page.astro";
 ---
+
 <Page title="MYRRYS">
-  <h1>Welcome to MYRRYS</h1>
-  <p>Here's some text.</p>
+  <main>
+    <h1 class="visually-hidden">MYRRYS</h1>
+    <LetlBlock />
+    <LegendaFrontSection />
+    <LessBlock />
+    <MiscBlock />
+  </main>
 </Page>

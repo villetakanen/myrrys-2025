@@ -1,0 +1,3 @@
+Eevenkoto on kampanjamaailma L&L -roolipeliin. Eevenkodossa perinteinen fantasia kohtaa maailmaa järisyttäneen Jumalten sodan jälkeisen jälleenrakennuksen. Erentarin mantereen etelärannalla kulttuurien risteyskohdassa kohoava metropoli on muinaisen magian ja teknologian leikkauspiste, jossa jazzin jyske ja eetterisieluilla animoidut koneet luovat ainutlaatuista rytmiä.
+
+_Pelitestimateriaali, jota täällä julkaistaan, esittelee uusia – kokeellisia – sääntöjä, hahmoluokkia ja pelimekaniikkoja._

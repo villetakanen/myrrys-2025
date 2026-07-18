@@ -1,0 +1,26 @@
+---
+import QuickContent from "@components/quick/QuickContent.astro";
+import QuickInfo from "@components/quick/QuickInfo.astro";
+import QuickIntro from "@components/quick/QuickIntro.md";
+import Page from "src/layouts/Page.astro";
+---
+<Page
+  title="The Quick"
+  image="/the-quick/thequickcover-mobile.webp"
+  description="Tarinavetoinen roolipeli, jonka säännöt perustuvat siirtoihin ja kerrontaan Powered by the Apocalypse ja Forged in the Dark -pohjaisia pelejä mukaillen.">
+  <main>
+    <QuickContent>
+      <section>
+        <h1>The Quick</h1>
+        <div class="golden-col">
+          <article>
+            <QuickIntro />
+          </article>
+          <article>
+            <QuickInfo />
+          </article>
+        </div>
+      </section>
+    </QuickContent>
+  </main>
+</Page>

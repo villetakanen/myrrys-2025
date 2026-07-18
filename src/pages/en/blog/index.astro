@@ -1,0 +1,13 @@
+---
+import BlogIndex from "@components/blog/BlogIndex.astro";
+import EnPage from "@layouts/EnPage.astro";
+---
+
+<EnPage title="Blog">
+    <main class="content-grid">
+        <section>
+            <h1>Blog</h1>
+            <BlogIndex collection="blog-en" urlPrefix="/en/blog/" />
+        </section>
+    </main>
+</EnPage>

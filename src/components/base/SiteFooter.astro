@@ -1,0 +1,102 @@
+---
+import NavLink from "./NavLink.astro";
+const today = new Date();
+---
+
+<footer>
+  <section>
+    <h3>MYRRYS</h3>
+	<p><strong>Roolipelejä pelaajilta pelaajille vuodesta 2009.</strong></p>
+	<p>
+	  <a href="/blog/rss.xml">RSS</a>
+	</p>
+  </section>
+
+  <section>
+    <h3>Yhteistyössä</h3>
+	<nav>
+	  <ul>
+		<NavLink
+		  icon="/pelilauta-icon.svg"
+		  href="https://pelilauta.web.app/"
+		  title="Pelilauta - sivustot ja keskustelut" />
+		<NavLink 
+		  icon="/facebook_icon.svg"
+		  href="https://www.facebook.com/groups/legendojajalohikaarmeita" 
+		  title="L&L Facebook -yhteisö." />
+		<NavLink
+		  icon="/discord_icon.svg"
+		  href="https://discord.gg/KFqN8QwJ5p"
+		  title="L&L -discord" />
+		<NavLink
+		  icon="/discord_icon.svg"
+		  href="https://discord.gg/c5bAGzNKZz"
+		  title="Roolipelifoorumi -discord" />
+	  </ul>
+	</nav>
+  </section>
+	
+
+
+	  <section>
+		<h3>Myrrysmiehet oy</h3>
+		<p>myrrysmiehet@sange.fi<br>
+		  044-3003649<br>
+		  2262877-1</p>
+		<p>
+		  <a href="/myrrys">Tietoja yrityksestä</a>
+		</p>
+	</section>
+
+
+  <section>
+	<p class="text-center">&copy; {today.getFullYear()} Myrrysmiehet Oy. Kaikki oikeudet pidätetään.</p>
+  </section>
+</footer>
+
+<style>
+
+footer {
+  padding: var(--grid);
+  background: var(--surface-footer);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+footer nav ul {
+  margin: var(--grid) 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid);
+}
+footer li {
+  list-style: none;
+}
+section:nth-child(4) {
+	padding: var(--grid);
+  }
+
+@media screen and (min-width: 1024px) {
+  footer {
+	--section-width: calc(16 *  var(--grid));
+	display: grid;
+	grid-template-columns: 1fr var(--section-width) var(--section-width) var(--section-width) 1fr;
+	grid-template-areas: ". a b c ." ". d d d .";
+	gap: var(--grid);
+  }
+  section:nth-child(1) {
+	grid-area: a;
+  }
+  section:nth-child(2) {
+	grid-area: b;
+  }
+  section:nth-child(3) {
+	grid-area: c;
+  }
+  section:nth-child(4) {
+	grid-area: d;
+	padding: var(--grid);
+  }
+	
+}
+</style>

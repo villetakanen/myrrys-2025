@@ -1,0 +1,9 @@
+pre-commit:
+  jobs:
+    - name: lint and format
+      run: pnpm check
+
+pre-push:
+  jobs:
+    - name: build and test
+      run: pnpm build && pnpm test:e2e
