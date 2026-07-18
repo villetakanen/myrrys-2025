@@ -35,13 +35,13 @@ Luonnos voi syntyä piirtäen, mustavalkoisena tai värien kanssa. Maisemakuvitu
 </figure>
 
 <figure>
-  <a href="/blog-images/kaukasalo-tuulinummet-luonnokset.webp"><img src="/blog-images/kaukasalo-tuulinummet-luonnokset.webp" alt="Tuulinummien luonnoksia" loading="lazy" /></a>
-  <figcaption>Tuulinummien luonnoksia</figcaption>
+  <a href="/blog-images/kaukasalo-tuulinummet-luonnokset.webp"><img src="/blog-images/kaukasalo-tuulinummet-luonnokset.webp" alt="Tuuliniittyjen luonnoksia" loading="lazy" /></a>
+  <figcaption>Tuuliniittyjen luonnoksia</figcaption>
 </figure>
 
 <figure>
-  <a href="/blog-images/kaukasalo-kulomaat-luonnokset.webp"><img src="/blog-images/kaukasalo-kulomaat-luonnokset.webp" alt="Kulomaiden luonnoksia" loading="lazy" /></a>
-  <figcaption>Kulomaiden luonnoksia</figcaption>
+  <a href="/blog-images/kaukasalo-kulomaat-luonnokset.webp"><img src="/blog-images/kaukasalo-kulomaat-luonnokset.webp" alt="Kulonummien luonnoksia" loading="lazy" /></a>
+  <figcaption>Kulonummien luonnoksia</figcaption>
 </figure>
 
 <figure>
@@ -63,8 +63,8 @@ Kulonummien kuvituksessa tiimi mainitsi inspiraationa Islannin karut maisemat, j
 Photobashingilla viitataan usein tekniikkaan, jossa valokuvia tuodaan digitaalisin työkaluin vielä kuvituksen viimeiseen kerrokseen tuomaan yksityiskohtia ja tekstuuria, mutta itselläni tekniikka on toiminut parhaiten vapaamuotoisen maalaamisen alapuolella, antamassa ideoita, värejä ja suuntaa kuvalle. Tämä on erityisen hyödyllistä, kun tyhjän paperin syndrooma vaivaa: kun valkoisen kanvaksen tuijottaminen saa aikaan aivojen ydintuhon, eikä tyhjiöstä meinaa syntyä mitään.
 
 <figure>
-  <a href="/blog-images/kaukasalo-kulomaat-luonnokset2.webp"><img src="/blog-images/kaukasalo-kulomaat-luonnokset2.webp" alt="Kulomaiden luonnostelua valokuvien päälle" loading="lazy" /></a>
-  <figcaption>Kulomaiden luonnostelua valokuvien päälle</figcaption>
+  <a href="/blog-images/kaukasalo-kulomaat-luonnokset2.webp"><img src="/blog-images/kaukasalo-kulomaat-luonnokset2.webp" alt="Kulonummien luonnostelua valokuvien päälle" loading="lazy" /></a>
+  <figcaption>Kulonummien luonnostelua valokuvien päälle</figcaption>
 </figure>
 
 Joskus tehokkain työkalu luonnosteluun on yksinkertaisesti viivapiirros. Se on tarkka, yksityiskohtia jo sisältävä ja suurimmat ongelmat ratkaiseva luonnos, jota on helppo seurata vaihe vaiheelta viimeisteltyyn maalaukseen. Piirtäessä useimmat perspektiivin, arkkitehtuurin, sommitelman ja yksityiskohtien ongelmat on ratkaistava jo kättelyssä. Jos piirros ei toimi, ei sen viimeistelykään tule toimimaan. Usein teen viivapiirroksen lisäksi toisen luonnoksen mustavalkoisena pelkistä valööreistä ja kolmannen väreistä. Vaikka joudun toistamaan saman kuvituksen osia uudelleen, tämä antaa minulle eniten informaatiota siitä, miltä lopputulos tulee näyttämään.
@@ -75,8 +75,8 @@ Joskus tehokkain työkalu luonnosteluun on yksinkertaisesti viivapiirros. Se on 
 </figure>
 
 <figure>
-  <a href="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp"><img src="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp" alt="Tuulinummien viivapiirros" loading="lazy" /></a>
-  <figcaption>Tuulinummien viivapiirros</figcaption>
+  <a href="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp"><img src="/blog-images/kaukasalo-tuulinummet-viivapiirros.webp" alt="Tuuliniittyjen viivapiirros" loading="lazy" /></a>
+  <figcaption>Tuuliniittujen viivapiirros</figcaption>
 </figure>
 
 ## Viimeistely
@@ -120,9 +120,9 @@ Kannen Keisarinnan luonnoksia:
   <figcaption>Kannen Keisarinnan luonnoksia</figcaption>
 </figure>
 
-Tuulinummien liitäjän luonnoksia:
+Tuuliniittyjen liitäjän luonnoksia:
 
 <figure>
-  <a href="/blog-images/kaukasalo-tuulinummi-liitaja.webp"><img src="/blog-images/kaukasalo-tuulinummi-liitaja.webp" alt="Tuulinummien liitäjän luonnoksia" loading="lazy" /></a>
-  <figcaption>Tuulinummien liitäjän luonnoksia</figcaption>
+  <a href="/blog-images/kaukasalo-tuulinummi-liitaja.webp"><img src="/blog-images/kaukasalo-tuulinummi-liitaja.webp" alt="Tuuliniittyjen liitäjän luonnoksia" loading="lazy" /></a>
+  <figcaption>Tuuliniittyjen liitäjän luonnoksia</figcaption>
 </figure>
