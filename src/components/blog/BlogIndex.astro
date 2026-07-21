@@ -61,9 +61,13 @@ if (limit) {
     text-decoration-color: var(--color-primary);
   }
   img.icon {
+    width: calc(var(--grid) * 4);
     height: calc(var(--grid) * 4);
+    flex-shrink: 0;
+    align-self: flex-start;
     aspect-ratio: 1 / 1;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
+    border-radius: 4px;
   }
 </style>
