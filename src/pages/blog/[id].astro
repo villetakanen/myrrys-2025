@@ -84,11 +84,11 @@ if (post.data.author) {
     text-align: center;
   }
   .poster {
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    object-position: center;
     width: 100%;
-    height: auto;
+    max-height: 480px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
     margin-bottom: calc(var(--grid) * 2);
   }
 </style>
