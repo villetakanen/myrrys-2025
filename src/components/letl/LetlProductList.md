@@ -4,6 +4,7 @@
 * [Pelinjohtajan suoja][3]
 * [Kultaneidon runo][13]
 * [Velhon torni][14]
+* [Kaukasalo: Maailmakirja][18]
 
 ## LATAUKSET JA MUU LISÄMATERIAALI:
 * [Hahmolomake (L&L)][4]
@@ -36,3 +37,4 @@
 [15]: /downloads/letl/sumun_saartama_saari.pdf
 [16]: /downloads/letl/ametistiviidakko.pdf
 [17]: /downloads/letl/LL-hahmolomake_-_taytettava.pdf
+[18]: /letl/letl-kaukasalo
