@@ -8,7 +8,7 @@ tags: ['L&L', 'Kaukasalo', 'Kartta']
 theme: 'theme-letl'
 ---
 
-Kaukasalon kuvitettu kartta on nyt ladattavissa kahtena versiona käytettäväksi suoraan pelipöydässä. Sekä pelaajat että pelinjohtajat voivat tulostaa tai avata kartan ruudulle ja seurata seikkailun etenemistä Tyrskyaavan rannikolta aina Vuorimaiden lumihuipuille asti.
+Kaukasalon kartta on nyt ladattavissa kahtena versiona käytettäväksi suoraan pelipöydässä. Sekä pelaajat että pelinjohtajat voivat tulostaa tai avata kartan ruudulle ja seurata seikkailun etenemistä Tyrskyaavan rannikolta aina Vuorimaiden lumihuipuille asti.
 
 Tarjolla on kaksi versiota:
 
