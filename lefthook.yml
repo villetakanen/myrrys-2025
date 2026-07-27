@@ -5,5 +5,9 @@ pre-commit:
 
 pre-push:
   jobs:
+    # Vitest runs before Playwright: it asserts against the same dist/ build,
+    # takes ~300ms rather than ~15s, and covers all 411 pages instead of a
+    # hand-picked sample. Failing fast here avoids booting three browsers to
+    # learn something the static output already showed.
     - name: build and test
-      run: pnpm build && pnpm test:e2e
+      run: pnpm build && pnpm test:run && pnpm test:e2e

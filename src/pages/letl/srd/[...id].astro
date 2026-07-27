@@ -17,25 +17,26 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+// Per-document metadata from the SRD's frontmatter. The document's own opening
+// heading is removed by remarkSrdStripTitle, so `title` is rendered as the page
+// H1 below rather than duplicated in the body.
+const { title, description } = post.data;
+
 const TocEntry = await getEntry("lnlsrd", "sisällysluettelo");
 
 if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
 
 const container = await AstroContainer.create();
 const { Content: TocContentComponent } = await render(TocEntry);
-const rawTocHtml = await container.renderToString(TocContentComponent);
-
-// Remove the first heading (h1) which is "Sisällys"
-const tocContent = rawTocHtml.replace(/<h1.*?>.*?<\/h1>/, "");
+// The TOC's own "Sisällys" heading is stripped by remarkSrdStripTitle.
+const tocContent = await container.renderToString(TocContentComponent);
 ---
 
-<Page
-  title="L&L - SRD"
-  description="Legendoja & Lohikäärmeitä (L&L) Systems Reference Document (SRD) -materiaali. Jaeltu Creative Commons BY-SA 4.0 -lisenssillä."
->
+<Page title={`${title} – L&L SRD`} description={description}>
   <main class="content-grid theme-letl">
     <section class="golden-col">
       <article>
+        <h1>{title}</h1>
         <Content />
       </article>
       <article>

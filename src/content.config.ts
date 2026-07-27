@@ -57,9 +57,16 @@ const sitePages = defineCollection({
   schema: pageSchema,
 });
 
+// SRD documents carry `title` and `description` frontmatter, added upstream in
+// the LnL-SRD submodule. Both are required: without them every SRD page ships
+// identical metadata, which is what made 348 pages read as duplicates to search
+// engines. A missing field should fail the build loudly rather than fall back.
 const lnlsrd = defineCollection({
   loader: glob({ pattern: ["**/*.md"], base: "LnL-SRD" }),
-  schema: z.object({}),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
 });
 
 export const collections = {
