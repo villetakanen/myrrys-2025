@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 import browserslist from "browserslist";
 import { Features, browserslistToTargets } from "lightningcss";
 import { remarkSrdLinks } from "./src/remark/remarkSrdLinks";
-import { remarkSrdStripTitle } from "./src/remark/remarkSrdStripTitle";
+import { remarkSrdMetadata } from "./src/remark/remarkSrdMetadata";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
   },
   trailingSlash: "ignore",
   markdown: {
-    remarkPlugins: [remarkSrdLinks, remarkSrdStripTitle],
+    remarkPlugins: [remarkSrdLinks, remarkSrdMetadata],
   },
   redirects: {
     "/letl/srd": "/letl/srd/readme",

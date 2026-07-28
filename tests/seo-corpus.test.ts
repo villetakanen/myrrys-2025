@@ -37,12 +37,17 @@ import {
  *   exactly one h1                                     → /legendoja-lohikaarmeita/, /letl-suuri-seikkailu/ (finding #2)
  *   title ≤ 60 chars                                   → /blog/flame-tongue/ (finding #11)
  *   description 70–160 chars                           → 28 blog and tag pages (finding #11)
- *   internal link resolves                             → /en/blog/2026-01-sample-post (finding #8/#9)
+ *   internal link resolves                             → /en/blog/2026-01-sample-post (finding #8/#9),
+ *                                                        plus ~725 SRD links pending LnL-SRD 6483a41
  *   no orphans                                         → 18 tag pages (finding #5)
  *   og:type=article                                    → 25 blog posts (finding #4)
  *   reserved characters in URLs                        → 7 tag pages (finding #5)
  *
- * Nothing SRD-related remains in any of these lists.
+ * The SRD is covered separately by the "SRD subcorpus" block at the bottom of
+ * this file, where five checks are active. Two are skipped there, each on a
+ * single upstream content bug that LnL-SRD 6483a41 fixes:
+ *   duplicate SRD title → /letl/srd/loitsut/kaasumuoto/
+ *   exactly one h1      → /letl/srd/olotilat/olotilat/
  */
 
 /**
@@ -328,6 +333,108 @@ describe.skipIf(!distExists())("SEO corpus (dist/)", () => {
       expect(
         offenders,
         `URLs containing characters that need escaping — ${report(offenders)}`,
+      ).toEqual([]);
+    });
+  });
+
+  /**
+   * The SRD is 348 of the site's 411 pages and its metadata is fully derived —
+   * see src/remark/remarkSrdMetadata.ts. None of the skipped checks above can
+   * cover it, because every one of them also fails on an unrelated non-SRD
+   * offender. These are scoped to the SRD so they can be active today and act
+   * as the regression guard for derived metadata.
+   */
+  describe("SRD subcorpus (derived metadata)", () => {
+    const srd = indexable.filter((p) => p.url.startsWith("/letl/srd/"));
+
+    it("covers the whole SRD", () => {
+      expect(srd.length).toBeGreaterThan(300);
+    });
+
+    it("every SRD page has a meta description", () => {
+      const missing = srd.filter((p) => !p.description).map((p) => p.url);
+      expect(
+        missing,
+        `SRD pages without a derived description — ${report(missing)}`,
+      ).toEqual([]);
+    });
+
+    it("no two SRD pages share a meta description", () => {
+      const byDesc = new Map<string, string[]>();
+      for (const page of srd) {
+        if (!page.description) continue;
+        const group = byDesc.get(page.description) ?? [];
+        group.push(page.url);
+        byDesc.set(page.description, group);
+      }
+      const dupes = [...byDesc.entries()]
+        .filter(([, urls]) => urls.length > 1)
+        .map(
+          ([desc, urls]) =>
+            `"${desc.slice(0, 50)}…" on ${urls.length} pages (e.g. ${urls[0]})`,
+        );
+      expect(dupes, `Duplicate SRD descriptions — ${report(dupes)}`).toEqual(
+        [],
+      );
+    });
+
+    it("every SRD description is between 70 and 160 characters", () => {
+      const off = srd
+        .filter(
+          (p) =>
+            p.description &&
+            (p.description.length < 70 || p.description.length > 160),
+        )
+        .map((p) => `${p.url} (${p.description?.length})`);
+      expect(
+        off,
+        `SRD descriptions outside 70–160 chars — ${report(off)}`,
+      ).toEqual([]);
+    });
+
+    // Derived titles carry a " – L&L SRD" suffix, so a long upstream heading
+    // is the only way to breach the SERP cap. The longest today is 56.
+    it("every SRD title is at most 60 characters", () => {
+      const long = srd
+        .filter((p) => p.title && p.title.length > 60)
+        .map((p) => `${p.url} (${p.title?.length})`);
+      expect(
+        long,
+        `SRD titles that will be truncated — ${report(long)}`,
+      ).toEqual([]);
+    });
+
+    // Offender: /letl/srd/loitsut/kaasumuoto/, whose source file opens with the
+    // heading "Druidintaito" and so collides with the real Druidintaito page.
+    // Fixed upstream by LnL-SRD 6483a41; un-skip when that lands on main.
+    it.skip("no two SRD pages share a <title>", () => {
+      const byTitle = new Map<string, string[]>();
+      for (const page of srd) {
+        if (!page.title) continue;
+        const group = byTitle.get(page.title) ?? [];
+        group.push(page.url);
+        byTitle.set(page.title, group);
+      }
+      const dupes = [...byTitle.entries()]
+        .filter(([, urls]) => urls.length > 1)
+        .map(([title, urls]) => `"${title}" on ${urls.join(", ")}`);
+      expect(dupes, `Duplicate SRD titles — ${report(dupes)}`).toEqual([]);
+    });
+
+    // Offender: /letl/srd/olotilat/olotilat/, whose source has a stray mid-file
+    // "# Maissa" that should be "## Maissa". Every other SRD page passes.
+    // Fixed upstream by LnL-SRD 6483a41; un-skip when that lands on main.
+    it.skip("every SRD page has exactly one <h1>", () => {
+      const offenders = srd
+        .map((p) => ({
+          url: p.url,
+          count: p.headings.filter((h) => h.level === 1).length,
+        }))
+        .filter((p) => p.count !== 1)
+        .map((p) => `${p.url} (${p.count} h1)`);
+      expect(
+        offenders,
+        `SRD pages without exactly one h1 — ${report(offenders)}`,
       ).toEqual([]);
     });
   });

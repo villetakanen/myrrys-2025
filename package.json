@@ -24,6 +24,7 @@
     "@types/unist": "^3.0.3",
     "astro": "^5.16.0",
     "lightningcss": "^1.29.1",
+    "mdast-util-to-string": "^4.0.0",
     "sanitize-html": "^2.14.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
