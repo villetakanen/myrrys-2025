@@ -57,6 +57,12 @@ const sitePages = defineCollection({
   schema: pageSchema,
 });
 
+// SRD documents carry no frontmatter. LnL-SRD is a shared upstream document
+// that does not accept site-specific or generated input, metadata included, so
+// there is nothing here to validate — `title` and `description` are derived
+// from each document's own content by src/remark/remarkSrdMetadata.ts and read
+// off `remarkPluginFrontmatter` in the route. Deliberately strict-empty rather
+// than passthrough: nothing should reach for `post.data`.
 const lnlsrd = defineCollection({
   loader: glob({ pattern: ["**/*.md"], base: "LnL-SRD" }),
   schema: z.object({}),

@@ -10,7 +10,7 @@ describe("Content Collections Type Safety", () => {
     if (posts.length > 0) {
       expectTypeOf(posts[0].data.title).toBeString();
       expectTypeOf(posts[0].data.description).toBeString();
-      expectTypeOf(posts[0].data.pubDate).toBeDate();
+      expectTypeOf(posts[0].data.pubDate).toEqualTypeOf<Date>();
       expectTypeOf(posts[0].data.tags).toEqualTypeOf<string[] | undefined>();
     }
   });

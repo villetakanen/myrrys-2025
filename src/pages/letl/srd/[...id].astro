@@ -4,6 +4,17 @@ import { getEntry } from "astro:content";
 import Page from "@layouts/Page.astro";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 
+/**
+ * Last-resort page title for a document that opens with prose rather than a
+ * heading, so an upstream content edit degrades the metadata instead of
+ * breaking the build. No file in the SRD looks like this today.
+ */
+function humanizeId(id: string): string {
+  const slug = id.split("/").pop() ?? id;
+  const words = slug.replace(/_/g, " ");
+  return words.charAt(0).toUpperCase() + words.slice(1);
+}
+
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const posts = await getCollection("lnlsrd");
@@ -15,7 +26,15 @@ export async function getStaticPaths() {
 
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+// SRD documents have no frontmatter — remarkSrdMetadata derives the title from
+// the document's leading heading and the description from its opening body
+// text. The heading is removed there, so rendering `title` as the page H1 below
+// does not duplicate it. See src/remark/remarkSrdMetadata.ts.
+const title =
+  (remarkPluginFrontmatter.title as string | undefined) ?? humanizeId(post.id);
+const description = remarkPluginFrontmatter.description as string | undefined;
 
 const TocEntry = await getEntry("lnlsrd", "sisällysluettelo");
 
@@ -23,19 +42,15 @@ if (!TocEntry) throw new Error('No entry found for "sisällysluettelo"');
 
 const container = await AstroContainer.create();
 const { Content: TocContentComponent } = await render(TocEntry);
-const rawTocHtml = await container.renderToString(TocContentComponent);
-
-// Remove the first heading (h1) which is "Sisällys"
-const tocContent = rawTocHtml.replace(/<h1.*?>.*?<\/h1>/, "");
+// The TOC's own "Sisällys" heading is stripped by remarkSrdMetadata.
+const tocContent = await container.renderToString(TocContentComponent);
 ---
 
-<Page
-  title="L&L - SRD"
-  description="Legendoja & Lohikäärmeitä (L&L) Systems Reference Document (SRD) -materiaali. Jaeltu Creative Commons BY-SA 4.0 -lisenssillä."
->
+<Page title={`${title} – L&L SRD`} description={description}>
   <main class="content-grid theme-letl">
     <section class="golden-col">
       <article>
+        <h1>{title}</h1>
         <Content />
       </article>
       <article>

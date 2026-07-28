@@ -9,8 +9,10 @@
     "astro": "astro",
     "check": "biome check --write",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "test:seo": "vitest run tests/seo-corpus.test.ts",
     "test:e2e": "playwright test --reporter=list",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:debug": "playwright test --debug"
@@ -22,6 +24,7 @@
     "@types/unist": "^3.0.3",
     "astro": "^5.16.0",
     "lightningcss": "^1.29.1",
+    "mdast-util-to-string": "^4.0.0",
     "sanitize-html": "^2.14.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0"
@@ -34,6 +37,7 @@
     "@vitest/ui": "^4.0.16",
     "browserslist": "^4.28.1",
     "lefthook": "^2.1.1",
+    "serve": "^14.2.6",
     "vitest": "^4.0.16"
   },
   "pnpm": {
