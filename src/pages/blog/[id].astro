@@ -83,6 +83,30 @@ if (post.data.author) {
     margin-top: calc(0.5 * var(--grid));
     text-align: center;
   }
+  /* Markdown tables: no global table styling exists, so scope it to articles. */
+  article :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: calc(var(--grid) * 2) 0;
+    display: block;
+    overflow-x: auto;
+  }
+  /* Single :global() wrapping :is() — a comma-separated pair of :global()
+     selectors compiles to invalid CSS in Astro's scoper. */
+  article :global(:is(th, td)) {
+    text-align: left;
+    vertical-align: top;
+    padding: calc(0.5 * var(--grid)) var(--grid);
+    border-bottom: 1px solid
+      color-mix(in hsl, transparent, var(--surface-secondary) 25%);
+  }
+  article :global(thead th) {
+    border-bottom-width: 2px;
+    border-bottom-color: var(--color-primary);
+  }
+  article :global(tbody tr:nth-child(odd)) {
+    background: color-mix(in hsl, transparent, var(--color-primary) 10%);
+  }
   .poster {
     width: 100%;
     max-height: 480px;
